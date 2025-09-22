@@ -1,0 +1,10 @@
+{
+  "label": "Osaurus",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "title": "Osaurus Documentation",
+    "description": "Native Apple Silicon local LLM server with OpenAI- and Ollama-compatible APIs."
+  }
+}
+
