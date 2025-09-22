@@ -2,6 +2,7 @@
 title: Benchmarks
 sidebar_label: Benchmarks
 description: Summary metrics and how to reproduce.
+sidebar_position: 9
 ---
 
 The following are 20-run averages from the batch benchmark suite.
@@ -25,4 +26,3 @@ scripts/run_bench.sh
 ```
 
 This calls `scripts/benchmark_models.py` to run prompts across servers and write results.
-

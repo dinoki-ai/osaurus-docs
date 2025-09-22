@@ -2,6 +2,7 @@
 title: Developer Guide
 sidebar_label: Developer Guide
 description: Project structure, dependencies, and contribution notes for Osaurus.
+sidebar_position: 10
 ---
 
 ## Project structure
@@ -68,4 +69,3 @@ osaurus/
   - https://github.com/dinoki-ai/osaurus/blob/main/CODE_OF_CONDUCT.md
 - Security policy: https://github.com/dinoki-ai/osaurus/blob/main/SECURITY.md
 - Good first issues: https://github.com/dinoki-ai/osaurus/labels/good%20first%20issue
-

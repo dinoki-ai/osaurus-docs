@@ -2,6 +2,7 @@
 title: SDK Examples
 sidebar_label: SDK Examples
 description: Use Osaurus with OpenAI SDKs.
+sidebar_position: 6
 ---
 
 Point your client at Osaurus and use any placeholder API key.
@@ -67,4 +68,3 @@ for call in tool_calls:
     )
     print(followup.choices[0].message.content)
 ```
-

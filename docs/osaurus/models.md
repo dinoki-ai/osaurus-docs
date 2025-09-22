@@ -2,6 +2,7 @@
 title: Models
 sidebar_label: Models
 description: Managing models and naming conventions.
+sidebar_position: 4
 ---
 
 - Curated suggestions include Llama, Qwen, Gemma, Mistral, Phi, DeepSeek, etc. (4‑bit variants for speed)
@@ -14,4 +15,3 @@ description: Managing models and naming conventions.
 Model names are lower-cased with hyphens (derived from the friendly name), e.g.:
 
 - `Llama 3.2 3B Instruct 4bit` → `llama-3.2-3b-instruct-4bit`
-

@@ -2,12 +2,25 @@
 title: Quickstart
 sidebar_label: Quickstart
 description: Download, run, and call the Osaurus API in minutes.
+sidebar_position: 3
 ---
 
-## Download
+## Install
 
-Grab the latest signed build from the Releases page:
-https://github.com/dinoki-ai/osaurus/releases/latest
+Pick one method:
+
+- Homebrew (recommended):
+
+  ```bash
+  brew install osaurus
+  ```
+
+- Direct download:
+
+  Download the latest signed build from the Releases page and move it to Applications:
+  https://github.com/dinoki-ai/osaurus/releases/latest
+
+For more details and verification steps, see the Installation page.
 
 ## Build and run (from source)
 
@@ -72,4 +85,3 @@ curl -N http://127.0.0.1:8080/v1/api/chat \
 ```
 
 Tip: Model names are lower-cased with hyphens (e.g., `Llama 3.2 3B Instruct 4bit` → `llama-3.2-3b-instruct-4bit`).
-

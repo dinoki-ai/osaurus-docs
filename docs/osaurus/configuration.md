@@ -2,6 +2,7 @@
 title: Configuration
 sidebar_label: Configuration
 description: Models directory, CORS settings, and network exposure.
+sidebar_position: 7
 ---
 
 ## Models directory
@@ -48,6 +49,8 @@ Notes
 
 ## App integration
 
-If you’re integrating from a macOS or Electron app and want to discover/connect to a running Osaurus instance, see the Shared Configuration guide:
-https://github.com/dinoki-ai/osaurus/blob/main/SHARED_CONFIGURATION_GUIDE.md
+If you’re integrating from a macOS or Electron app and want to discover/connect to a running Osaurus instance, see:
 
+- Shared Configuration: How to discover Osaurus via a JSON file and connect programmatically.
+
+See: [Shared Configuration](./shared-configuration.md)

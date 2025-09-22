@@ -2,6 +2,7 @@
 title: API
 sidebar_label: API
 description: Endpoints, path normalization, and function/tool calling.
+sidebar_position: 5
 ---
 
 ## Endpoints
@@ -74,4 +75,3 @@ Notes
 - Only `type: "function"` tools are supported.
 - Assistant `arguments` should be a JSON-escaped string; nested `parameters` objects are normalized.
 - Streaming deltas include tool call id, type, name, and chunked arguments, ending with `finish_reason: "tool_calls"` and `[DONE]`.
-

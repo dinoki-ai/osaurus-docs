@@ -15,7 +15,7 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://osaurus.ai',
+  url: 'https://docs.osaurus.ai',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -60,6 +60,14 @@ const config: Config = {
   ],
 
   headTags: [
+    {
+      tagName: 'meta',
+      attributes: { name: 'theme-color', content: '#ffffff' },
+    },
+    {
+      tagName: 'meta',
+      attributes: { name: 'theme-color', content: '#ffffff' },
+    },
     {
       tagName: 'meta',
       attributes: {
@@ -120,7 +128,7 @@ const config: Config = {
       tagName: 'link',
       attributes: {
         rel: 'canonical',
-        href: 'https://osaurus.ai',
+        href: 'https://docs.osaurus.ai',
       },
     },
     {
@@ -145,7 +153,8 @@ const config: Config = {
   themeConfig: {
     colorMode: {
       defaultMode: 'light',
-      respectPrefersColorScheme: true,
+      respectPrefersColorScheme: false,
+      disableSwitch: true,
     },
     // Replace with your project's social card
     image: 'img/og-image.png',
