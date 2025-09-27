@@ -43,16 +43,19 @@ osaurus serve [OPTIONS]
 #### Examples
 
 Start server on localhost only (default):
+
 ```bash
 osaurus serve --port 1337
 ```
 
 Start server exposed on your LAN (will prompt for confirmation):
+
 ```bash
 osaurus serve --port 1337 --expose
 ```
 
 Start server exposed without prompt (non-interactive):
+
 ```bash
 osaurus serve --port 1337 --expose --yes
 ```
@@ -70,6 +73,7 @@ osaurus status
 ```
 
 This command will show:
+
 - Whether the server is running
 - The port it's running on
 - The bind address (localhost or exposed)
@@ -92,6 +96,7 @@ osaurus stop
 ### Management Protocol
 
 The CLI communicates with the Osaurus app using macOS Distributed Notifications. This means:
+
 - Management is local-only
 - There are no HTTP start/stop endpoints
 - The CLI must be run on the same machine as the Osaurus app
@@ -144,6 +149,7 @@ If you get a "command not found" error:
 ### Server won't start
 
 1. Check if another process is using the port:
+
    ```bash
    lsof -i :1337
    ```
