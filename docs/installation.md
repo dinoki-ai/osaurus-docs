@@ -2,7 +2,7 @@
 title: Installation
 sidebar_label: Installation
 description: Install Osaurus via Homebrew or download the latest signed build from GitHub Releases.
-sidebar_position: 1
+sidebar_position: 2
 ---
 
 Osaurus runs on Apple Silicon Macs (M1 or newer) with macOS 15.5+.
