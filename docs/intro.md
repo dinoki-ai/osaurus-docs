@@ -19,10 +19,13 @@ It lets you run state-of-the-art open-source models directly on your Mac with no
 
 At its core, Osaurus is:
 
-- <Icon name="Zap" /> **Blazing fast** — optimized for M-series chips, written in Swift, and designed to feel seamless.
-- <Icon name="Shield" /> **Private by default** — all inference runs on your machine, your data never leaves your device.
-- <Icon name="Puzzle" /> **Open & flexible** — MIT-licensed, API-compatible with OpenAI and Ollama, and integrated with Apple's MLX ecosystem.
-- <Icon name="Sliders" /> **Developer-friendly** — simple install, clean APIs, CLI + GUI for full control over your models.
+<Icon name="Zap" /> **Blazing fast** — optimized for M-series chips, written in Swift, and designed to feel seamless.
+
+<Icon name="Shield" /> **Private by default** — all inference runs on your machine, your data never leaves your device.
+
+<Icon name="Puzzle" /> **Open & flexible** — MIT-licensed, API-compatible with OpenAI and Ollama, and integrated with Apple's MLX ecosystem.
+
+<Icon name="Sliders" /> **Developer-friendly** — simple install, clean APIs, CLI + GUI for full control over your models.
 
 Osaurus is lightweight (just ~7MB runtime footprint) yet powerful enough to support real-time interactivity.
 
@@ -63,9 +66,11 @@ We’re building Osaurus around a few simple principles:
 
 ## Join the Community
 
-- <Icon name="MessageCircle" /> [Discord](https://discord.gg/dinoki) — share, learn, and build together.
-- <Icon name="Github" /> [GitHub](https://github.com/dinoki-ai/osaurus) — contribute, report issues, and follow development.
-- <Icon name="Twitter" /> [X](https://x.com/dinokilabs) — stay up to date.
+<Icon name="MessageCircle" /> [Discord](https://discord.gg/dinoki) — share, learn, and build together.
+
+<Icon name="Github" /> [GitHub](https://github.com/dinoki-ai/osaurus) — contribute, report issues, and follow development.
+
+<Icon name="Twitter" /> [X](https://x.com/dinokilabs) — stay up to date.
 
 ---
 

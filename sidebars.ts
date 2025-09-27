@@ -34,6 +34,11 @@ const sidebars: SidebarsConfig = {
           id: "quickstart",
           label: "Quick Start",
         },
+        {
+          type: "doc",
+          id: "cli",
+          label: "CLI Reference",
+        },
       ],
     },
     {
