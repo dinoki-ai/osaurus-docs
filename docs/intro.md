@@ -3,6 +3,8 @@ title: Overview
 sidebar_label: Overview
 description: Native Apple Silicon local LLM server with OpenAI- and Ollama-compatible APIs.
 sidebar_position: 2
+slug: /
+hide_title: true
 ---
 
 Osaurus is a native, Apple Silicon–only local LLM server. It’s built on Apple’s MLX for high performance on M-series Macs, and ships as a SwiftUI app with an embedded SwiftNIO HTTP server exposing OpenAI-compatible and Ollama-compatible endpoints.
