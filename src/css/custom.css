@@ -876,3 +876,6 @@ h3 .inline-icon {
   width: 24px;
   height: 24px;
 }
+
+/* Import production fixes at the end for highest priority */
+@import "./custom-fixes.css";

@@ -1,0 +1,129 @@
+/**
+ * CSS Fixes for Production Build Consistency
+ * 
+ * These rules use higher specificity and !important where necessary
+ * to ensure they work consistently in both dev and production
+ */
+
+/* Fix container padding with higher specificity */
+.main-wrapper .container {
+  padding: 0 3rem !important;
+  max-width: 100% !important;
+}
+
+/* Fix article padding with higher specificity */
+.main-wrapper article {
+  padding: 2rem 2.5rem 3rem !important;
+  max-width: 52rem !important;
+  margin: 0 auto !important;
+}
+
+/* Fix navbar height and padding */
+.navbar {
+  height: 64px !important;
+  padding: 0 !important;
+}
+
+.navbar .navbar__container {
+  padding: 0 3rem !important;
+  height: 100% !important;
+}
+
+/* Fix menu padding */
+.theme-doc-sidebar-container .menu {
+  padding: 0.75rem 1.5rem 1.5rem !important;
+}
+
+/* Fix menu link styles */
+.menu .menu__link {
+  padding: 0.625rem 1.125rem !important;
+  border-radius: 6px !important;
+  font-size: 0.9375rem !important;
+  line-height: 1.5 !important;
+}
+
+/* Fix markdown spacing */
+.markdown > h2 {
+  margin-top: 3.5rem !important;
+  margin-bottom: 1.75rem !important;
+  padding-top: 0.5rem !important;
+}
+
+.markdown > h3 {
+  margin-top: 2.75rem !important;
+  margin-bottom: 1.25rem !important;
+}
+
+.markdown > p {
+  margin-bottom: 1.75rem !important;
+  line-height: 1.8 !important;
+}
+
+.markdown > ul,
+.markdown > ol {
+  margin-bottom: 2rem !important;
+  padding-left: 1.75rem !important;
+}
+
+/* Fix code block spacing */
+.markdown > div[class*="codeBlockContainer"] {
+  margin: 2.5rem 0 !important;
+}
+
+.markdown pre {
+  padding: 1.75rem !important;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+}
+
+/* Media query fixes */
+@media (max-width: 1200px) {
+  .main-wrapper .container {
+    padding: 0 2rem !important;
+  }
+
+  .main-wrapper article {
+    padding: 1.75rem 1.75rem 2.5rem !important;
+  }
+
+  .navbar .navbar__container {
+    padding: 0 2rem !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-wrapper .container {
+    padding: 0 1.5rem !important;
+  }
+
+  .main-wrapper article {
+    padding: 1.5rem 1.25rem 2rem !important;
+  }
+
+  .navbar .navbar__container {
+    padding: 0 1.5rem !important;
+  }
+}
+
+/* Fix table of contents positioning */
+.table-of-contents {
+  position: sticky !important;
+  top: calc(64px + 2rem) !important;
+  max-height: calc(100vh - 64px - 4rem) !important;
+}
+
+/* Fix main wrapper top margin */
+.main-wrapper {
+  margin-top: 64px !important;
+  padding-top: 0 !important;
+}
+
+/* Ensure proper sidebar width */
+@media (min-width: 997px) {
+  .theme-doc-sidebar-container {
+    width: 300px !important;
+    position: sticky !important;
+    top: 64px !important;
+    height: calc(100vh - 64px) !important;
+  }
+}
