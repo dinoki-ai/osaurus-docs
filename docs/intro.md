@@ -30,7 +30,9 @@ Osaurus is lightweight (just ~7MB runtime footprint) yet powerful enough to supp
 
 ## Why Osaurus?
 
-Cloud-based AI is fast becoming expensive, restrictive, and privacy-challenging. Osaurus flips the model:
+Cloud-based AI is fast becoming expensive, restrictive, and privacy-challenging.
+
+Osaurus flips the model:
 
 - **Zero latency**: Local inference means faster, more responsive AI.
 - **Total autonomy**: No enforced moderation or centralized limits.

@@ -211,7 +211,7 @@ const config: Config = {
           items: [
             {
               label: "Osaurus Overview",
-              to: "/docs/osaurus/intro",
+              to: "/",
             },
           ],
         },
