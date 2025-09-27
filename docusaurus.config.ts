@@ -57,6 +57,15 @@ const config: Config = {
     ],
   ],
 
+  plugins: [
+    [
+      "vercel-analytics",
+      {
+        mode: "auto",
+      },
+    ],
+  ],
+
   stylesheets: [
     {
       href: "https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap",
@@ -183,7 +192,7 @@ const config: Config = {
       { name: "robots", content: "index, follow" },
     ],
     navbar: {
-      hideOnScroll: true,
+      hideOnScroll: false,
       title: "Osaurus",
       logo: {
         alt: "Osaurus Logo",
@@ -204,7 +213,7 @@ const config: Config = {
       ],
     },
     footer: {
-      style: "dark",
+      style: "light",
       links: [
         {
           title: "Docs",

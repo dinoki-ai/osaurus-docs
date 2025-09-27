@@ -14,7 +14,7 @@ Basic chat completion:
 ```python
 from openai import OpenAI
 
-client = OpenAI(base_url="http://127.0.0.1:8080/v1", api_key="osaurus")
+client = OpenAI(base_url="http://127.0.0.1:1337/v1", api_key="osaurus")
 
 resp = client.chat.completions.create(
     model="llama-3.2-3b-instruct-4bit",
@@ -30,7 +30,7 @@ With tools (non-stream):
 import json
 from openai import OpenAI
 
-client = OpenAI(base_url="http://127.0.0.1:8080/v1", api_key="osaurus")
+client = OpenAI(base_url="http://127.0.0.1:1337/v1", api_key="osaurus")
 
 tools = [
     {

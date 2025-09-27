@@ -32,7 +32,7 @@ Behavior when enabled:
 Quick example (browser fetch):
 
 ```javascript
-await fetch("http://127.0.0.1:8080/v1/chat/completions", {
+await fetch("http://127.0.0.1:1337/v1/chat/completions", {
   method: "POST",
   headers: { "Content-Type": "application/json" },
   body: JSON.stringify({

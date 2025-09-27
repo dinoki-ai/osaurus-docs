@@ -42,11 +42,11 @@ Requirements: Xcode 16.4+
 
 ## Verify
 
-1. Launch Osaurus and start the server (default port `8080`)
+1. Launch Osaurus and start the server (default port `1337`)
 2. List models via API:
 
 ```bash
-curl -s http://127.0.0.1:8080/v1/models | jq
+curl -s http://127.0.0.1:1337/v1/models | jq
 ```
 
 If you haven’t downloaded a model yet, open the Model Manager in the app and install one (e.g., “Llama 3.2 3B Instruct 4bit”).

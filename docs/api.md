@@ -29,7 +29,7 @@ Send `tools` and optional `tool_choice` in your request. The model is prompted t
 Example (let the model decide: `tool_choice: "auto"`):
 
 ```bash
-curl -s http://127.0.0.1:8080/v1/chat/completions \
+curl -s http://127.0.0.1:1337/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
         "model": "llama-3.2-3b-instruct-4bit",
@@ -58,7 +58,7 @@ curl -s http://127.0.0.1:8080/v1/chat/completions \
 Then continue the conversation with a `tool` role message:
 
 ```bash
-curl -s http://127.0.0.1:8080/v1/chat/completions \
+curl -s http://127.0.0.1:1337/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
         "model": "llama-3.2-3b-instruct-4bit",
