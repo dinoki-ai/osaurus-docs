@@ -18,7 +18,7 @@
   --ifm-font-color-secondary: #666666;
   --ifm-background-color: #ffffff;
   --ifm-code-font-size: 95%;
-  --ifm-navbar-height: 10px;
+  --ifm-navbar-height: 64px;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.08);
 
   /* Restore link underlines for content */
@@ -116,6 +116,19 @@
   padding: 0;
   height: 64px;
   width: 100%;
+}
+
+/* Avoid Safari bug: fixed descendants clipped when parent has backdrop-filter */
+.navbar.navbar-sidebar--show {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+@media (max-width: 996px) {
+  .navbar {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
 }
 [data-theme="dark"] .navbar {
   background: rgba(0, 0, 0, 0.9);
