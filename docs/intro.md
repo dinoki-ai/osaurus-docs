@@ -9,7 +9,7 @@ hide_title: true
 
 # Welcome to Osaurus
 
-Osaurus is a **local-first AI runtime for Apple Silicon** — built for speed, simplicity, and privacy.
+Osaurus is a **local-first AI runtime for Apple Silicon** — built for speed, simplicity, and privacy. It integrates Apple Foundation Models when available, alongside MLX-hosted open models.
 
 It lets you run state-of-the-art open-source models directly on your Mac with no cloud dependency, no gatekeepers, and no compromises.
 
@@ -23,7 +23,7 @@ At its core, Osaurus is:
 
 <Icon name="Shield" /> **Private by default** — all inference runs on your machine, your data never leaves your device.
 
-<Icon name="Puzzle" /> **Open & flexible** — MIT-licensed, API-compatible with OpenAI and Ollama, and integrated with Apple's MLX ecosystem.
+<Icon name="Puzzle" /> **Open & flexible** — MIT-licensed, API-compatible with OpenAI and Ollama, integrates with Apple's MLX ecosystem and Apple Foundation Models.
 
 <Icon name="Sliders" /> **Developer-friendly** — simple install, clean APIs, CLI + GUI for full control over your models.
 
@@ -49,8 +49,9 @@ Osaurus is built for developers, creators, and teams who value control and speed
 ## Quick Start
 
 1. [Install Osaurus](./installation.md) — set up in one step.
-2. [Run your first model](./quickstart.md) — try GPT, LLaMA, or any MLX-compatible model.
-3. [Explore integrations](./integrations.md) — connect Osaurus with your favorite tools.
+2. [Apple Intelligence](./models/apple-intelligence.md) — enable and use Apple Foundation Models.
+3. [Run your first model](./quickstart.md) — try GPT, LLaMA, or any MLX-compatible model.
+4. [Explore integrations](./integrations.md) — connect Osaurus with your favorite tools.
 
 ---
 

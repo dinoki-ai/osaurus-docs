@@ -54,3 +54,13 @@ If you’re integrating from a macOS or Electron app and want to discover/connec
 - Shared Configuration: How to discover Osaurus via a JSON file and connect programmatically.
 
 See: [Shared Configuration](./shared-configuration.md)
+
+## Apple Foundation Models
+
+Osaurus auto-detects Apple Foundation Models on macOS 26 (Tahoe) only. No configuration is required. To check availability at runtime, list models and look for `foundation`:
+
+```bash
+curl -s http://127.0.0.1:1337/v1/models | jq
+```
+
+If present, you can target it via `model: "foundation"` or `model: "default"`. For details, see [Apple Intelligence](./models/apple-intelligence.md).

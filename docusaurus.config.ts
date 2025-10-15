@@ -206,6 +206,11 @@ const config: Config = {
           label: "Docs",
         },
         {
+          to: "/models/apple-intelligence",
+          label: "Apple Intelligence",
+          position: "left",
+        },
+        {
           href: "https://github.com/dinoki-ai/osaurus",
           label: "GitHub",
           position: "right",

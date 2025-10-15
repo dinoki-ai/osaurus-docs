@@ -24,6 +24,21 @@ resp = client.chat.completions.create(
 print(resp.choices[0].message.content)
 ```
 
+Using Apple Foundation Models on macOS 26 (Tahoe) — system default model:
+
+```python
+from openai import OpenAI
+
+client = OpenAI(base_url="http://127.0.0.1:1337/v1", api_key="osaurus")
+
+resp = client.chat.completions.create(
+    model="foundation",  # or "default"
+    messages=[{"role": "user", "content": "Write a haiku about dinosaurs"}],
+)
+
+print(resp.choices[0].message.content)
+```
+
 With tools (non-stream):
 
 ```python

@@ -42,6 +42,8 @@ List models (OpenAI-compatible):
 curl -s http://127.0.0.1:1337/v1/models | jq
 ```
 
+If your system supports Apple Foundation Models (macOS 26 Tahoe), the response includes `foundation` representing the system default model. You may target it explicitly with `model: "foundation"` or alias `"default"`.
+
 List tags (Ollama-compatible):
 
 ```bash
@@ -60,6 +62,18 @@ curl -s http://127.0.0.1:1337/v1/chat/completions \
       }'
 ```
 
+Non‑streaming using Apple Foundation Models (macOS 26 Tahoe):
+
+```bash
+curl -s http://127.0.0.1:1337/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+        "model": "foundation",
+        "messages": [{"role":"user","content":"Write a haiku about dinosaurs"}],
+        "max_tokens": 200
+      }'
+```
+
 Streaming chat completion (SSE format for `/chat/completions`):
 
 ```bash
@@ -67,6 +81,18 @@ curl -N http://127.0.0.1:1337/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
         "model": "llama-3.2-3b-instruct-4bit",
+        "messages": [{"role":"user","content":"Summarize Jurassic Park in one paragraph"}],
+        "stream": true
+      }'
+```
+
+Streaming with Apple Foundation Models (macOS 26 Tahoe):
+
+```bash
+curl -N http://127.0.0.1:1337/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+        "model": "default",
         "messages": [{"role":"user","content":"Summarize Jurassic Park in one paragraph"}],
         "stream": true
       }'

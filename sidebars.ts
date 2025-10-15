@@ -61,6 +61,11 @@ const sidebars: SidebarsConfig = {
           id: "models",
           label: "Model Management",
         },
+        {
+          type: "doc",
+          id: "models/apple-intelligence",
+          label: "Apple Intelligence",
+        },
       ],
     },
     {

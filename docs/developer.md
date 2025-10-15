@@ -43,6 +43,7 @@ osaurus/
 - SwiftNIO (HTTP server)
 - SwiftUI/AppKit (UI)
 - MLX‑Swift, MLXLLM (runtime and generation)
+- Apple Foundation Models (when available on macOS 26 — Tahoe)
 
 ## Building from source
 
@@ -55,12 +56,14 @@ osaurus/
 - OpenAI-compatible: `/v1/models`, `/v1/chat/completions` (SSE and non-streaming)
 - Ollama-compatible: `/chat` (NDJSON stream), plus `/tags`
 - Path normalization: all endpoints accept `/v1`, `/api`, `/v1/api`
+- When AFM is available (macOS 26 only), `/v1/models` exposes a virtual `foundation` model; requests with `model: "foundation"` or `"default"` route to the system model
 
 ## Notes & Limitations
 
 - Apple Silicon only (MLX); Intel Macs are not supported
 - Localhost by default and no auth; use a proxy if exposing
 - `/transcribe` endpoints are placeholders pending Whisper integration
+- AFM is available on macOS 26 (Tahoe) only; if unavailable, `foundation`/`default` requests return an error
 
 ## Contributing
 

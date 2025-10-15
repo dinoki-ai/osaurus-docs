@@ -5,15 +5,27 @@ description: Install Osaurus via Homebrew or download the latest signed build fr
 sidebar_position: 2
 ---
 
-Osaurus runs on Apple Silicon Macs (M1 or newer) with macOS 15.5+.
+Osaurus runs on Apple Silicon Macs (M1 or newer). Apple Foundation Models require macOS 26 (Tahoe).
 
 ## Option 1 — Homebrew (recommended)
 
 ```bash
-brew install osaurus
+brew install --cask osaurus
 ```
 
-- This installs Osaurus system-wide. After install, launch the app from Applications or run it from Spotlight.
+- This installs the Osaurus app bundle. Launch from Applications or Spotlight. The embedded CLI (`osaurus`) is auto-linked by the cask when available. If the `osaurus` command is not on your PATH, create a symlink:
+
+```bash
+ln -sf "/Applications/Osaurus.app/Contents/MacOS/osaurus" "$(brew --prefix)/bin/osaurus" || \
+ln -sf "$HOME/Applications/Osaurus.app/Contents/MacOS/osaurus" "$(brew --prefix)/bin/osaurus"
+```
+
+Or use the helper script:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/dinoki-ai/osaurus/main/scripts/install_cli_symlink.sh | bash
+```
+
 - To upgrade later:
 
 ```bash

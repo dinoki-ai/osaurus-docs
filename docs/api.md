@@ -14,6 +14,8 @@ sidebar_position: 5
 - `POST /chat/completions` → OpenAI-compatible chat completions
 - `POST /chat` → Ollama-compatible chat endpoint
 
+When Apple Foundation Models are available (macOS 26 Tahoe), `/v1/models` will include a `foundation` entry representing the system default model. You can select it using `model: "foundation"` or `model: "default"`.
+
 ### Path normalization
 
 All endpoints support common prefixes (`/v1`, `/api`, `/v1/api`). Examples:
@@ -25,6 +27,8 @@ All endpoints support common prefixes (`/v1`, `/api`, `/v1/api`). Examples:
 ## Function/Tool Calling (OpenAI-compatible)
 
 Send `tools` and optional `tool_choice` in your request. The model is prompted to return an exact JSON `tool_calls` object; Osaurus parses it (tolerates code fences or minor formatting noise) and streams deltas when `stream: true`.
+
+When targeting Apple Foundation Models via `model: "foundation"`/`"default"` on macOS 26, Osaurus maps tools to Apple’s tool interface and still emits OpenAI‑style `tool_calls` (including streaming deltas), so client code remains unchanged.
 
 Example (let the model decide: `tool_choice: "auto"`):
 

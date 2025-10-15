@@ -18,10 +18,17 @@ make install-cli
 
 ### Homebrew Installation
 
-If you installed Osaurus via Homebrew, the CLI is automatically available in your `PATH`:
+If you installed Osaurus via Homebrew cask, the app bundle includes the CLI. The cask attempts to link it automatically; if not, create a symlink:
 
 ```bash
-brew install osaurus
+ln -sf "/Applications/Osaurus.app/Contents/MacOS/osaurus" "$(brew --prefix)/bin/osaurus" || \
+ln -sf "$HOME/Applications/Osaurus.app/Contents/MacOS/osaurus" "$(brew --prefix)/bin/osaurus"
+```
+
+Or use the helper script:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/dinoki-ai/osaurus/main/scripts/install_cli_symlink.sh | bash
 ```
 
 ## Commands
@@ -39,6 +46,7 @@ osaurus serve [OPTIONS]
 - `--port PORT` - The port to run the server on (default: 1337)
 - `--expose` - Expose the server to your local network (binds to 0.0.0.0)
 - `--yes` - Skip confirmation prompts (useful for non-interactive environments)
+- `--port PORT` and `--expose` do not change Apple Foundation Models availability; AFM support is detected automatically on macOS 26 (Tahoe) only.
 
 #### Examples
 
