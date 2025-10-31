@@ -13,10 +13,9 @@ Osaurus is available as a native macOS application for Apple Silicon. Choose you
 
 - **macOS 15.5** or later
 - **Apple Silicon** (M1, M2, M3, or newer)
-- **100MB** free space for the application
-- **2-8GB** free space per model
+- **2-20GB** free space per model
 
-> **Note:** Apple Foundation Models require macOS 26 Tahoe or later. Osaurus automatically detects and enables this feature when available.
+> **Note:** Apple Foundation Models are only available on macOS 15 (Sequoia) or later when provided by the system. Osaurus automatically detects and enables this feature when available.
 
 ## Homebrew Installation
 
@@ -77,7 +76,7 @@ brew upgrade --cask
 Download the latest signed build directly from GitHub:
 
 1. Visit [GitHub Releases](https://github.com/dinoki-ai/osaurus/releases/latest)
-2. Download the latest DMG file (e.g., Osaurus-1.0.0-universal.dmg)
+2. Download the latest DMG file (e.g., Osaurus.dmg)
 3. Open the DMG file
 4. Drag Osaurus to your Applications folder
 5. Eject the DMG
@@ -176,20 +175,6 @@ Osaurus requires minimal permissions:
 - **File System Access** — For model storage
 
 No administrator privileges are required for normal operation.
-
-## Model Storage
-
-Models are stored in:
-
-```
-~/Library/Containers/ai.dinoki.osaurus/Data/Library/Application Support/models/
-```
-
-Each model typically requires:
-
-- **2-4GB** for 4-bit quantized models
-- **4-8GB** for 8-bit quantized models
-- **8-16GB** for larger or less quantized models
 
 ## Troubleshooting
 

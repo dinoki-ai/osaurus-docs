@@ -12,6 +12,7 @@ Osaurus integrates seamlessly with Apple Foundation Models when available on you
 ## 🍎 Overview
 
 Apple Foundation Models provide:
+
 - **System-integrated AI** — Uses the same models as system features
 - **Hardware acceleration** — Optimized for Apple Neural Engine (ANE)
 - **Zero setup** — No downloads or configuration needed
@@ -112,6 +113,7 @@ curl -s http://127.0.0.1:1337/v1/chat/completions \
 ```
 
 **Key Points:**
+
 - Tools work identically to MLX models
 - Streaming emits OpenAI-style `tool_calls` deltas
 - Your existing tool-calling code works unchanged
@@ -137,12 +139,14 @@ response = client.chat.completions.create(
 ## ⚡ Performance Characteristics
 
 ### Advantages
+
 - **Instant loading** — No model initialization required
 - **ANE acceleration** — Leverages dedicated neural hardware
 - **Memory efficient** — Shared with system services
 - **Consistent quality** — Same model as system features
 
 ### Considerations
+
 - **Fixed model** — Cannot choose different sizes/versions
 - **System dependent** — Requires specific macOS version
 - **Limited configuration** — Less control than MLX models
@@ -174,18 +178,21 @@ else:
 ```javascript
 async function getBestModel() {
   try {
-    const response = await fetch('http://127.0.0.1:1337/v1/models');
+    const response = await fetch("http://127.0.0.1:1337/v1/models");
     const { data } = await response.json();
-    
+
     // Prefer Foundation Models if available
-    if (data.some(m => m.id === 'foundation')) {
-      return 'foundation';
+    if (data.some((m) => m.id === "foundation")) {
+      return "foundation";
     }
-    
+
     // Fall back to first available MLX model
-    return data.find(m => m.id !== 'foundation')?.id || 'llama-3.2-3b-instruct-4bit';
+    return (
+      data.find((m) => m.id !== "foundation")?.id ||
+      "llama-3.2-3b-instruct-4bit"
+    );
   } catch (error) {
-    return 'llama-3.2-3b-instruct-4bit';
+    return "llama-3.2-3b-instruct-4bit";
   }
 }
 ```
@@ -202,12 +209,14 @@ async function getBestModel() {
 ### Foundation model not appearing
 
 1. **Check macOS version**:
+
    ```bash
    sw_vers -productVersion
    # Should be 26.0 or higher
    ```
 
 2. **Verify Apple Intelligence is enabled**:
+
    - System Settings → Apple Intelligence & Siri
    - Toggle "Apple Intelligence" ON
 
@@ -222,16 +231,19 @@ async function getBestModel() {
 ### Errors using foundation model
 
 **"Model not found" error:**
+
 - Foundation Models not available on your system
 - Fall back to an MLX model
 - Check `/v1/models` endpoint for available models
 
 **Slow or no response:**
+
 - System may be loading the model initially
 - Check Activity Monitor for high system usage
 - Ensure adequate free memory (8GB+ recommended)
 
 **Unexpected output:**
+
 - Foundation Models may behave differently than MLX models
 - Adjust prompts and parameters as needed
 - Use system prompts for consistent behavior
@@ -241,21 +253,22 @@ async function getBestModel() {
 1. **Free up resources**:
    - Quit unnecessary apps
    - Check Activity Monitor for memory pressure
-   
 2. **Optimize requests**:
+
    ```json
    {
-     "max_tokens": 200,      // Limit output length
-     "temperature": 0.7,     // Balance creativity/consistency
-     "stream": true          // Better perceived performance
+     "max_tokens": 200, // Limit output length
+     "temperature": 0.7, // Balance creativity/consistency
+     "stream": true // Better perceived performance
    }
    ```
 
 3. **Monitor system health**:
+
    ```bash
    # Check Osaurus health
    curl -s http://127.0.0.1:1337/health | jq
-   
+
    # Check system memory pressure
    vm_stat | grep "Pages free"
    ```

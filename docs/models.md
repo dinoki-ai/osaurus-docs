@@ -96,7 +96,7 @@ MLX models are optimized specifically for Apple Silicon:
 
 ### Apple Foundation Models
 
-Available on macOS 26 Tahoe or later:
+Available on supported macOS versions:
 
 ```bash
 # Use with model ID "foundation"
@@ -239,34 +239,7 @@ Configure default system prompts in Settings:
 
 ## Advanced Configuration
 
-### Model Aliases
-
-Create custom model names in `~/.osaurus/config.json`:
-
-```json
-{
-  "model_aliases": {
-    "gpt-3.5-turbo": "llama-3.2-3b-instruct-4bit",
-    "gpt-4": "llama-3.2-8b-instruct-4bit"
-  }
-}
-```
-
-### Preloading Models
-
-Keep frequently used models in memory:
-
-```bash
-osaurus serve --preload llama-3.2-3b-instruct-4bit
-```
-
-### Custom Model Paths
-
-Load models from custom locations:
-
-```bash
-osaurus serve --model-path /path/to/models
-```
+There are no global model aliasing or preloading options at this time. Control behavior per request via the OpenAI-compatible API.
 
 ## Troubleshooting
 
