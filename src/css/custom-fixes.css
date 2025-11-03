@@ -22,6 +22,15 @@
 .navbar {
   height: 64px !important;
   padding: 0 !important;
+  width: 100% !important;
+}
+
+.navbar .navbar__inner {
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding-left: max(22px, env(safe-area-inset-left)) !important;
+  padding-right: max(22px, env(safe-area-inset-right)) !important;
 }
 
 .navbar .navbar__container {
@@ -126,4 +135,52 @@
     top: 64px !important;
     height: calc(100vh - 64px) !important;
   }
+}
+
+/* Keep release badges in a single horizontal row */
+.markdown p.badges {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  flex-wrap: wrap !important;
+}
+
+.markdown p.badges a {
+  display: inline-flex !important;
+}
+
+.markdown p.badges img {
+  display: block !important;
+}
+
+/* Sidebar caret alignment fix */
+.theme-doc-sidebar-container .menu .menu__link--sublist-caret {
+  position: relative !important;
+  padding-right: 2rem !important; /* reserve space for caret */
+}
+
+.theme-doc-sidebar-container .menu .menu__link--sublist-caret::after {
+  position: absolute !important;
+  right: 12px !important;
+  top: 50% !important;
+  margin: 0 !important;
+  transform: translateY(-50%) rotate(0deg) !important;
+}
+
+.theme-doc-sidebar-container .menu .menu__link--sublist-caret[aria-expanded="true"]::after {
+  transform: translateY(-50%) rotate(90deg) !important;
+}
+
+/* Ensure CTA button link stays white inside markdown */
+.markdown a.button.button--primary,
+.markdown a.button.button--primary:visited {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.markdown a.button.button--primary:hover,
+.markdown a.button.button--primary:focus {
+  color: #ffffff !important;
+  text-decoration: none !important;
 }

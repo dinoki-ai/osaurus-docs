@@ -1,113 +1,254 @@
 ---
 title: Quickstart
 sidebar_label: Quickstart
-description: Download, run, and call the Osaurus API in minutes.
+description: Get up and running with Osaurus in minutes
 sidebar_position: 3
 ---
 
-## Install
+# Quickstart
 
-Pick one method:
+Get your first local LLM running in minutes. This guide walks through installation, setup, and your first API call.
 
-- Homebrew (recommended):
+## Setup
 
-  ```bash
-  brew install osaurus
-  ```
+### Install Osaurus
 
-- Direct download:
-
-  Download the latest signed build from the Releases page and move it to Applications:
-  https://github.com/dinoki-ai/osaurus/releases/latest
-
-For more details and verification steps, see the Installation page.
-
-## Build and run (from source)
-
-1. Open `osaurus.xcodeproj` in Xcode 16.4+
-2. Build and run the `osaurus` target
-3. In the UI, set the port (default `1337`) via the gear icon and press Start
-4. Open the model manager to download a model (e.g., “Llama 3.2 3B Instruct 4bit”)
-
-Models are stored by default at `~/MLXModels`. Override with the env var `OSU_MODELS_DIR`.
-
-## Use the API
-
-- Base URL: `http://127.0.0.1:1337` (or your chosen port)
-- All endpoints also accept common API prefixes (`/v1`, `/api`, `/v1/api`)
-
-List models (OpenAI-compatible):
+Install using Homebrew:
 
 ```bash
-curl -s http://127.0.0.1:1337/v1/models | jq
+brew install --cask osaurus
 ```
 
-If your system supports Apple Foundation Models (macOS 26 Tahoe), the response includes `foundation` representing the system default model. You may target it explicitly with `model: "foundation"` or alias `"default"`.
+Alternatively, [download directly](https://github.com/dinoki-ai/osaurus/releases/latest) from GitHub releases.
 
-List tags (Ollama-compatible):
+### Launch the Application
 
-```bash
-curl -s http://127.0.0.1:1337/v1/tags | jq
-```
+1. Open Osaurus from Spotlight (⌘ Space) or Applications
+2. Look for the Osaurus icon in your menu bar
+3. Click the icon to access the control panel
 
-Non-streaming chat completion:
+### Start the Server
+
+1. Click **Start Server** in the menu
+2. Wait for the status to show **Running on port 1337**
+3. Your local LLM server is now active
+
+### Download a Model
+
+1. Select **Model Manager** from the menu bar
+2. Browse available models or use search
+3. For first-time users, we recommend **Llama 3.2 3B Instruct 4bit**
+   - Balanced performance and quality
+   - 2GB download size
+   - Runs efficiently on 8GB+ Macs
+4. Click **Download** and wait for completion
+
+### Test the API
+
+Verify your installation with a simple request:
 
 ```bash
 curl -s http://127.0.0.1:1337/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-        "model": "llama-3.2-3b-instruct-4bit",
-        "messages": [{"role":"user","content":"Write a haiku about dinosaurs"}],
-        "max_tokens": 200
-      }'
+    "model": "llama-3.2-3b-instruct-4bit",
+    "messages": [{"role":"user","content":"Hello! Tell me a fun fact about dinosaurs."}],
+    "max_tokens": 100
+  }' | jq
 ```
 
-Non‑streaming using Apple Foundation Models (macOS 26 Tahoe):
+## Using the Chat Interface
+
+Osaurus includes an integrated chat interface for direct model interaction.
+
+### Accessing Chat
+
+Press **⌘;** (Command + Semicolon) to open the chat overlay. Type your message and press Enter to send. Press **⌘;** again to close.
+
+### Chat Features
+
+- **Markdown Rendering** — Formatted responses with syntax highlighting
+- **Copy Messages** — Click the copy icon on any message
+- **Stop Generation** — Interrupt streaming responses
+- **Model Selection** — Switch models using the dropdown
+- **System Prompts** — Configure in Settings → Chat
+
+## Example Requests
+
+### Creative Writing
 
 ```bash
 curl -s http://127.0.0.1:1337/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-        "model": "foundation",
-        "messages": [{"role":"user","content":"Write a haiku about dinosaurs"}],
-        "max_tokens": 200
-      }'
+    "model": "llama-3.2-3b-instruct-4bit",
+    "messages": [{"role":"user","content":"Write a haiku about coding late at night"}]
+  }' | jq -r '.choices[0].message.content'
 ```
 
-Streaming chat completion (SSE format for `/chat/completions`):
+### Code Generation
+
+```bash
+curl -s http://127.0.0.1:1337/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "llama-3.2-3b-instruct-4bit",
+    "messages": [{"role":"user","content":"Write a Python function to reverse a string without using built-in functions"}]
+  }' | jq -r '.choices[0].message.content'
+```
+
+### Streaming Responses
 
 ```bash
 curl -N http://127.0.0.1:1337/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-        "model": "llama-3.2-3b-instruct-4bit",
-        "messages": [{"role":"user","content":"Summarize Jurassic Park in one paragraph"}],
-        "stream": true
-      }'
+    "model": "llama-3.2-3b-instruct-4bit",
+    "messages": [{"role":"user","content":"Explain quantum computing in simple terms"}],
+    "stream": true
+  }'
 ```
 
-Streaming with Apple Foundation Models (macOS 26 Tahoe):
+## Apple Foundation Models
+
+On macOS 26 Tahoe or later, access Apple's system models:
 
 ```bash
-curl -N http://127.0.0.1:1337/v1/chat/completions \
+# Check availability
+curl -s http://127.0.0.1:1337/v1/models | jq '.data[] | select(.id=="foundation")'
+
+# Use foundation model
+curl -s http://127.0.0.1:1337/v1/chat/completions \
   -H "Content-Type: application/json" \
   -d '{
-        "model": "default",
-        "messages": [{"role":"user","content":"Summarize Jurassic Park in one paragraph"}],
-        "stream": true
-      }'
+    "model": "foundation",
+    "messages": [{"role":"user","content":"What makes Apple Silicon special?"}]
+  }' | jq
 ```
 
-Ollama-compatible streaming (NDJSON format for `/chat`):
+## Command Line Interface
+
+Control Osaurus from Terminal:
 
 ```bash
-curl -N http://127.0.0.1:1337/v1/api/chat \
-  -H "Content-Type: application/json" \
-  -d '{
-        "model": "llama-3.2-3b-instruct-4bit",
-        "messages": [{"role":"user","content":"Tell me about dinosaurs"}],
-        "stream": true
-      }'
+# Start server
+osaurus serve --port 1337
+
+# Enable LAN access
+osaurus serve --port 1337 --expose
+
+# Check status
+osaurus status
+
+# Stop server
+osaurus stop
+
+# Open UI
+osaurus ui
 ```
 
-Tip: Model names are lower-cased with hyphens (e.g., `Llama 3.2 3B Instruct 4bit` → `llama-3.2-3b-instruct-4bit`).
+## Python Integration
+
+Use the OpenAI SDK with Osaurus:
+
+```python
+from openai import OpenAI
+
+# Configure for local server
+client = OpenAI(
+    base_url="http://127.0.0.1:1337/v1",
+    api_key="not-needed"
+)
+
+# Make a request
+response = client.chat.completions.create(
+    model="llama-3.2-3b-instruct-4bit",
+    messages=[
+        {"role": "user", "content": "Write a joke about programming"}
+    ]
+)
+
+print(response.choices[0].message.content)
+```
+
+## JavaScript Integration
+
+Access Osaurus from Node.js or browser environments:
+
+```javascript
+const response = await fetch("http://127.0.0.1:1337/v1/chat/completions", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    model: "llama-3.2-3b-instruct-4bit",
+    messages: [{ role: "user", content: "What's the weather like on Mars?" }],
+  }),
+});
+
+const data = await response.json();
+console.log(data.choices[0].message.content);
+```
+
+## Model Recommendations
+
+### Fast Response Models (4-bit)
+
+- **Llama 3.2 3B Instruct** — Excellent general-purpose model
+- **Qwen 2.5 3B Instruct** — Strong reasoning capabilities
+- **Gemma 2 2B Instruct** — Optimized for speed
+
+### Quality-Focused Models
+
+- **Llama 3.2 8B Instruct** — Superior quality with reasonable speed
+- **Mistral 7B Instruct** — Well-rounded performance
+- **DeepSeek Coder 7B** — Specialized for programming tasks
+
+### High-Memory Systems (32GB+)
+
+Consider 8-bit variants for enhanced quality or larger 13B-30B models for advanced use cases.
+
+## Performance Optimization
+
+1. **Model Selection** — Start with 4-bit models for optimal speed
+2. **Resource Management** — Close unnecessary applications
+3. **Context Length** — Shorter prompts yield faster responses
+4. **Response Streaming** — Improves perceived performance
+5. **System Monitoring** — Use Osaurus's built-in monitor
+
+## Troubleshooting
+
+### Model Not Found
+
+- Verify download completion in Model Manager
+- Check exact model name: `curl http://127.0.0.1:1337/v1/models`
+- Ensure lowercase naming with hyphens
+
+### Slow Performance
+
+- Try smaller models (3B vs 7B)
+- Reduce `max_tokens` parameter
+- Free up system memory
+- Check Activity Monitor for resource usage
+
+### Connection Issues
+
+- Verify server status: `osaurus status`
+- Check port configuration (default: 1337)
+- Ensure firewall allows localhost connections
+
+## Next Steps
+
+Explore these resources to expand your usage:
+
+1. [API Reference](/api) — Complete endpoint documentation
+2. [Model Guide](/models) — Detailed model information
+3. [Configuration](/configuration) — Customize Osaurus settings
+4. [Integrations](/integrations) — Build with Osaurus
+5. [Community](https://discord.gg/dinoki) — Connect with other users
+
+---
+
+<p align="center">
+  <strong>You're now running AI locally on your Mac.</strong><br/>
+  No cloud dependencies. No usage limits. Complete privacy.
+</p>
