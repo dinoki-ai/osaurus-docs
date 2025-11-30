@@ -13,12 +13,12 @@ This guide covers everything you need to know about contributing to Osaurus, bui
 
 Osaurus is built with **native Swift**—not Python, not Electron, not wrapped web tech. This matters:
 
-| Aspect | Python/Electron | Native Swift |
-| ------ | --------------- | ------------ |
+| Aspect          | Python/Electron                 | Native Swift                    |
+| --------------- | ------------------------------- | ------------------------------- |
 | **Performance** | Interpreter overhead, GC pauses | Compiled, ARC memory management |
-| **Startup** | 200ms+ for Python runtime | Under 10ms binary load |
-| **Memory** | 50MB+ baseline | Minimal footprint |
-| **Integration** | Bridging required | Native macOS APIs |
+| **Startup**     | 200ms+ for Python runtime       | Under 10ms binary load          |
+| **Memory**      | 50MB+ baseline                  | Minimal footprint               |
+| **Integration** | Bridging required               | Native macOS APIs               |
 
 Contributing to Osaurus means building **production-quality tools** that developers actually want to use daily.
 

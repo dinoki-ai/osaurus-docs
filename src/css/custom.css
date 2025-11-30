@@ -2,13 +2,10 @@
  * Osaurus Documentation - Clean Modern Theme
  */
 
-/* ============================================
-   CSS Variables
-   ============================================ */
-
 :root {
   /* Typography */
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
   --font-mono: "SF Mono", "Fira Code", Consolas, monospace;
 
   /* Colors */
@@ -17,11 +14,11 @@
   --color-bg-tertiary: #f3f4f6;
   --color-border: #e5e7eb;
   --color-border-light: #f3f4f6;
-  
+
   --color-text: #111827;
   --color-text-secondary: #4b5563;
   --color-text-tertiary: #9ca3af;
-  
+
   --color-primary: #2563eb;
   --color-primary-hover: #1d4ed8;
   --color-primary-light: rgba(37, 99, 235, 0.1);
@@ -36,38 +33,33 @@
   --ifm-color-primary-light: #3b82f6;
   --ifm-color-primary-lighter: #60a5fa;
   --ifm-color-primary-lightest: #93c5fd;
-  
+
   --ifm-background-color: var(--color-bg);
   --ifm-font-color-base: var(--color-text);
   --ifm-font-size-base: 16px;
   --ifm-line-height-base: 1.7;
   --ifm-heading-font-weight: 600;
-  
+
   --ifm-code-font-size: 0.875rem;
   --ifm-code-background: var(--color-bg-tertiary);
   --ifm-code-border-radius: 6px;
   --ifm-code-padding-vertical: 0.1rem;
   --ifm-code-padding-horizontal: 0.375rem;
-  
+
   --ifm-link-color: var(--color-primary);
   --ifm-link-hover-color: var(--color-primary-hover);
-  
+
   --ifm-navbar-height: 60px;
   --ifm-navbar-background-color: var(--color-bg);
   --ifm-navbar-shadow: none;
-  --ifm-navbar-padding-horizontal: 0;
-  --ifm-navbar-padding-vertical: 0;
-  
+
   --ifm-menu-color: var(--color-text-secondary);
   --ifm-menu-color-active: var(--color-primary);
   --ifm-menu-color-background-active: var(--color-primary-light);
-  
+
   --ifm-toc-border-color: var(--color-border);
-  --ifm-global-radius: 8px;
-  
-  --doc-sidebar-width: 280px;
-  --ifm-spacing-horizontal: 1.5rem;
-  
+  --doc-sidebar-width: 260px;
+
   --docusaurus-highlighted-code-line-bg: var(--color-primary-light);
 }
 
@@ -78,23 +70,19 @@
   --color-bg-tertiary: #262626;
   --color-border: #303030;
   --color-border-light: #252525;
-  
+
   --color-text: #f9fafb;
   --color-text-secondary: #d1d5db;
   --color-text-tertiary: #6b7280;
-  
+
   --color-primary: #3b82f6;
   --color-primary-hover: #60a5fa;
   --color-primary-light: rgba(59, 130, 246, 0.15);
 
   --ifm-navbar-background-color: var(--color-bg);
-  --ifm-code-background: var(--color-bg-tertiary);
 }
 
-/* ============================================
-   Base Styles
-   ============================================ */
-
+/* Base */
 * {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -104,49 +92,52 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  background: var(--color-bg);
-}
-
-/* ============================================
-   Typography
-   ============================================ */
-
-h1, h2, h3, h4, h5, h6 {
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   letter-spacing: -0.025em;
   color: var(--color-text);
 }
 
-h1 { font-size: 2rem; line-height: 1.25; }
-h2 { font-size: 1.5rem; line-height: 1.33; }
-h3 { font-size: 1.25rem; line-height: 1.4; }
-h4 { font-size: 1.125rem; line-height: 1.45; }
+h1 {
+  font-size: 2rem;
+  line-height: 1.25;
+}
+h2 {
+  font-size: 1.5rem;
+  line-height: 1.33;
+}
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+h4 {
+  font-size: 1.125rem;
+  line-height: 1.45;
+}
 
 p {
   color: var(--color-text-secondary);
 }
 
-/* ============================================
-   Navbar - Full Width
-   ============================================ */
-
+/* Navbar */
 .navbar {
   background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
   box-shadow: none;
   height: var(--ifm-navbar-height);
-  padding: 0;
+  padding: 0 24px;
 }
 
 .navbar__inner {
   max-width: 100%;
-  padding: 0 24px;
+  padding: 0;
   margin: 0;
-}
-
-.navbar__items {
-  gap: 4px;
 }
 
 .navbar__brand {
@@ -169,7 +160,6 @@ p {
   color: var(--color-text-secondary);
   padding: 6px 12px;
   border-radius: 6px;
-  transition: all 0.15s ease;
 }
 
 .navbar__link:hover {
@@ -182,121 +172,30 @@ p {
   font-weight: 500;
 }
 
-.navbar__toggle {
-  margin-right: 12px;
-}
-
 /* ============================================
-   Layout - Full Width Doc Pages
+   LAYOUT - This is the key section
    ============================================ */
 
+/* Main wrapper fills viewport */
 .main-wrapper {
   background: var(--color-bg);
 }
 
-/* Remove any max-width constraints on doc pages */
-.docPage_node_modules-\@docusaurus-theme-classic-lib-theme-DocPage-Layout-styles-module,
-[class*="docPage_"] {
-  max-width: 100%;
-}
-
-/* Doc root container */
-.docsWrapper_node_modules-\@docusaurus-theme-classic-lib-theme-DocRoot-Layout-styles-module,
-[class*="docsWrapper_"] {
-  display: flex;
-  width: 100%;
-}
-
-/* Main content container */
-.docMainContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocRoot-Layout-Main-styles-module,
-[class*="docMainContainer_"] {
-  flex: 1;
-  min-width: 0;
-  max-width: 100%;
-}
-
-.container {
-  max-width: 100% !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-/* Ensure doc wrapper fills available space */
-.docMainContainerEnhanced_node_modules-\@docusaurus-theme-classic-lib-theme-DocRoot-Layout-Main-styles-module,
-[class*="docMainContainerEnhanced_"],
-[class*="docMainContainer_"] {
-  flex-grow: 1;
-  max-width: calc(100% - var(--doc-sidebar-width));
-}
-
-/* Doc item container - where the actual content lives */
-.docItemContainer_node_modules-\@docusaurus-theme-classic-lib-theme-DocItem-Layout-styles-module,
-[class*="docItemContainer_"] {
-  max-width: 100%;
-  padding: 0;
-}
-
-/* Article - the markdown content wrapper */
-article {
-  max-width: 100%;
-  margin: 0;
-  padding: 32px 48px 64px;
-}
-
-/* Content column - make it stretch */
-.col[class*="docItemCol"] {
-  max-width: 100% !important;
-  flex: 1;
-}
-
-/* Row layout for content + TOC */
-.row {
-  margin: 0;
-  display: flex;
-  width: 100%;
-}
-
-.col {
-  padding: 0;
-}
-
-/* Make the main doc content column stretch */
-.col.docItemCol_node_modules-\@docusaurus-theme-classic-lib-theme-DocItem-Layout-styles-module,
-[class*="docItemCol_"] {
-  max-width: 100% !important;
-  flex: 1 1 auto;
-}
-
-/* TOC column - fixed width */
-.col[class*="docItemColWithToc"] ~ .col,
-.tableOfContentsColumn {
-  flex: 0 0 260px;
-  max-width: 260px;
-}
-
-/* ============================================
-   Sidebar
-   ============================================ */
-
+/* Sidebar */
 .theme-doc-sidebar-container {
   border-right: 1px solid var(--color-border);
   background: var(--color-bg);
-  width: var(--doc-sidebar-width);
-  position: sticky;
-  top: var(--ifm-navbar-height);
-  height: calc(100vh - var(--ifm-navbar-height));
+  --doc-sidebar-width: 260px;
 }
 
-/* Remove any floating/shadow effects */
-aside.theme-doc-sidebar-container > div,
-.theme-doc-sidebar-container > div {
+aside.theme-doc-sidebar-container > div {
   background: transparent;
   box-shadow: none;
   margin: 0;
   border-radius: 0;
-  height: 100%;
 }
 
+/* Menu */
 .menu {
   padding: 16px;
   background: transparent;
@@ -311,9 +210,8 @@ aside.theme-doc-sidebar-container > div,
   margin: 2px 0;
 }
 
-/* Category headers */
 .menu__list-item-collapsible {
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .menu__list-item-collapsible:first-child {
@@ -327,23 +225,14 @@ aside.theme-doc-sidebar-container > div,
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-text-tertiary);
-  padding: 8px 12px;
-  border-radius: 6px;
+  padding: 6px 12px;
 }
 
-.menu__list-item-collapsible > .menu__link:hover {
-  background: transparent;
-  color: var(--color-text-secondary);
-}
-
-/* Menu links */
 .menu__link {
-  padding: 8px 12px;
+  padding: 6px 12px;
   border-radius: 6px;
   font-size: 0.9375rem;
-  font-weight: 400;
   color: var(--color-text-secondary);
-  transition: all 0.15s ease;
 }
 
 .menu__link:hover {
@@ -358,134 +247,52 @@ aside.theme-doc-sidebar-container > div,
   font-weight: 500;
 }
 
-.menu__link--active:hover {
-  background: var(--color-primary-light);
-  color: var(--color-primary);
-}
-
-/* Nested menu */
 .menu__list .menu__list {
   padding-left: 12px;
-  margin-top: 4px;
-  margin-left: 8px;
+  margin-top: 2px;
+  margin-left: 6px;
   border-left: 1px solid var(--color-border-light);
 }
 
-/* Caret for collapsible items */
-.menu__caret {
-  padding: 8px;
-}
-
 /* ============================================
-   Content Styles
+   CONTENT AREA - Make it fill available space
    ============================================ */
 
-.markdown > h1:first-child {
-  margin-bottom: 24px;
+/* Remove all max-width constraints */
+[class*="docMainContainer"],
+[class*="docItemContainer"],
+.container {
+  max-width: 100% !important;
 }
 
-.markdown > h2 {
-  margin-top: 48px;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--color-border);
+/* The row that contains content + TOC */
+[class*="docItemCol"] {
+  max-width: 100% !important;
+  padding: 0 !important;
 }
 
-.markdown > h3 {
-  margin-top: 32px;
-  margin-bottom: 12px;
+/* Article - main content */
+article {
+  padding: 24px 40px 48px 40px;
+  max-width: 100%;
 }
 
-.markdown > h4 {
-  margin-top: 24px;
-  margin-bottom: 8px;
-}
-
-.markdown > p {
-  margin-bottom: 16px;
-}
-
-.markdown > ul,
-.markdown > ol {
-  margin-bottom: 16px;
-  padding-left: 24px;
-}
-
-.markdown li {
-  margin-bottom: 8px;
-  color: var(--color-text-secondary);
-}
-
-.markdown a {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-.markdown a:hover {
-  text-decoration: underline;
-}
-
-/* Badges */
-.markdown p img[src*="shields.io"],
-.markdown p img[src*="badgen.net"],
-.markdown p img[src*="badge"] {
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 6px;
-}
-
-/* ============================================
-   Code Blocks
-   ============================================ */
-
-.theme-code-block {
-  margin: 24px 0;
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  overflow: hidden;
-  background: var(--color-bg-secondary);
-}
-
-[data-theme="dark"] .theme-code-block {
-  background: var(--color-bg-secondary);
-}
-
-.theme-code-block pre {
-  margin: 0;
-  padding: 16px 20px;
-  background: transparent;
-}
-
-/* Inline code */
-:not(pre) > code {
-  background: var(--color-bg-tertiary);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.875em;
-  color: var(--color-text);
-}
-
-/* ============================================
-   Table of Contents
-   ============================================ */
-
-.tableOfContents_src-theme-TOC-styles-module,
-[class*="tableOfContents_"] {
-  padding-top: 32px;
-  padding-left: 16px;
+/* TOC wrapper - tighter width */
+[class*="tableOfContents"] {
+  padding: 24px 16px 24px 0;
 }
 
 .table-of-contents {
   font-size: 0.8125rem;
   border-left: 1px solid var(--color-border);
   padding-left: 0;
+  max-width: 200px;
 }
 
 .table-of-contents__link {
   display: block;
-  padding: 6px 16px;
+  padding: 4px 12px;
   color: var(--color-text-tertiary);
-  transition: color 0.15s ease;
 }
 
 .table-of-contents__link:hover {
@@ -501,11 +308,57 @@ aside.theme-doc-sidebar-container > div,
 }
 
 /* ============================================
-   Breadcrumbs
+   MARKDOWN CONTENT
    ============================================ */
 
-.breadcrumbs {
+.markdown > h1:first-child {
   margin-bottom: 16px;
+}
+
+.markdown > h2 {
+  margin-top: 32px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.markdown > h3 {
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+
+.markdown > h4 {
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+
+.markdown > p {
+  margin-bottom: 12px;
+}
+
+.markdown > ul,
+.markdown > ol {
+  margin-bottom: 12px;
+  padding-left: 20px;
+}
+
+.markdown li {
+  margin-bottom: 4px;
+  color: var(--color-text-secondary);
+}
+
+.markdown a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.markdown a:hover {
+  text-decoration: underline;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+  margin-bottom: 12px;
 }
 
 .breadcrumbs__item {
@@ -516,31 +369,39 @@ aside.theme-doc-sidebar-container > div,
   color: var(--color-text-tertiary);
 }
 
-.breadcrumbs__link:hover {
-  color: var(--color-text-secondary);
-  text-decoration: none;
-}
-
-/* ============================================
-   Doc TOC Mobile (On this page dropdown)
-   ============================================ */
-
-.tocMobile_node_modules-\@docusaurus-theme-classic-lib-theme-DocItem-TOC-Mobile-styles-module,
-[class*="tocMobile_"] {
+/* Mobile TOC dropdown */
+[class*="tocMobile"] {
   background: var(--color-bg-secondary);
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
 }
 
-/* ============================================
-   Tables
-   ============================================ */
+/* Code Blocks */
+.theme-code-block {
+  margin: 16px 0;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-secondary);
+}
 
+.theme-code-block pre {
+  margin: 0;
+  padding: 14px 16px;
+  background: transparent;
+}
+
+:not(pre) > code {
+  background: var(--color-bg-tertiary);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+
+/* Tables - full width */
 table {
-  margin: 24px 0;
+  margin: 16px 0;
   width: 100%;
-  display: table;
   border-collapse: separate;
   border-spacing: 0;
   border: 1px solid var(--color-border);
@@ -554,7 +415,7 @@ table thead {
 
 table th {
   text-align: left;
-  padding: 12px 20px;
+  padding: 10px 16px;
   font-weight: 600;
   font-size: 0.875rem;
   color: var(--color-text);
@@ -562,7 +423,7 @@ table th {
 }
 
 table td {
-  padding: 12px 20px;
+  padding: 10px 16px;
   border-bottom: 1px solid var(--color-border-light);
   color: var(--color-text-secondary);
 }
@@ -571,18 +432,9 @@ table tbody tr:last-child td {
   border-bottom: none;
 }
 
-/* Ensure tables in markdown are full width */
-.markdown table {
-  width: 100%;
-  table-layout: auto;
-}
-
-/* ============================================
-   Blockquotes & Admonitions
-   ============================================ */
-
+/* Blockquotes & Alerts */
 blockquote {
-  margin: 24px 0;
+  margin: 16px 0;
   padding: 12px 16px;
   background: var(--color-bg-secondary);
   border-left: 4px solid var(--color-primary);
@@ -594,8 +446,8 @@ blockquote p {
 }
 
 .alert {
-  margin: 24px 0;
-  padding: 16px;
+  margin: 16px 0;
+  padding: 12px 16px;
   border-radius: 8px;
   border: 1px solid;
 }
@@ -615,21 +467,18 @@ blockquote p {
   border-color: rgba(239, 68, 68, 0.2);
 }
 
-/* ============================================
-   Pagination
-   ============================================ */
-
+/* Pagination - tighter spacing */
 .pagination-nav {
-  margin-top: 48px;
-  padding-top: 32px;
+  margin-top: 32px;
+  padding-top: 24px;
   border-top: 1px solid var(--color-border);
+  gap: 16px;
 }
 
 .pagination-nav__link {
   border: 1px solid var(--color-border);
   border-radius: 8px;
-  padding: 16px 20px;
-  transition: all 0.15s ease;
+  padding: 12px 16px;
 }
 
 .pagination-nav__link:hover {
@@ -647,19 +496,21 @@ blockquote p {
 }
 
 .pagination-nav__label {
-  font-size: 1rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   color: var(--color-text);
 }
 
-/* ============================================
-   Footer
-   ============================================ */
-
+/* Footer - tighter */
 .footer {
   background: var(--color-bg-secondary);
   border-top: 1px solid var(--color-border);
-  padding: 48px 24px;
+  padding: 32px 24px;
+  margin-top: 0;
+}
+
+.footer__links {
+  margin-bottom: 24px;
 }
 
 .footer__title {
@@ -668,11 +519,11 @@ blockquote p {
   text-transform: uppercase;
   letter-spacing: 0.05em;
   color: var(--color-text-tertiary);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 .footer__link-item {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   color: var(--color-text-secondary);
 }
 
@@ -685,21 +536,17 @@ blockquote p {
   font-size: 0.8125rem;
   color: var(--color-text-tertiary);
   text-align: center;
-  margin-top: 32px;
-  padding-top: 24px;
+  margin-top: 24px;
+  padding-top: 16px;
   border-top: 1px solid var(--color-border);
 }
 
-/* ============================================
-   Buttons
-   ============================================ */
-
+/* Buttons */
 .button {
   font-size: 0.9375rem;
   font-weight: 500;
   padding: 8px 16px;
   border-radius: 6px;
-  transition: all 0.15s ease;
 }
 
 .button--primary {
@@ -719,24 +566,34 @@ blockquote p {
   text-decoration: none;
 }
 
-/* ============================================
-   Mobile
-   ============================================ */
+/* Badges */
+.markdown p img[src*="shields.io"],
+.markdown p img[src*="badge"] {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+}
 
+/* Mobile */
 @media (max-width: 996px) {
-  .navbar__inner {
+  .navbar {
     padding: 0 16px;
   }
 
   article {
-    padding: 24px 20px 48px;
+    padding: 20px 16px 40px;
   }
 
-  h1 { font-size: 1.75rem; }
-  h2 { font-size: 1.375rem; }
-  h3 { font-size: 1.125rem; }
+  h1 {
+    font-size: 1.75rem;
+  }
+  h2 {
+    font-size: 1.375rem;
+  }
+  h3 {
+    font-size: 1.125rem;
+  }
 
-  /* Mobile sidebar drawer */
   .navbar-sidebar {
     background: var(--color-bg);
   }
@@ -748,7 +605,7 @@ blockquote p {
 
 @media (max-width: 576px) {
   article {
-    padding: 20px 16px 40px;
+    padding: 16px 12px 32px;
   }
 
   .pagination-nav {
@@ -761,21 +618,16 @@ blockquote p {
   }
 }
 
-/* ============================================
-   Utilities
-   ============================================ */
-
-/* Hide external link icons */
+/* Utilities */
 .navbar__link svg,
 .menu__link svg,
 .footer__link-item svg {
   display: none;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -784,16 +636,11 @@ blockquote p {
 
 ::-webkit-scrollbar-thumb {
   background: var(--color-border);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-text-tertiary);
-}
-
-/* Horizontal rule */
 hr {
-  margin: 48px 0;
+  margin: 32px 0;
   border: none;
   height: 1px;
   background: var(--color-border);
