@@ -1,0 +1,250 @@
+---
+title: Tools & Plugins
+sidebar_label: Tools & Plugins
+description: Native Swift and Rust MCP tools for Osaurus - browser automation, filesystem, git, search, and more
+sidebar_position: 7
+---
+
+# Tools & Plugins
+
+Osaurus includes a powerful plugin system for extending AI agent capabilities. Tools are exposed via the Model Context Protocol (MCP), allowing any MCP-compatible client to use them.
+
+## Why Native Tools?
+
+Osaurus tools are pure native **Swift and Rust** implementations—not Python scripts running through interpreters. This matters for production AI agents:
+
+| Aspect | Python/uv MCPs | Native Swift Tools |
+| ------ | -------------- | ------------------ |
+| **CPU Speed** | Interpreter overhead + GIL limits parallelism | Compiled machine code, true multi-threading |
+| **Memory** | Higher baseline (~50MB+) + garbage collector pauses | ARC provides precise, predictable memory control |
+| **Startup** | Virtual environment + interpreter load (~200ms) | Binary loads in under 10ms |
+| **Dependencies** | Requires Python runtime, pip packages | Self-contained binary, zero dependencies |
+
+For AI agents executing dozens of tool calls per session, these differences compound significantly.
+
+## Official System Tools
+
+These tools are maintained by the Osaurus team and available from the central registry:
+
+| Plugin ID | Description | Tools |
+| --------- | ----------- | ----- |
+| `osaurus.filesystem` | File system operations | `read_file`, `write_file`, `list_directory`, `create_directory`, `delete_file`, `move_file`, `search_files`, `get_file_info` |
+| `osaurus.browser` | Headless WebKit browser | `browser_navigate`, `browser_get_content`, `browser_get_html`, `browser_execute_script`, `browser_click`, `browser_type`, `browser_screenshot`, `browser_wait` |
+| `osaurus.git` | Git repository utilities | `git_status`, `git_log`, `git_diff`, `git_branch` |
+| `osaurus.search` | Web search via DuckDuckGo | `search`, `search_news`, `search_images` |
+| `osaurus.fetch` | HTTP client for web requests | `fetch`, `fetch_json`, `fetch_html`, `download` |
+| `osaurus.time` | Time and date utilities | `current_time`, `format_date` |
+
+## Installing Tools
+
+Use the Osaurus CLI to manage tools:
+
+```bash
+# Install a tool from the registry
+osaurus tools install osaurus.browser
+osaurus tools install osaurus.filesystem
+
+# Install multiple tools
+osaurus tools install osaurus.git osaurus.search
+
+# List installed tools
+osaurus tools list
+
+# Search available tools
+osaurus tools search browser
+
+# Uninstall a tool
+osaurus tools uninstall osaurus.time
+```
+
+Tools are installed to:
+
+```
+~/Library/Application Support/com.dinoki.osaurus/Tools/<plugin_id>/<version>/
+```
+
+## Using Tools
+
+### Via MCP Clients
+
+Once installed, tools are automatically available to any connected MCP client. Configure your client to connect to Osaurus:
+
+**Cursor / Claude Desktop:**
+
+```json
+{
+  "mcpServers": {
+    "osaurus": {
+      "command": "osaurus",
+      "args": ["mcp"]
+    }
+  }
+}
+```
+
+The CLI proxies MCP over stdio to the running Osaurus server. If Osaurus isn't running, it auto-launches.
+
+### Via HTTP API
+
+Tools are also accessible via HTTP endpoints:
+
+| Endpoint | Method | Description |
+| -------- | ------ | ----------- |
+| `/mcp/health` | GET | Check MCP availability |
+| `/mcp/tools` | GET | List active tools |
+| `/mcp/call` | POST | Execute a tool |
+
+**Example: List available tools**
+
+```bash
+curl http://127.0.0.1:1337/mcp/tools | jq
+```
+
+**Example: Execute a tool**
+
+```bash
+curl -X POST http://127.0.0.1:1337/mcp/call \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "read_file",
+    "arguments": {"path": "/etc/hosts"}
+  }'
+```
+
+### Via OpenAI Function Calling
+
+Tools can also be used through the standard OpenAI function calling interface:
+
+```python
+from openai import OpenAI
+
+client = OpenAI(base_url="http://127.0.0.1:1337/v1", api_key="osaurus")
+
+response = client.chat.completions.create(
+    model="llama-3.2-3b-instruct-4bit",
+    messages=[{"role": "user", "content": "What files are in my home directory?"}],
+    tools=[{
+        "type": "function",
+        "function": {
+            "name": "list_directory",
+            "description": "List contents of a directory",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "path": {"type": "string", "description": "Directory path"}
+                },
+                "required": ["path"]
+            }
+        }
+    }]
+)
+```
+
+## Tool Permissions
+
+Each tool can specify a permission policy:
+
+- **`ask`** (default) — Prompts user for approval before each execution
+- **`auto`** — Executes automatically if requirements are met
+- **`deny`** — Blocks execution entirely
+
+Some tools require macOS system permissions:
+
+| Permission | How to Grant | Use Case |
+| ---------- | ------------ | -------- |
+| **Automation** | System Settings → Privacy & Security → Automation | AppleScript, controlling other apps |
+| **Accessibility** | System Settings → Privacy & Security → Accessibility | UI automation, input simulation |
+
+The Tools UI shows which permissions are needed and provides one-click buttons to grant them.
+
+## Community Tools
+
+The [Osaurus Tools Registry](https://github.com/dinoki-ai/osaurus-tools) hosts community-contributed plugins. Browse available tools:
+
+```bash
+osaurus tools search <keyword>
+```
+
+### Example: osaurus-emacs
+
+The [osaurus-emacs](https://github.com/dinoki-ai/osaurus-emacs) plugin demonstrates a community tool that executes Emacs Lisp code:
+
+```bash
+osaurus tools install osaurus.emacs
+```
+
+Once installed, AI agents can interact with your Emacs instance:
+
+```json
+{
+  "id": "execute_emacs_lisp_code",
+  "description": "Execute Emacs Lisp code in a running Emacs instance",
+  "parameters": {
+    "code": "(buffer-name)"
+  }
+}
+```
+
+## Creating Your Own Tools
+
+Want to build a tool? See the [Plugin Authoring Guide](/plugin-authoring) for complete instructions.
+
+Quick start:
+
+```bash
+# Scaffold a new Swift plugin
+osaurus tools create MyPlugin --language swift
+
+# Build and install locally
+cd MyPlugin
+swift build -c release
+osaurus tools install .
+```
+
+## Central Registry
+
+All official and community tools are indexed in the [osaurus-tools](https://github.com/dinoki-ai/osaurus-tools) repository:
+
+- **Browse plugins**: See what's available
+- **Submit your plugin**: Open a PR to add your tool
+- **Automatic CI**: Your plugin JSON is validated on submission
+
+### Registry Structure
+
+```
+osaurus-tools/
+├── plugins/           # Plugin specifications
+│   ├── osaurus.browser.json
+│   ├── osaurus.filesystem.json
+│   └── ...
+├── tools/             # Source code for official tools
+└── scripts/           # Build and release automation
+```
+
+## Troubleshooting
+
+### Tool not appearing in MCP clients
+
+1. Verify the tool is installed: `osaurus tools list`
+2. Check Osaurus is running: `osaurus status`
+3. Restart the MCP client to refresh the tool list
+
+### Permission denied errors
+
+1. Check which permissions the tool requires in the UI
+2. Grant permissions via System Settings → Privacy & Security
+3. No restart required—permissions take effect immediately
+
+### Tool execution fails
+
+1. Check Osaurus logs: Click the menu bar icon → View Logs
+2. Verify the tool's requirements are met
+3. Try reinstalling: `osaurus tools uninstall <id> && osaurus tools install <id>`
+
+---
+
+<p align="center">
+  <strong>Want to contribute a tool?</strong><br/>
+  Check out the <a href="/plugin-authoring">Plugin Authoring Guide</a> or browse the <a href="https://github.com/dinoki-ai/osaurus-tools">tools registry</a>.
+</p>
+

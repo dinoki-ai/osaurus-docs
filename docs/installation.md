@@ -15,48 +15,31 @@ Osaurus is available as a native macOS application for Apple Silicon. Choose you
 - **Apple Silicon** (M1, M2, M3, or newer)
 - **2-20GB** free space per model
 
-> **Note:** Apple Foundation Models are only available on macOS 15 (Sequoia) or later when provided by the system. Osaurus automatically detects and enables this feature when available.
+:::info Apple Foundation Models
+Apple Intelligence features require macOS 26 (Tahoe) or later with Apple Intelligence enabled in System Settings.
+:::
 
 ## Homebrew Installation
 
-The recommended installation method is through Homebrew:
+The recommended installation method:
 
 ```bash
 brew install --cask osaurus
 ```
 
-This installation includes:
+This installs:
 
-- Osaurus.app in your Applications folder
-- Command-line interface via `osaurus` command
-- Automatic updates through `brew upgrade`
+- **Osaurus.app** in your Applications folder
+- **CLI** via the `osaurus` command (automatically linked)
+- **Automatic updates** through `brew upgrade`
 
-### CLI Configuration
+### First Launch
 
-The CLI is embedded within the application bundle. If the `osaurus` command isn't available after installation:
+After installing:
 
-**Quick Setup:**
-
-```bash
-ln -sf "/Applications/Osaurus.app/Contents/MacOS/osaurus" "$(brew --prefix)/bin/osaurus" || \
-ln -sf "$HOME/Applications/Osaurus.app/Contents/MacOS/osaurus" "$(brew --prefix)/bin/osaurus"
-```
-
-**Using the Helper Script:**
-
-```bash
-# Download and run the setup script
-curl -fsSL https://raw.githubusercontent.com/dinoki-ai/osaurus/main/scripts/setup-cli.sh | bash
-
-# Or manually:
-/Applications/Osaurus.app/Contents/MacOS/setup-cli.sh
-```
-
-The script automatically:
-
-- Detects your shell configuration
-- Creates the appropriate symlink
-- Updates your PATH if needed
+1. Launch from Spotlight (⌘ Space → "osaurus") or run `osaurus ui`
+2. Look for the Osaurus icon in your menu bar
+3. Click the icon to access controls
 
 ### Updating via Homebrew
 
@@ -65,35 +48,33 @@ The script automatically:
 brew update
 
 # Upgrade Osaurus
-brew upgrade osaurus
-
-# Or upgrade all casks
-brew upgrade --cask
+brew upgrade --cask osaurus
 ```
 
 ## Direct Download
 
-Download the latest signed build directly from GitHub:
+Download the latest signed build from GitHub:
 
 1. Visit [GitHub Releases](https://github.com/dinoki-ai/osaurus/releases/latest)
-2. Download the latest DMG file (e.g., Osaurus.dmg)
-3. Open the DMG file
-4. Drag Osaurus to your Applications folder
-5. Eject the DMG
+2. Download the DMG file
+3. Open the DMG and drag Osaurus to Applications
+4. Eject the DMG
 
-### First Launch
+### First Launch (Direct Download)
 
-When launching Osaurus for the first time:
+When launching for the first time:
 
 1. **Right-click** Osaurus.app and select **Open**
 2. Click **Open** in the security dialog
 3. Grant necessary permissions when prompted
 
-> This step is only required once. Osaurus is properly signed but not notarized.
+:::note
+This step is only required once. Osaurus is properly signed but not notarized.
+:::
 
 ### Manual CLI Setup
 
-After installing the app, set up the CLI:
+After installing via direct download, set up the CLI:
 
 ```bash
 # Create symlink to CLI
@@ -103,9 +84,16 @@ sudo ln -sf /Applications/Osaurus.app/Contents/MacOS/osaurus /usr/local/bin/osau
 osaurus --version
 ```
 
+Or add to PATH:
+
+```bash
+echo 'export PATH="/Applications/Osaurus.app/Contents/MacOS:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+```
+
 ## Building from Source
 
-For development or customization, build Osaurus from source.
+For development or customization, build from source.
 
 ### Prerequisites
 
@@ -120,26 +108,22 @@ For development or customization, build Osaurus from source.
 git clone https://github.com/dinoki-ai/osaurus.git
 cd osaurus
 
-# Install dependencies
-npm install
+# Open in Xcode
+open osaurus.xcworkspace
 
-# Build the application
-npm run build
-
-# The built app will be in: build/Release/Osaurus.app
+# Build and run the "osaurus" scheme
+# Or use Xcode: Product → Build (⌘B)
 ```
 
-### Development Mode
+The built app will be in your Xcode derived data folder.
+
+### Command Line Build
 
 ```bash
-# Run in development mode
-npm run dev
+# Build release configuration
+xcodebuild -workspace osaurus.xcworkspace -scheme osaurus -configuration Release
 
-# Run tests
-npm test
-
-# Lint code
-npm run lint
+# The output path is shown at the end of the build
 ```
 
 ## Installation Verification
@@ -151,9 +135,9 @@ Verify your installation:
 osaurus --version
 
 # Test server startup
-osaurus serve --port 1337
+osaurus serve
 
-# Check server status
+# In another terminal, check status
 osaurus status
 
 # Stop server
@@ -167,14 +151,33 @@ osaurus stop
 3. Click the icon and select **About**
 4. Verify the version number
 
+## Model Storage
+
+Models are stored at:
+
+```
+~/MLXModels
+```
+
+Override with the `OSU_MODELS_DIR` environment variable:
+
+```bash
+export OSU_MODELS_DIR=/Volumes/External/MLXModels
+```
+
 ## Permissions
 
 Osaurus requires minimal permissions:
 
 - **Network Access** — For serving the local API
-- **File System Access** — For model storage
+- **File System Access** — For model storage and tools
 
-No administrator privileges are required for normal operation.
+Some tools may require additional permissions:
+
+- **Automation** — For AppleScript-based tools
+- **Accessibility** — For UI automation tools
+
+Grant these in System Settings → Privacy & Security when prompted.
 
 ## Troubleshooting
 
@@ -194,9 +197,8 @@ If the `osaurus` command isn't recognized:
 # Check if app exists
 ls /Applications/Osaurus.app/Contents/MacOS/osaurus
 
-# Add to PATH manually
-echo 'export PATH="/Applications/Osaurus.app/Contents/MacOS:$PATH"' >> ~/.zshrc
-source ~/.zshrc
+# Create symlink manually
+ln -sf "/Applications/Osaurus.app/Contents/MacOS/osaurus" "$(brew --prefix)/bin/osaurus"
 ```
 
 ### Permission Denied
@@ -207,9 +209,8 @@ If you get permission errors:
 # Make CLI executable
 chmod +x /Applications/Osaurus.app/Contents/MacOS/osaurus
 
-# Use without sudo for user-level operations
+# Use without sudo for normal operations
 osaurus serve  # Correct
-sudo osaurus serve  # Not recommended
 ```
 
 ## Uninstallation
@@ -223,7 +224,7 @@ brew uninstall --cask osaurus
 ### Manual Uninstallation
 
 1. Quit Osaurus from the menu bar
-2. Delete from Applications:
+2. Delete the application:
    ```bash
    rm -rf /Applications/Osaurus.app
    ```
@@ -231,18 +232,23 @@ brew uninstall --cask osaurus
    ```bash
    rm /usr/local/bin/osaurus
    ```
-4. Optional - Remove application data:
+4. Optional — Remove data:
+
    ```bash
-   rm -rf ~/Library/Containers/ai.dinoki.osaurus
+   # Models
+   rm -rf ~/MLXModels
+
+   # App data and tools
+   rm -rf ~/Library/Application\ Support/com.dinoki.osaurus
    ```
 
 ## Next Steps
 
-Once installed, proceed to:
+Once installed:
 
 - [Quickstart Guide](/quickstart) — Get running in minutes
 - [Model Management](/models) — Download your first model
-- [Configuration](/configuration) — Customize settings
+- [Tools & Plugins](/tools) — Install native tools for AI agents
 
 ---
 

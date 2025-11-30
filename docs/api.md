@@ -7,13 +7,15 @@ sidebar_position: 5
 
 # API Reference
 
-Osaurus provides OpenAI-compatible and Ollama-compatible APIs for seamless integration with existing tools and libraries.
+Osaurus provides OpenAI-compatible, Ollama-compatible, and MCP APIs for seamless integration with existing tools and AI agents.
 
 ## Base URL
 
 ```
 http://127.0.0.1:1337
 ```
+
+Override the port with the `OSU_PORT` environment variable.
 
 All endpoints support common API prefixes for compatibility:
 
@@ -23,16 +25,26 @@ All endpoints support common API prefixes for compatibility:
 
 ## Endpoints Overview
 
-| Endpoint               | Method | Description                    |
-| ---------------------- | ------ | ------------------------------ |
-| `/`                    | GET    | Server status (plain text)     |
-| `/health`              | GET    | Health check (JSON)            |
-| `/v1/models`           | GET    | List available models (OpenAI) |
-| `/api/tags`            | GET    | List available models (Ollama) |
-| `/v1/chat/completions` | POST   | Chat completion (OpenAI)       |
-| `/api/chat`            | POST   | Chat completion (Ollama)       |
+### Core API
 
-## Endpoint Details
+| Endpoint | Method | Description |
+| -------- | ------ | ----------- |
+| `/` | GET | Server status (plain text) |
+| `/health` | GET | Health check (JSON) |
+| `/v1/models` | GET | List available models (OpenAI) |
+| `/api/tags` | GET | List available models (Ollama) |
+| `/v1/chat/completions` | POST | Chat completion (OpenAI) |
+| `/api/chat` | POST | Chat completion (Ollama) |
+
+### MCP Endpoints
+
+| Endpoint | Method | Description |
+| -------- | ------ | ----------- |
+| `/mcp/health` | GET | MCP server health |
+| `/mcp/tools` | GET | List available tools |
+| `/mcp/call` | POST | Execute a tool |
+
+## Core Endpoints
 
 ### GET /
 
@@ -131,16 +143,16 @@ Create a chat completion using OpenAI format.
 
 **Parameters:**
 
-| Parameter     | Type          | Required | Description                                |
-| ------------- | ------------- | -------- | ------------------------------------------ |
-| `model`       | string        | Yes      | Model ID to use                            |
-| `messages`    | array         | Yes      | Array of message objects                   |
-| `max_tokens`  | integer       | No       | Maximum tokens to generate (default: 2048) |
-| `temperature` | float         | No       | Sampling temperature 0-2 (default: 0.7)    |
-| `top_p`       | float         | No       | Nucleus sampling threshold (default: 0.9)  |
-| `stream`      | boolean       | No       | Enable SSE streaming (default: false)      |
-| `tools`       | array         | No       | Function/tool definitions                  |
-| `tool_choice` | string/object | No       | Tool selection strategy                    |
+| Parameter | Type | Required | Description |
+| --------- | ---- | -------- | ----------- |
+| `model` | string | Yes | Model ID to use |
+| `messages` | array | Yes | Array of message objects |
+| `max_tokens` | integer | No | Maximum tokens to generate (default: 2048) |
+| `temperature` | float | No | Sampling temperature 0-2 (default: 0.7) |
+| `top_p` | float | No | Nucleus sampling threshold (default: 0.9) |
+| `stream` | boolean | No | Enable SSE streaming (default: false) |
+| `tools` | array | No | Function/tool definitions |
+| `tool_choice` | string/object | No | Tool selection strategy |
 
 **Response (Non-streaming):**
 
@@ -171,13 +183,13 @@ Create a chat completion using OpenAI format.
 **Response (Streaming):**
 
 ```
-data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1234567890,"model":"llama-3.2-3b-instruct-4bit","choices":[{"index":0,"delta":{"role":"assistant"},"finish_reason":null}]}
+data: {"id":"chatcmpl-123","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"role":"assistant"},"finish_reason":null}]}
 
-data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1234567890,"model":"llama-3.2-3b-instruct-4bit","choices":[{"index":0,"delta":{"content":"I'm"},"finish_reason":null}]}
+data: {"id":"chatcmpl-123","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":"I'm"},"finish_reason":null}]}
 
-data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1234567890,"model":"llama-3.2-3b-instruct-4bit","choices":[{"index":0,"delta":{"content":" doing"},"finish_reason":null}]}
+data: {"id":"chatcmpl-123","object":"chat.completion.chunk","choices":[{"index":0,"delta":{"content":" doing"},"finish_reason":null}]}
 
-data: {"id":"chatcmpl-123","object":"chat.completion.chunk","created":1234567890,"model":"llama-3.2-3b-instruct-4bit","choices":[{"index":0,"delta":{},"finish_reason":"stop"}]}
+data: {"id":"chatcmpl-123","object":"chat.completion.chunk","choices":[{"index":0,"delta":{},"finish_reason":"stop"}]}
 
 data: [DONE]
 ```
@@ -206,23 +218,6 @@ Create a chat completion using Ollama format.
 }
 ```
 
-**Parameters:**
-
-| Parameter  | Type    | Required | Description                       |
-| ---------- | ------- | -------- | --------------------------------- |
-| `model`    | string  | Yes      | Model name to use                 |
-| `messages` | array   | Yes      | Array of message objects          |
-| `stream`   | boolean | No       | Enable streaming (default: false) |
-| `options`  | object  | No       | Model parameters                  |
-
-**Options Object:**
-
-| Option        | Type    | Description                |
-| ------------- | ------- | -------------------------- |
-| `temperature` | float   | Sampling temperature (0-2) |
-| `top_p`       | float   | Nucleus sampling threshold |
-| `num_predict` | integer | Max tokens to generate     |
-
 **Response:**
 
 ```json
@@ -231,14 +226,106 @@ Create a chat completion using Ollama format.
   "created_at": "2024-03-15T10:30:45Z",
   "message": {
     "role": "assistant",
-    "content": "The sky appears blue due to a phenomenon called Rayleigh scattering..."
+    "content": "The sky appears blue due to Rayleigh scattering..."
   },
   "done": true,
   "total_duration": 1234567890,
-  "load_duration": 123456789,
-  "prompt_eval_duration": 12345678,
-  "eval_duration": 234567890,
   "eval_count": 85
+}
+```
+
+## MCP Endpoints
+
+### GET /mcp/health
+
+Check MCP server availability.
+
+**Response:**
+
+```json
+{
+  "status": "ok",
+  "tools_available": 12
+}
+```
+
+### GET /mcp/tools
+
+List all available MCP tools from installed plugins.
+
+**Response:**
+
+```json
+{
+  "tools": [
+    {
+      "name": "read_file",
+      "description": "Read contents of a file",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "path": {
+            "type": "string",
+            "description": "Path to the file"
+          }
+        },
+        "required": ["path"]
+      }
+    },
+    {
+      "name": "browser_navigate",
+      "description": "Navigate to a URL in the browser",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "description": "URL to navigate to"
+          }
+        },
+        "required": ["url"]
+      }
+    }
+  ]
+}
+```
+
+### POST /mcp/call
+
+Execute an MCP tool.
+
+**Request Body:**
+
+```json
+{
+  "name": "read_file",
+  "arguments": {
+    "path": "/etc/hosts"
+  }
+}
+```
+
+**Response:**
+
+```json
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "# Host Database\n127.0.0.1 localhost\n..."
+    }
+  ]
+}
+```
+
+**Error Response:**
+
+```json
+{
+  "error": {
+    "code": "tool_not_found",
+    "message": "Tool 'unknown_tool' not found"
+  }
 }
 ```
 
@@ -246,16 +333,13 @@ Create a chat completion using Ollama format.
 
 Osaurus supports OpenAI-style function calling for structured interactions.
 
-### Basic Function Call
+### Defining Tools
 
 ```json
 {
   "model": "llama-3.2-3b-instruct-4bit",
   "messages": [
-    {
-      "role": "user",
-      "content": "What's the weather in San Francisco?"
-    }
+    {"role": "user", "content": "What's the weather in San Francisco?"}
   ],
   "tools": [
     {
@@ -288,9 +372,6 @@ Osaurus supports OpenAI-style function calling for structured interactions.
 ```json
 {
   "id": "chatcmpl-123",
-  "object": "chat.completion",
-  "created": 1234567890,
-  "model": "llama-3.2-3b-instruct-4bit",
   "choices": [
     {
       "index": 0,
@@ -322,12 +403,12 @@ Osaurus supports OpenAI-style function calling for structured interactions.
 
 ## Authentication
 
-Osaurus does not require authentication by default. When using SDK clients, you can pass any value for the API key:
+Osaurus does not require authentication by default. When using SDK clients, pass any value for the API key:
 
 ```python
 client = OpenAI(
     base_url="http://127.0.0.1:1337/v1",
-    api_key="not-needed"
+    api_key="osaurus"  # Any value works
 )
 ```
 
@@ -347,120 +428,62 @@ Errors follow the OpenAI error format:
 
 **Common Error Codes:**
 
-| Code                      | Description                          |
-| ------------------------- | ------------------------------------ |
-| `model_not_found`         | Requested model doesn't exist        |
-| `invalid_request`         | Malformed request body               |
+| Code | Description |
+| ---- | ----------- |
+| `model_not_found` | Requested model doesn't exist |
+| `invalid_request` | Malformed request body |
 | `context_length_exceeded` | Input exceeds model's context window |
-| `rate_limit_exceeded`     | Too many concurrent requests         |
-| `internal_server_error`   | Server-side error                    |
+| `tool_not_found` | MCP tool not installed |
+| `internal_server_error` | Server-side error |
 
 ## CORS Support
 
-Osaurus includes built-in CORS support for browser-based applications:
+Built-in CORS support for browser-based applications:
 
 - **Allowed Origins:** `*` (all origins)
 - **Allowed Methods:** `GET, POST, OPTIONS`
 - **Allowed Headers:** `Content-Type, Authorization`
 
-## Rate Limiting
-
-Default limits per model:
-
-- **Concurrent Requests:** 10
-- **Requests per Minute:** 100
-- **Max Context Length:** Model-dependent (typically 2048-4096 tokens)
-
-## SDK Examples
+## Quick Examples
 
 ### Python (OpenAI SDK)
 
 ```python
 from openai import OpenAI
 
-client = OpenAI(
-    base_url="http://127.0.0.1:1337/v1",
-    api_key="not-needed"
-)
+client = OpenAI(base_url="http://127.0.0.1:1337/v1", api_key="osaurus")
 
 response = client.chat.completions.create(
     model="llama-3.2-3b-instruct-4bit",
-    messages=[
-        {"role": "user", "content": "Explain quantum computing"}
-    ],
-    max_tokens=500
+    messages=[{"role": "user", "content": "Hello!"}]
 )
-
 print(response.choices[0].message.content)
 ```
 
-### JavaScript/TypeScript
+### cURL
 
-```typescript
-const response = await fetch("http://127.0.0.1:1337/v1/chat/completions", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    model: "llama-3.2-3b-instruct-4bit",
-    messages: [{ role: "user", content: "Explain quantum computing" }],
-    max_tokens: 500,
-  }),
-});
-
-const data = await response.json();
-console.log(data.choices[0].message.content);
+```bash
+curl http://127.0.0.1:1337/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "llama-3.2-3b-instruct-4bit",
+    "messages": [{"role": "user", "content": "Hello!"}]
+  }'
 ```
 
-### Streaming with JavaScript
+### MCP Tool Call
 
-```javascript
-const response = await fetch("http://127.0.0.1:1337/v1/chat/completions", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    model: "llama-3.2-3b-instruct-4bit",
-    messages: [{ role: "user", content: "Tell me a story" }],
-    stream: true,
-  }),
-});
-
-const reader = response.body.getReader();
-const decoder = new TextDecoder();
-
-while (true) {
-  const { done, value } = await reader.read();
-  if (done) break;
-
-  const chunk = decoder.decode(value);
-  const lines = chunk.split("\n");
-
-  for (const line of lines) {
-    if (line.startsWith("data: ")) {
-      const data = line.slice(6);
-      if (data === "[DONE]") break;
-
-      const json = JSON.parse(data);
-      const content = json.choices[0].delta.content;
-      if (content) process.stdout.write(content);
-    }
-  }
-}
+```bash
+curl -X POST http://127.0.0.1:1337/mcp/call \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "current_time",
+    "arguments": {}
+  }'
 ```
-
-## Best Practices
-
-1. **Model Selection** — Use lowercase model names with hyphens
-2. **Streaming** — Enable for better perceived performance
-3. **Error Handling** — Always check for error responses
-4. **Context Management** — Monitor token usage to avoid limits
-5. **Connection Pooling** — Reuse HTTP connections when possible
 
 ---
 
 <p align="center">
-  For more examples, see the <a href="/integrations">Integration Guide</a> or visit our <a href="https://github.com/dinoki-ai/osaurus/tree/main/examples">GitHub examples</a>.
+  For more examples, see the <a href="/sdk-examples">SDK Examples</a> or <a href="/integrations">Integration Guide</a>.
 </p>

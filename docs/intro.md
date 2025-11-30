@@ -1,7 +1,7 @@
 ---
 title: Overview
 sidebar_label: Overview
-description: Native Apple Silicon local LLM server with OpenAI- and Ollama-compatible APIs.
+description: Native Apple Silicon LLM server with MCP support. OpenAI & Ollama compatible APIs, tool calling, and a plugin ecosystem built on MLX.
 sidebar_position: 1
 slug: /
 hide_title: true
@@ -14,8 +14,8 @@ hide_title: true
 </p>
 
 <p align="center">
-  <strong>Native local LLM server for Apple Silicon</strong><br/>
-  Built on MLX for exceptional performance on M-series chips
+  <strong>Native macOS LLM server with MCP support</strong><br/>
+  Run local language models on Apple Silicon with OpenAI-compatible APIs, tool calling, and a built-in plugin ecosystem.
 </p>
 
 <p align="center" class="badges">
@@ -24,70 +24,71 @@ hide_title: true
   <a href="https://github.com/dinoki-ai/osaurus/blob/main/LICENSE"><img src="https://img.shields.io/github/license/dinoki-ai/osaurus?style=flat-square&color=000000" alt="License" /></a>
 </p>
 
-## Introduction
+## What is Osaurus?
 
-Osaurus is a native local LLM server designed exclusively for Apple Silicon. It provides OpenAI-compatible and Ollama-compatible APIs, integrates seamlessly with Apple Foundation Models, and includes a refined SwiftUI application with an embedded SwiftNIO server.
+Osaurus is an all-in-one local LLM server for macOS. It combines:
+
+- **MLX Runtime** — Optimized inference for Apple Silicon using MLX
+- **OpenAI & Ollama APIs** — Drop-in compatible endpoints for existing tools
+- **MCP Server** — Expose tools to AI agents via Model Context Protocol
+- **Plugin System** — Extend functionality with community and custom tools
+- **Apple Foundation Models** — Use the system model on macOS 26+ (Tahoe)
 
 ## Key Features
 
-### Performance
+### MCP Server
 
-**Native MLX Runtime**  
-Optimized for Apple Silicon using MLX and MLXLLM frameworks for maximum efficiency.
+Osaurus is a full [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) server. Connect it to any MCP client—like Cursor, Claude Desktop, or your own agent—to give AI access to your installed tools.
 
-**Apple Foundation Models**  
-Access system models with `model: "foundation"` on supported macOS versions.
+```json
+{
+  "mcpServers": {
+    "osaurus": {
+      "command": "osaurus",
+      "args": ["mcp"]
+    }
+  }
+}
+```
 
-**Exceptional Speed**  
-Purpose-built for M-series processors, delivering industry-leading inference performance.
+### Native Tools & Plugins
 
-### Compatibility
+Osaurus tools are pure native **Swift and Rust** implementations—significantly faster than Python-based MCPs.
 
-**OpenAI & Ollama APIs**  
-Drop-in replacement for existing tools and workflows.
+| Aspect        | Python/uv Bottleneck        | Native Swift Advantage   |
+| ------------- | --------------------------- | ------------------------ |
+| **CPU Speed** | Interpreter overhead + GIL  | Compiled, multi-threaded |
+| **Memory**    | Higher baseline + GC pauses | ARC for precise control  |
+| **Startup**   | venv + interpreter (~200ms) | Binary load (under 10ms) |
 
-**Function Calling**  
-Full support for OpenAI-style function and tool calling with streaming.
+Official tools include browser automation, filesystem access, git operations, web search, and more. [Browse the registry →](/tools)
 
-**Server-Sent Events**  
-Low-latency token streaming for responsive applications.
+### OpenAI & Ollama Compatible
 
-### User Experience
+Drop-in replacement for existing tools and workflows. Works with:
 
-**Integrated Chat Interface**  
-Beautiful glass-styled overlay accessible via global hotkey (⌘;).
+- OpenAI Python & JavaScript SDKs
+- LangChain & LlamaIndex
+- Continue.dev, Cursor, and other IDE integrations
+- Any tool expecting OpenAI-style `/v1/chat/completions`
 
-**Model Management**  
-Browse, download, and manage MLX models through an intuitive interface.
+### Apple Foundation Models
 
-**System Monitoring**  
-Real-time CPU and memory usage visualization.
+Access Apple's system models with zero configuration on macOS 26+:
 
-### Developer Experience
+```bash
+curl http://127.0.0.1:1337/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{"model": "foundation", "messages": [{"role": "user", "content": "Hello!"}]}'
+```
 
-**CORS Support**  
-Built-in cross-origin resource sharing for browser-based clients.
+### Menu Bar Chat UI
 
-**Command Line Interface**  
-Complete server management through terminal commands.
+Beautiful glass-styled chat overlay accessible via global hotkey (⌘;). No browser needed—just press and chat.
 
-**Path Normalization**  
-Automatic handling of `/v1`, `/api`, and `/v1/api` prefixes.
+## Performance
 
-**SDK Compatibility**  
-Works seamlessly with OpenAI Python and JavaScript SDKs.
-
-## System Requirements
-
-- **macOS 15.5** or later
-- **Apple Silicon** (M1, M2, M3, or newer)
-- **Xcode 16.4** or later (only for building from source)
-
-> Apple Intelligence features require macOS 26 Tahoe or later.
-
-## Performance Benchmarks
-
-Osaurus delivers exceptional performance on Apple Silicon hardware.
+Osaurus delivers exceptional performance on Apple Silicon.
 
 | Metric              | Osaurus     | Ollama      | LM Studio   |
 | ------------------- | ----------- | ----------- | ----------- |
@@ -95,20 +96,30 @@ Osaurus delivers exceptional performance on Apple Silicon hardware.
 | Throughput          | 554 chars/s | 430 chars/s | 588 chars/s |
 | Total Time          | 1.24s       | 1.62s       | 1.22s       |
 
-_Benchmarked with Llama 3.2 3B Instruct 4bit, averaged over 20 runs._
+_Benchmarked with Llama 3.2 3B Instruct 4bit, averaged over 20 runs on M2 Pro._
 
 [View detailed benchmarks →](/benchmarks)
 
-## Why Osaurus
+## System Requirements
+
+- **macOS 15.5** or later
+- **Apple Silicon** (M1, M2, M3, or newer)
+- **Xcode 16.4** or later (only for building from source)
+
+:::info Apple Foundation Models
+Apple Intelligence features require macOS 26 (Tahoe) or later.
+:::
+
+## Why Osaurus?
 
 ### The Challenge
 
-Cloud-based AI services present significant limitations:
+Cloud-based AI services and Python-based local tools present limitations:
 
 - **Cost** — Per-token pricing accumulates rapidly
 - **Privacy** — Data leaves your device
-- **Latency** — Network round-trips impact responsiveness
-- **Restrictions** — Rate limits and content filtering
+- **Latency** — Network round-trips and interpreter overhead
+- **Complexity** — Managing Python environments and dependencies
 
 ### The Solution
 
@@ -116,37 +127,36 @@ Osaurus addresses these challenges:
 
 - **Free** — No API costs, only electricity
 - **Private** — All processing remains on your Mac
-- **Instant** — Zero network latency
-- **Unrestricted** — Run any model without limitations
+- **Fast** — Native performance with instant startup
+- **Simple** — Single app, no dependencies to manage
 
 ## Use Cases
 
+- **AI Agents** — Connect MCP clients to local tools for autonomous workflows
 - **Development** — Test AI features without API costs
-- **Creative Writing** — Private brainstorming and editing
-- **Code Generation** — Offline programming assistance
+- **Code Generation** — Offline programming assistance with tool access
 - **Research** — Analyze documents with complete privacy
-- **Education** — Learn and experiment with LLMs
-- **Enterprise** — Keep sensitive data on-premise
+- **Automation** — Browser control, file operations, and more via plugins
 
-## Documentation
+## Quick Links
 
-- [Installation Guide](/installation) — Detailed setup instructions
-- [Quickstart Tutorial](/quickstart) — Get running in minutes
+- [Installation Guide](/installation) — Get Osaurus running in minutes
+- [Quickstart Tutorial](/quickstart) — Your first API call and chat
+- [Tools & Plugins](/tools) — Browse and install native tools
+- [MCP Integration](/integrations#mcp-server) — Connect to Cursor, Claude Desktop
 - [API Reference](/api) — Complete endpoint documentation
-- [Model Management](/models) — Download and configure models
-- [CLI Documentation](/cli) — Command-line usage
-- [Integration Examples](/integrations) — Connect with your applications
+- [Plugin Authoring](/plugin-authoring) — Build your own tools
 
 ## Community
 
 [Discord](https://discord.gg/dinoki) — Get help and share projects  
 [GitHub](https://github.com/dinoki-ai/osaurus) — Report issues and contribute  
-[X/Twitter](https://x.com/dinokilabs) — Follow for updates  
-[Contributing](https://github.com/dinoki-ai/osaurus/blob/main/CONTRIBUTING.md) — Help improve Osaurus
+[Plugin Registry](https://github.com/dinoki-ai/osaurus-tools) — Browse and submit tools  
+[Good First Issues](https://github.com/dinoki-ai/osaurus/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) — Start contributing
 
 ## Created by Dinoki Labs
 
-Osaurus is developed by [Dinoki Labs](https://dinoki.ai), creators of a fully native desktop AI assistant for macOS.
+Osaurus is developed by [Dinoki Labs](https://dinoki.ai), creators of native AI tools for macOS.
 
 ---
 
