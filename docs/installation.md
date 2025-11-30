@@ -253,5 +253,5 @@ Once installed:
 ---
 
 <p align="center">
-  Need help? Visit our <a href="https://discord.gg/dinoki">Discord community</a> or check the <a href="https://github.com/dinoki-ai/osaurus/issues">GitHub issues</a>.
+  For installation help, visit our <a href="https://discord.gg/dinoki">Discord community</a> or check the <a href="https://github.com/dinoki-ai/osaurus/issues">GitHub issues</a>.
 </p>

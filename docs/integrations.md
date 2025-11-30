@@ -377,5 +377,5 @@ export async function POST(request) {
 ---
 
 <p align="center">
-  Need help with integration? Check our <a href="/sdk-examples">SDK Examples</a> or join <a href="https://discord.gg/dinoki">Discord</a>.
+  For integration help, check our <a href="/sdk-examples">SDK Examples</a> or join <a href="https://discord.gg/dinoki">Discord</a>.
 </p>

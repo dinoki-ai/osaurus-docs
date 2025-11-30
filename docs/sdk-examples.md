@@ -9,7 +9,7 @@ sidebar_position: 6
 
 This page provides comprehensive examples for integrating Osaurus with popular programming languages and SDKs. All examples use the OpenAI-compatible API unless otherwise noted.
 
-## 🚀 Quick Setup
+## Quick Setup
 
 Before running any examples:
 
@@ -17,7 +17,7 @@ Before running any examples:
 2. **Download a model**: Use the Model Manager
 3. **Note your URL**: Default is `http://127.0.0.1:1337`
 
-## 🐍 Python Examples
+## Python Examples
 
 ### Installation
 
@@ -244,7 +244,7 @@ print(bot.chat("What's its population?"))  # Remembers context
 print(bot.chat("Name 3 famous landmarks there"))  # Continues context
 ```
 
-## 🟨 JavaScript/TypeScript Examples
+## JavaScript/TypeScript Examples
 
 ### Installation
 
@@ -500,7 +500,7 @@ async function example() {
 }
 ```
 
-## 🍎 Swift Examples
+## Swift Examples
 
 ### Using URLSession
 
@@ -622,7 +622,7 @@ struct ContentView: View {
 }
 ```
 
-## 🦀 Rust Example
+## Rust Example
 
 ```rust
 use reqwest;
@@ -685,7 +685,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 }
 ```
 
-## 🚪 Go Example
+## Go Example
 
 ```go
 package main
@@ -749,7 +749,7 @@ func main() {
 }
 ```
 
-## 💎 Ruby Example
+## Ruby Example
 
 ```ruby
 require 'net/http'
@@ -786,7 +786,7 @@ response = client.chat("What is Ruby best for?")
 puts response
 ```
 
-## 📋 Common Patterns
+## Common Patterns
 
 ### Retry Logic
 
@@ -857,7 +857,7 @@ class RateLimitedClient {
 }
 ```
 
-## 🎯 Best Practices
+## Best Practices
 
 1. **Always handle errors gracefully**
 2. **Set appropriate timeouts for long-running requests**
@@ -867,7 +867,7 @@ class RateLimitedClient {
 6. **Use system prompts for consistent behavior**
 7. **Keep conversation context reasonable in size**
 
-## 🔗 Additional Resources
+## Additional Resources
 
 - [API Reference](/api) — Complete endpoint documentation
 - [Model Guide](/models) — Choosing the right model
@@ -877,6 +877,5 @@ class RateLimitedClient {
 ---
 
 <p align="center">
-  <strong>Need help?</strong><br/>
-  Join our <a href="https://discord.gg/dinoki">Discord community</a> for support
+  For support, join our <a href="https://discord.gg/dinoki">Discord community</a>.
 </p>

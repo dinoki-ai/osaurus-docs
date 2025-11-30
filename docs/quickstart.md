@@ -7,7 +7,7 @@ sidebar_position: 3
 
 # Quickstart
 
-Get your first local LLM running in minutes. This guide walks through installation, setup, and your first API call.
+This guide walks you through installing Osaurus, downloading a model, and making your first API call.
 
 ## Setup
 
@@ -37,10 +37,7 @@ Alternatively, [download directly](https://github.com/dinoki-ai/osaurus/releases
 
 1. Select **Model Manager** from the menu bar
 2. Browse available models or use search
-3. For first-time users, we recommend **Llama 3.2 3B Instruct 4bit**
-   - Balanced performance and quality
-   - 2GB download size
-   - Runs efficiently on 8GB+ Macs
+3. Select a model that fits your system's memory (see [Model Management](/models) for details)
 4. Click **Download** and wait for completion
 
 ### Test the API
@@ -189,24 +186,6 @@ const data = await response.json();
 console.log(data.choices[0].message.content);
 ```
 
-## Model Recommendations
-
-### Fast Response Models (4-bit)
-
-- **Llama 3.2 3B Instruct** — Excellent general-purpose model
-- **Qwen 2.5 3B Instruct** — Strong reasoning capabilities
-- **Gemma 2 2B Instruct** — Optimized for speed
-
-### Quality-Focused Models
-
-- **Llama 3.2 8B Instruct** — Superior quality with reasonable speed
-- **Mistral 7B Instruct** — Well-rounded performance
-- **DeepSeek Coder 7B** — Specialized for programming tasks
-
-### High-Memory Systems (32GB+)
-
-Consider 8-bit variants for enhanced quality or larger 13B-30B models for advanced use cases.
-
 ## Performance Optimization
 
 1. **Model Selection** — Start with 4-bit models for optimal speed
@@ -249,6 +228,5 @@ Explore these resources to expand your usage:
 ---
 
 <p align="center">
-  <strong>You're now running AI locally on your Mac.</strong><br/>
-  No cloud dependencies. No usage limits. Complete privacy.
+  For help, visit our <a href="https://discord.gg/dinoki">Discord community</a> or check the <a href="https://github.com/dinoki-ai/osaurus/issues">GitHub issues</a>.
 </p>

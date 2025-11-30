@@ -9,7 +9,7 @@ slug: /models/apple-intelligence
 
 Osaurus integrates seamlessly with Apple Foundation Models when available on your system, giving you access to the system's default on-device language model with zero configuration.
 
-## 🍎 Overview
+## Overview
 
 Apple Foundation Models provide:
 
@@ -18,7 +18,7 @@ Apple Foundation Models provide:
 - **Zero setup** — No downloads or configuration needed
 - **Privacy-first** — All processing happens on-device
 
-## 📋 Requirements
+## Requirements
 
 - **macOS 26 (Tahoe)** or later
 - **Apple Silicon Mac** (M1, M2, M3, or newer)
@@ -28,7 +28,7 @@ Apple Foundation Models provide:
 While Osaurus itself runs on macOS 15.5+, Apple Foundation Models specifically require macOS 26 (Tahoe) or later.
 :::
 
-## 🚀 Setup
+## Setup
 
 1. **Update macOS** to version 26 (Tahoe) or later
 2. **Enable Apple Intelligence** in System Settings → Apple Intelligence & Siri
@@ -41,7 +41,7 @@ curl -s http://127.0.0.1:1337/v1/models | jq '.data[] | select(.id=="foundation"
 
 If you see a `foundation` entry, you're ready to use Apple's models!
 
-## 💬 Using Foundation Models
+## Using Foundation Models
 
 ### Basic Chat
 
@@ -84,7 +84,7 @@ curl -N http://127.0.0.1:1337/v1/chat/completions \
   }'
 ```
 
-## 🛠️ Advanced Features
+## Advanced Features
 
 ### Function/Tool Calling
 
@@ -136,7 +136,7 @@ response = client.chat.completions.create(
 )
 ```
 
-## ⚡ Performance Characteristics
+## Performance Characteristics
 
 ### Advantages
 
@@ -151,7 +151,7 @@ response = client.chat.completions.create(
 - **System dependent** — Requires specific macOS version
 - **Limited configuration** — Less control than MLX models
 
-## 🔍 Detection and Fallback
+## Detection and Fallback
 
 ### Programmatic Detection
 
@@ -197,14 +197,14 @@ async function getBestModel() {
 }
 ```
 
-## 🔐 Privacy & Security
+## Privacy and Security
 
 - **100% on-device** — No data leaves your Mac
 - **No telemetry** — Apple Foundation Models don't phone home via Osaurus
 - **Sandboxed** — Runs within macOS security boundaries
 - **No API keys** — No authentication or tracking
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Foundation model not appearing
 
@@ -273,7 +273,7 @@ async function getBestModel() {
    vm_stat | grep "Pages free"
    ```
 
-## 🎯 Best Practices
+## Best Practices
 
 1. **Prefer Foundation Models when available** — Better integration and performance
 2. **Implement fallback logic** — Handle systems without Apple Intelligence
@@ -281,7 +281,7 @@ async function getBestModel() {
 4. **Test on both** — Ensure your app works with and without Foundation Models
 5. **Monitor availability** — Models may be temporarily unavailable during system updates
 
-## 🔗 Related Resources
+## Related Resources
 
 - [Model Management](/models) — Learn about all supported models
 - [API Reference](/api) — Complete API documentation
@@ -291,6 +291,5 @@ async function getBestModel() {
 ---
 
 <p align="center">
-  <strong>Questions about Apple Intelligence?</strong><br/>
-  Join our <a href="https://discord.gg/dinoki">Discord community</a> for help
+  For Apple Intelligence help, join our <a href="https://discord.gg/dinoki">Discord community</a>.
 </p>

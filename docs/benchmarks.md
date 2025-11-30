@@ -95,5 +95,5 @@ The benchmarks show Osaurus is particularly well-suited for:
 ---
 
 <p align="center">
-  Want to contribute benchmarks? Join the <a href="https://discord.gg/dinoki">Discord community</a>.
+  To contribute benchmarks, join the <a href="https://discord.gg/dinoki">Discord community</a>.
 </p>

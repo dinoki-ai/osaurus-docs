@@ -7,45 +7,7 @@ sidebar_position: 4
 
 # Model Management
 
-Osaurus supports a wide variety of MLX-optimized models and Apple Foundation Models. This guide covers model selection, management, and optimization.
-
-## Model Recommendations
-
-### Best Overall Performance
-
-**Llama 3.2 3B Instruct (4-bit)**
-
-- Excellent quality and speed balance
-- 2GB download size
-- Suitable for most tasks
-- Performs well on 8GB+ systems
-
-### Code Generation
-
-**DeepSeek Coder 7B (4-bit)**
-
-- Specialized for programming tasks
-- Strong multi-language support
-- 4GB download size
-- Ideal for code reviews and generation
-
-### Maximum Speed
-
-**Gemma 2 2B Instruct (4-bit)**
-
-- Ultra-fast response times
-- 1.5GB download size
-- Good for simple tasks
-- Runs efficiently on all M-series Macs
-
-### Highest Quality
-
-**Llama 3.2 8B Instruct (4-bit)**
-
-- Superior quality under 10B parameters
-- 5GB download size
-- More nuanced responses
-- Recommended for 16GB+ RAM
+Osaurus supports a wide variety of MLX-optimized models and Apple Foundation Models. This guide covers model management and configuration.
 
 ## Model Manager
 
@@ -190,53 +152,6 @@ Configure default system prompts in Settings:
 }
 ```
 
-## Model Selection Guide
-
-### By Use Case
-
-**General Purpose**
-
-- Llama 3.2 3B/8B
-- Mistral 7B
-- Qwen 2.5 3B/7B
-
-**Programming**
-
-- DeepSeek Coder 7B
-- Code Llama 7B/13B
-- Qwen 2.5 Coder
-
-**Creative Writing**
-
-- Llama 3.2 8B
-- Mistral 7B
-- Neural Chat 7B
-
-**Technical/Scientific**
-
-- Llama 3.2 8B
-- Qwen 2.5 7B
-- Mistral 7B
-
-### By System Resources
-
-**8GB RAM**
-
-- 2-3B models (4-bit)
-- Single model at a time
-
-**16GB RAM**
-
-- 7-8B models (4-bit)
-- 3B models (8-bit)
-- Multiple small models
-
-**32GB+ RAM**
-
-- 13B models (4-bit)
-- 7-8B models (8-bit)
-- Larger context windows
-
 ## Advanced Configuration
 
 There are no global model aliasing or preloading options at this time. Control behavior per request via the OpenAI-compatible API.
@@ -285,5 +200,5 @@ Osaurus periodically updates available models:
 ---
 
 <p align="center">
-  Questions about models? Join our <a href="https://discord.gg/dinoki">Discord community</a> or check the <a href="/benchmarks">benchmarks page</a>.
+  For model help, join our <a href="https://discord.gg/dinoki">Discord community</a> or check the <a href="/benchmarks">benchmarks page</a>.
 </p>

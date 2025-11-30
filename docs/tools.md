@@ -244,7 +244,6 @@ osaurus-tools/
 ---
 
 <p align="center">
-  <strong>Want to contribute a tool?</strong><br/>
-  Check out the <a href="/plugin-authoring">Plugin Authoring Guide</a> or browse the <a href="https://github.com/dinoki-ai/osaurus-tools">tools registry</a>.
+  To contribute a tool, see the <a href="/plugin-authoring">Plugin Authoring Guide</a> or browse the <a href="https://github.com/dinoki-ai/osaurus-tools">tools registry</a>.
 </p>
 

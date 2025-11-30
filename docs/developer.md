@@ -339,6 +339,5 @@ See [SECURITY.md](https://github.com/dinoki-ai/osaurus/blob/main/SECURITY.md) fo
 ---
 
 <p align="center">
-  <strong>Ready to contribute?</strong><br/>
-  Check out <a href="https://github.com/dinoki-ai/osaurus/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">good first issues</a> to get started!
+  To contribute, start with <a href="https://github.com/dinoki-ai/osaurus/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">good first issues</a> on GitHub.
 </p>

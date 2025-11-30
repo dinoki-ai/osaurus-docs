@@ -484,7 +484,6 @@ The [osaurus-emacs](https://github.com/dinoki-ai/osaurus-emacs) plugin is a real
 ---
 
 <p align="center">
-  <strong>Questions about plugin development?</strong><br/>
-  Join our <a href="https://discord.gg/dinoki">Discord community</a> or check the <a href="https://github.com/dinoki-ai/osaurus-tools">tools registry</a>.
+  For plugin development help, join our <a href="https://discord.gg/dinoki">Discord community</a> or check the <a href="https://github.com/dinoki-ai/osaurus-tools">tools registry</a>.
 </p>
 
