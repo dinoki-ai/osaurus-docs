@@ -1,11 +1,11 @@
 /**
  * Osaurus Documentation - Clean Modern Theme
+ * Uses robust selectors that work in both dev and production builds
  */
 
 :root {
   /* Typography */
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "SF Mono", "Fira Code", Consolas, monospace;
 
   /* Colors */
@@ -14,11 +14,11 @@
   --color-bg-tertiary: #f3f4f6;
   --color-border: #e5e7eb;
   --color-border-light: #f3f4f6;
-
+  
   --color-text: #111827;
   --color-text-secondary: #4b5563;
   --color-text-tertiary: #9ca3af;
-
+  
   --color-primary: #2563eb;
   --color-primary-hover: #1d4ed8;
   --color-primary-light: rgba(37, 99, 235, 0.1);
@@ -33,48 +33,48 @@
   --ifm-color-primary-light: #3b82f6;
   --ifm-color-primary-lighter: #60a5fa;
   --ifm-color-primary-lightest: #93c5fd;
-
+  
   --ifm-background-color: var(--color-bg);
   --ifm-font-color-base: var(--color-text);
   --ifm-font-size-base: 16px;
   --ifm-line-height-base: 1.7;
   --ifm-heading-font-weight: 600;
-
+  
   --ifm-code-font-size: 0.875rem;
   --ifm-code-background: var(--color-bg-tertiary);
   --ifm-code-border-radius: 6px;
   --ifm-code-padding-vertical: 0.1rem;
   --ifm-code-padding-horizontal: 0.375rem;
-
+  
   --ifm-link-color: var(--color-primary);
   --ifm-link-hover-color: var(--color-primary-hover);
-
+  
   --ifm-navbar-height: 60px;
   --ifm-navbar-background-color: var(--color-bg);
   --ifm-navbar-shadow: none;
-
+  
   --ifm-menu-color: var(--color-text-secondary);
   --ifm-menu-color-active: var(--color-primary);
   --ifm-menu-color-background-active: var(--color-primary-light);
-
+  
   --ifm-toc-border-color: var(--color-border);
   --doc-sidebar-width: 260px;
-
+  
   --docusaurus-highlighted-code-line-bg: var(--color-primary-light);
 }
 
 /* Dark Mode */
-[data-theme="dark"] {
+html[data-theme="dark"] {
   --color-bg: #0f0f0f;
   --color-bg-secondary: #171717;
   --color-bg-tertiary: #262626;
   --color-border: #303030;
   --color-border-light: #252525;
-
+  
   --color-text: #f9fafb;
   --color-text-secondary: #d1d5db;
   --color-text-tertiary: #6b7280;
-
+  
   --color-primary: #3b82f6;
   --color-primary-hover: #60a5fa;
   --color-primary-light: rgba(59, 130, 246, 0.15);
@@ -93,39 +93,25 @@ html {
 }
 
 /* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   letter-spacing: -0.025em;
   color: var(--color-text);
 }
 
-h1 {
-  font-size: 2rem;
-  line-height: 1.25;
-}
-h2 {
-  font-size: 1.5rem;
-  line-height: 1.33;
-}
-h3 {
-  font-size: 1.25rem;
-  line-height: 1.4;
-}
-h4 {
-  font-size: 1.125rem;
-  line-height: 1.45;
-}
+h1 { font-size: 2rem; line-height: 1.25; }
+h2 { font-size: 1.5rem; line-height: 1.33; }
+h3 { font-size: 1.25rem; line-height: 1.4; }
+h4 { font-size: 1.125rem; line-height: 1.45; }
 
 p {
   color: var(--color-text-secondary);
 }
 
-/* Navbar */
+/* ============================================
+   NAVBAR
+   ============================================ */
+
 .navbar {
   background: var(--color-bg);
   border-bottom: 1px solid var(--color-border);
@@ -173,30 +159,23 @@ p {
 }
 
 /* ============================================
-   LAYOUT - This is the key section
+   SIDEBAR
    ============================================ */
 
-/* Main wrapper fills viewport */
-.main-wrapper {
-  background: var(--color-bg);
-}
-
-/* Sidebar */
 .theme-doc-sidebar-container {
-  border-right: 1px solid var(--color-border);
-  background: var(--color-bg);
-  --doc-sidebar-width: 260px;
+  border-right: 1px solid var(--color-border) !important;
+  background: var(--color-bg) !important;
 }
 
-aside.theme-doc-sidebar-container > div {
-  background: transparent;
-  box-shadow: none;
-  margin: 0;
-  border-radius: 0;
+/* Remove any shadow/floating effects */
+.theme-doc-sidebar-container > div {
+  background: transparent !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  border-radius: 0 !important;
 }
 
-/* Menu */
-.menu {
+nav.menu {
   padding: 16px;
   background: transparent;
 }
@@ -242,8 +221,8 @@ aside.theme-doc-sidebar-container > div {
 }
 
 .menu__link--active {
-  background: var(--color-primary-light);
-  color: var(--color-primary);
+  background: var(--color-primary-light) !important;
+  color: var(--color-primary) !important;
   font-weight: 500;
 }
 
@@ -255,38 +234,55 @@ aside.theme-doc-sidebar-container > div {
 }
 
 /* ============================================
-   CONTENT AREA - Make it fill available space
+   LAYOUT - Production-safe selectors
    ============================================ */
 
-/* Remove all max-width constraints */
-[class*="docMainContainer"],
-[class*="docItemContainer"],
-.container {
+/* Main wrapper */
+.main-wrapper {
+  background: var(--color-bg);
+}
+
+/* Container - remove max-width */
+.container,
+.container-fluid {
+  max-width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Doc page main container */
+main {
   max-width: 100% !important;
 }
 
-/* The row that contains content + TOC */
-[class*="docItemCol"] {
+main > .container {
   max-width: 100% !important;
+}
+
+/* Row */
+.row {
+  margin: 0 !important;
+}
+
+/* Columns */
+.col {
   padding: 0 !important;
 }
 
-/* Article - main content */
+/* Article - markdown content wrapper */
 article {
-  padding: 24px 40px 48px 40px;
-  max-width: 100%;
+  padding: 24px 40px 48px 40px !important;
+  max-width: 100% !important;
 }
 
-/* TOC wrapper - tighter width */
-[class*="tableOfContents"] {
-  padding: 24px 16px 24px 0;
-}
+/* ============================================
+   TABLE OF CONTENTS
+   ============================================ */
 
 .table-of-contents {
   font-size: 0.8125rem;
   border-left: 1px solid var(--color-border);
   padding-left: 0;
-  max-width: 200px;
 }
 
 .table-of-contents__link {
@@ -305,6 +301,14 @@ article {
   font-weight: 500;
   border-left: 2px solid var(--color-primary);
   margin-left: -1px;
+}
+
+/* TOC column wrapper */
+.col.col--3 {
+  padding: 24px 16px 24px 0 !important;
+  --ifm-col-width: 220px;
+  max-width: 220px !important;
+  flex: 0 0 220px !important;
 }
 
 /* ============================================
@@ -357,7 +361,7 @@ article {
 }
 
 /* Breadcrumbs */
-.breadcrumbs {
+nav.theme-doc-breadcrumbs {
   margin-bottom: 12px;
 }
 
@@ -369,26 +373,31 @@ article {
   color: var(--color-text-tertiary);
 }
 
-/* Mobile TOC dropdown */
-[class*="tocMobile"] {
-  background: var(--color-bg-secondary);
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
-  margin-bottom: 16px;
+/* Mobile TOC */
+.tocCollapsible_node_modules-\@docusaurus-theme-classic-lib-theme-TOCCollapsible-styles-module,
+button.tocCollapsibleButton_node_modules-\@docusaurus-theme-classic-lib-theme-TOCCollapsible-CollapseButton-styles-module,
+.theme-doc-toc-mobile {
+  background: var(--color-bg-secondary) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 8px !important;
+  margin-bottom: 16px !important;
 }
 
-/* Code Blocks */
-.theme-code-block {
+/* ============================================
+   CODE BLOCKS
+   ============================================ */
+
+div.theme-code-block {
   margin: 16px 0;
   border-radius: 8px;
   border: 1px solid var(--color-border);
   background: var(--color-bg-secondary);
 }
 
-.theme-code-block pre {
+div.theme-code-block pre {
   margin: 0;
   padding: 14px 16px;
-  background: transparent;
+  background: transparent !important;
 }
 
 :not(pre) > code {
@@ -398,7 +407,10 @@ article {
   font-size: 0.875em;
 }
 
-/* Tables - full width */
+/* ============================================
+   TABLES
+   ============================================ */
+
 table {
   margin: 16px 0;
   width: 100%;
@@ -432,7 +444,14 @@ table tbody tr:last-child td {
   border-bottom: none;
 }
 
-/* Blockquotes & Alerts */
+.markdown table {
+  width: 100%;
+}
+
+/* ============================================
+   BLOCKQUOTES & ALERTS
+   ============================================ */
+
 blockquote {
   margin: 16px 0;
   padding: 12px 16px;
@@ -445,43 +464,61 @@ blockquote p {
   margin: 0;
 }
 
-.alert {
-  margin: 16px 0;
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: 1px solid;
+.alert,
+div[class*="admonition"] {
+  margin: 16px 0 !important;
+  padding: 12px 16px !important;
+  border-radius: 8px !important;
 }
 
-.alert--info {
-  background: rgba(59, 130, 246, 0.08);
-  border-color: rgba(59, 130, 246, 0.2);
+.alert--info,
+div[class*="admonition_info"],
+div[class*="admonition-info"] {
+  background: rgba(59, 130, 246, 0.08) !important;
+  border: 1px solid rgba(59, 130, 246, 0.2) !important;
 }
 
-.alert--warning {
-  background: rgba(245, 158, 11, 0.08);
-  border-color: rgba(245, 158, 11, 0.2);
+.alert--warning,
+div[class*="admonition_warning"],
+div[class*="admonition-warning"],
+div[class*="admonition_caution"],
+div[class*="admonition-caution"] {
+  background: rgba(245, 158, 11, 0.08) !important;
+  border: 1px solid rgba(245, 158, 11, 0.2) !important;
 }
 
-.alert--danger {
-  background: rgba(239, 68, 68, 0.08);
-  border-color: rgba(239, 68, 68, 0.2);
+.alert--danger,
+div[class*="admonition_danger"],
+div[class*="admonition-danger"] {
+  background: rgba(239, 68, 68, 0.08) !important;
+  border: 1px solid rgba(239, 68, 68, 0.2) !important;
 }
 
-/* Pagination - tighter spacing */
-.pagination-nav {
-  margin-top: 32px;
-  padding-top: 24px;
+.alert--success,
+div[class*="admonition_tip"],
+div[class*="admonition-tip"] {
+  background: rgba(34, 197, 94, 0.08) !important;
+  border: 1px solid rgba(34, 197, 94, 0.2) !important;
+}
+
+/* ============================================
+   PAGINATION
+   ============================================ */
+
+nav.pagination-nav {
+  margin-top: 32px !important;
+  padding-top: 24px !important;
   border-top: 1px solid var(--color-border);
   gap: 16px;
 }
 
-.pagination-nav__link {
+a.pagination-nav__link {
   border: 1px solid var(--color-border);
   border-radius: 8px;
   padding: 12px 16px;
 }
 
-.pagination-nav__link:hover {
+a.pagination-nav__link:hover {
   border-color: var(--color-primary);
   background: var(--color-primary-light);
   text-decoration: none;
@@ -501,8 +538,11 @@ blockquote p {
   color: var(--color-text);
 }
 
-/* Footer - tighter */
-.footer {
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer.footer {
   background: var(--color-bg-secondary);
   border-top: 1px solid var(--color-border);
   padding: 32px 24px;
@@ -520,6 +560,10 @@ blockquote p {
   letter-spacing: 0.05em;
   color: var(--color-text-tertiary);
   margin-bottom: 8px;
+}
+
+.footer__item {
+  margin-bottom: 4px;
 }
 
 .footer__link-item {
@@ -541,7 +585,10 @@ blockquote p {
   border-top: 1px solid var(--color-border);
 }
 
-/* Buttons */
+/* ============================================
+   BUTTONS
+   ============================================ */
+
 .button {
   font-size: 0.9375rem;
   font-weight: 500;
@@ -551,19 +598,19 @@ blockquote p {
 
 .button--primary {
   background: var(--color-primary);
-  color: white;
+  color: white !important;
   border: none;
 }
 
 .button--primary:hover {
   background: var(--color-primary-hover);
-  color: white;
+  color: white !important;
   text-decoration: none;
 }
 
 .markdown a.button.button--primary {
-  color: white;
-  text-decoration: none;
+  color: white !important;
+  text-decoration: none !important;
 }
 
 /* Badges */
@@ -574,25 +621,22 @@ blockquote p {
   margin-right: 6px;
 }
 
-/* Mobile */
+/* ============================================
+   MOBILE
+   ============================================ */
+
 @media (max-width: 996px) {
   .navbar {
     padding: 0 16px;
   }
 
   article {
-    padding: 20px 16px 40px;
+    padding: 20px 16px 40px !important;
   }
 
-  h1 {
-    font-size: 1.75rem;
-  }
-  h2 {
-    font-size: 1.375rem;
-  }
-  h3 {
-    font-size: 1.125rem;
-  }
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.375rem; }
+  h3 { font-size: 1.125rem; }
 
   .navbar-sidebar {
     background: var(--color-bg);
@@ -605,26 +649,31 @@ blockquote p {
 
 @media (max-width: 576px) {
   article {
-    padding: 16px 12px 32px;
+    padding: 16px 12px 32px !important;
   }
 
-  .pagination-nav {
+  nav.pagination-nav {
     flex-direction: column;
     gap: 12px;
   }
 
-  .pagination-nav__link {
+  a.pagination-nav__link {
     width: 100%;
   }
 }
 
-/* Utilities */
+/* ============================================
+   UTILITIES
+   ============================================ */
+
+/* Hide external link icons */
 .navbar__link svg,
 .menu__link svg,
 .footer__link-item svg {
   display: none;
 }
 
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -639,9 +688,15 @@ blockquote p {
   border-radius: 3px;
 }
 
+/* Horizontal rule */
 hr {
   margin: 32px 0;
   border: none;
   height: 1px;
   background: var(--color-border);
+}
+
+/* Doc version badge - hide if not needed */
+.theme-doc-version-badge {
+  display: none;
 }
