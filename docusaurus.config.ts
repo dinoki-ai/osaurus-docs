@@ -7,7 +7,7 @@ import type * as Preset from "@docusaurus/preset-classic";
 const config: Config = {
   title: "Osaurus Docs",
   tagline: "Native Apple Silicon local LLM server",
-  favicon: "img/favicon.ico",
+  favicon: "img/osaurus.svg",
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
