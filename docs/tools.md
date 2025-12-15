@@ -13,12 +13,12 @@ Osaurus includes a powerful plugin system for extending AI agent capabilities. T
 
 Osaurus tools are pure native **Swift and Rust** implementations—not Python scripts running through interpreters. This matters for production AI agents:
 
-| Aspect | Python/uv MCPs | Native Swift Tools |
-| ------ | -------------- | ------------------ |
-| **CPU Speed** | Interpreter overhead + GIL limits parallelism | Compiled machine code, true multi-threading |
-| **Memory** | Higher baseline (~50MB+) + garbage collector pauses | ARC provides precise, predictable memory control |
-| **Startup** | Virtual environment + interpreter load (~200ms) | Binary loads in under 10ms |
-| **Dependencies** | Requires Python runtime, pip packages | Self-contained binary, zero dependencies |
+| Aspect           | Python/uv MCPs                                      | Native Swift Tools                               |
+| ---------------- | --------------------------------------------------- | ------------------------------------------------ |
+| **CPU Speed**    | Interpreter overhead + GIL limits parallelism       | Compiled machine code, true multi-threading      |
+| **Memory**       | Higher baseline (~50MB+) + garbage collector pauses | ARC provides precise, predictable memory control |
+| **Startup**      | Virtual environment + interpreter load (~200ms)     | Binary loads in under 10ms                       |
+| **Dependencies** | Requires Python runtime, pip packages               | Self-contained binary, zero dependencies         |
 
 For AI agents executing dozens of tool calls per session, these differences compound significantly.
 
@@ -26,14 +26,14 @@ For AI agents executing dozens of tool calls per session, these differences comp
 
 These tools are maintained by the Osaurus team and available from the central registry:
 
-| Plugin ID | Description | Tools |
-| --------- | ----------- | ----- |
-| `osaurus.filesystem` | File system operations | `read_file`, `write_file`, `list_directory`, `create_directory`, `delete_file`, `move_file`, `search_files`, `get_file_info` |
-| `osaurus.browser` | Headless WebKit browser | `browser_navigate`, `browser_get_content`, `browser_get_html`, `browser_execute_script`, `browser_click`, `browser_type`, `browser_screenshot`, `browser_wait` |
-| `osaurus.git` | Git repository utilities | `git_status`, `git_log`, `git_diff`, `git_branch` |
-| `osaurus.search` | Web search via DuckDuckGo | `search`, `search_news`, `search_images` |
-| `osaurus.fetch` | HTTP client for web requests | `fetch`, `fetch_json`, `fetch_html`, `download` |
-| `osaurus.time` | Time and date utilities | `current_time`, `format_date` |
+| Plugin ID            | Description                  | Tools                                                                                                                                                          |
+| -------------------- | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `osaurus.filesystem` | File system operations       | `read_file`, `write_file`, `list_directory`, `create_directory`, `delete_file`, `move_file`, `search_files`, `get_file_info`                                   |
+| `osaurus.browser`    | Headless WebKit browser      | `browser_navigate`, `browser_get_content`, `browser_get_html`, `browser_execute_script`, `browser_click`, `browser_type`, `browser_screenshot`, `browser_wait` |
+| `osaurus.git`        | Git repository utilities     | `git_status`, `git_log`, `git_diff`, `git_branch`                                                                                                              |
+| `osaurus.search`     | Web search via DuckDuckGo    | `search`, `search_news`, `search_images`                                                                                                                       |
+| `osaurus.fetch`      | HTTP client for web requests | `fetch`, `fetch_json`, `fetch_html`, `download`                                                                                                                |
+| `osaurus.time`       | Time and date utilities      | `current_time`, `format_date`                                                                                                                                  |
 
 ## Installing Tools
 
@@ -88,11 +88,11 @@ The CLI proxies MCP over stdio to the running Osaurus server. If Osaurus isn't r
 
 Tools are also accessible via HTTP endpoints:
 
-| Endpoint | Method | Description |
-| -------- | ------ | ----------- |
-| `/mcp/health` | GET | Check MCP availability |
-| `/mcp/tools` | GET | List active tools |
-| `/mcp/call` | POST | Execute a tool |
+| Endpoint      | Method | Description            |
+| ------------- | ------ | ---------------------- |
+| `/mcp/health` | GET    | Check MCP availability |
+| `/mcp/tools`  | GET    | List active tools      |
+| `/mcp/call`   | POST   | Execute a tool         |
 
 **Example: List available tools**
 
@@ -150,10 +150,10 @@ Each tool can specify a permission policy:
 
 Some tools require macOS system permissions:
 
-| Permission | How to Grant | Use Case |
-| ---------- | ------------ | -------- |
-| **Automation** | System Settings → Privacy & Security → Automation | AppleScript, controlling other apps |
-| **Accessibility** | System Settings → Privacy & Security → Accessibility | UI automation, input simulation |
+| Permission        | How to Grant                                         | Use Case                            |
+| ----------------- | ---------------------------------------------------- | ----------------------------------- |
+| **Automation**    | System Settings → Privacy & Security → Automation    | AppleScript, controlling other apps |
+| **Accessibility** | System Settings → Privacy & Security → Accessibility | UI automation, input simulation     |
 
 The Tools UI shows which permissions are needed and provides one-click buttons to grant them.
 
@@ -184,6 +184,59 @@ Once installed, AI agents can interact with your Emacs instance:
   }
 }
 ```
+
+## Remote MCP Providers
+
+Osaurus can connect to external MCP servers and aggregate their tools into your local instance. This lets you use tools from remote MCP endpoints alongside your locally installed plugins.
+
+### Adding a Remote MCP Provider
+
+1. Open the Management window (⌘⇧M)
+2. Navigate to **MCP Providers**
+3. Click **Add Provider**
+4. Enter the provider details
+
+### Configuration Options
+
+| Field         | Description                                        |
+| ------------- | -------------------------------------------------- |
+| **Name**      | Display name for the provider                      |
+| **Endpoint**  | MCP server URL or command                          |
+| **Token**     | Authentication token (stored securely in Keychain) |
+| **Timeout**   | Request timeout in seconds                         |
+| **Streaming** | Enable/disable streaming responses                 |
+
+### How It Works
+
+- **Tool Discovery** — Osaurus queries the remote MCP server for available tools
+- **Namespacing** — Remote tools are prefixed with the provider name (e.g., `provider_toolname`) to avoid conflicts
+- **Unified Access** — All tools—local and remote—appear in the same tools list
+- **Secure Storage** — Authentication tokens are stored in macOS Keychain
+
+### Using Remote Tools
+
+Once connected, remote tools appear alongside local tools:
+
+```bash
+# List all tools (local and remote)
+curl http://127.0.0.1:1337/mcp/tools | jq
+
+# Call a remote tool (namespaced)
+curl -X POST http://127.0.0.1:1337/mcp/call \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "provider_remote_tool",
+    "arguments": {"param": "value"}
+  }'
+```
+
+Remote tools are also available to MCP clients like Cursor and Claude Desktop through the standard `osaurus mcp` command.
+
+### Best Practices
+
+- **Use descriptive provider names** — Makes it easy to identify tool origins
+- **Set appropriate timeouts** — Remote tools may have higher latency than local ones
+- **Monitor connection health** — Check the Management window for provider status
 
 ## Creating Your Own Tools
 
@@ -246,4 +299,3 @@ osaurus-tools/
 <p align="center">
   To contribute a tool, see the <a href="/plugin-authoring">Plugin Authoring Guide</a> or browse the <a href="https://github.com/dinoki-ai/osaurus-tools">tools registry</a>.
 </p>
-

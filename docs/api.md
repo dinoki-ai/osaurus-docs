@@ -7,7 +7,7 @@ sidebar_position: 5
 
 # API Reference
 
-Osaurus provides OpenAI-compatible, Ollama-compatible, and MCP APIs for seamless integration with existing tools and AI agents.
+Osaurus provides OpenAI-compatible, Anthropic-compatible, Ollama-compatible, and MCP APIs for seamless integration with existing tools and AI agents.
 
 ## Base URL
 
@@ -34,6 +34,7 @@ All endpoints support common API prefixes for compatibility:
 | `/v1/models` | GET | List available models (OpenAI) |
 | `/api/tags` | GET | List available models (Ollama) |
 | `/v1/chat/completions` | POST | Chat completion (OpenAI) |
+| `/messages` | POST | Chat completion (Anthropic) |
 | `/api/chat` | POST | Chat completion (Ollama) |
 
 ### MCP Endpoints
@@ -232,6 +233,124 @@ Create a chat completion using Ollama format.
   "total_duration": 1234567890,
   "eval_count": 85
 }
+```
+
+### POST /messages
+
+Create a chat completion using Anthropic format. This endpoint is compatible with the Anthropic Claude API.
+
+**Request Body:**
+
+```json
+{
+  "model": "llama-3.2-3b-instruct-4bit",
+  "max_tokens": 1024,
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hello, how are you?"
+    }
+  ],
+  "system": "You are a helpful assistant.",
+  "stream": false
+}
+```
+
+**Parameters:**
+
+| Parameter | Type | Required | Description |
+| --------- | ---- | -------- | ----------- |
+| `model` | string | Yes | Model ID to use |
+| `messages` | array | Yes | Array of message objects |
+| `max_tokens` | integer | Yes | Maximum tokens to generate |
+| `system` | string | No | System prompt (Anthropic style) |
+| `temperature` | float | No | Sampling temperature 0-1 (default: 1.0) |
+| `top_p` | float | No | Nucleus sampling threshold |
+| `top_k` | integer | No | Top-k sampling |
+| `stream` | boolean | No | Enable SSE streaming (default: false) |
+| `stop_sequences` | array | No | Sequences that stop generation |
+
+**Response (Non-streaming):**
+
+```json
+{
+  "id": "msg_123",
+  "type": "message",
+  "role": "assistant",
+  "content": [
+    {
+      "type": "text",
+      "text": "I'm doing well, thank you! How can I help you today?"
+    }
+  ],
+  "model": "llama-3.2-3b-instruct-4bit",
+  "stop_reason": "end_turn",
+  "usage": {
+    "input_tokens": 25,
+    "output_tokens": 15
+  }
+}
+```
+
+**Response (Streaming):**
+
+When `stream: true`, responses are sent as Server-Sent Events:
+
+```
+event: message_start
+data: {"type":"message_start","message":{"id":"msg_123","type":"message","role":"assistant","content":[],"model":"llama-3.2-3b-instruct-4bit"}}
+
+event: content_block_start
+data: {"type":"content_block_start","index":0,"content_block":{"type":"text","text":""}}
+
+event: content_block_delta
+data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":"I'm"}}
+
+event: content_block_delta
+data: {"type":"content_block_delta","index":0,"delta":{"type":"text_delta","text":" doing"}}
+
+event: content_block_stop
+data: {"type":"content_block_stop","index":0}
+
+event: message_delta
+data: {"type":"message_delta","delta":{"stop_reason":"end_turn"},"usage":{"output_tokens":15}}
+
+event: message_stop
+data: {"type":"message_stop"}
+```
+
+**Example with Python (Anthropic SDK):**
+
+```python
+import anthropic
+
+client = anthropic.Anthropic(
+    base_url="http://127.0.0.1:1337",
+    api_key="osaurus"  # Any value works
+)
+
+message = client.messages.create(
+    model="llama-3.2-3b-instruct-4bit",
+    max_tokens=1024,
+    messages=[
+        {"role": "user", "content": "Hello!"}
+    ]
+)
+
+print(message.content[0].text)
+```
+
+**Example with cURL:**
+
+```bash
+curl http://127.0.0.1:1337/messages \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: osaurus" \
+  -d '{
+    "model": "llama-3.2-3b-instruct-4bit",
+    "max_tokens": 1024,
+    "messages": [{"role": "user", "content": "Hello!"}]
+  }'
 ```
 
 ## MCP Endpoints

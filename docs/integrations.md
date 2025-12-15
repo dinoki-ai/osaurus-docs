@@ -7,7 +7,7 @@ sidebar_position: 11
 
 # Integration Guide
 
-Osaurus provides multiple integration paths: MCP Server for AI agents, OpenAI-compatible APIs for existing tools, and Ollama-compatible APIs for additional flexibility.
+Osaurus provides multiple integration paths: Remote Providers for cloud AI, MCP Server for AI agents, OpenAI-compatible APIs for existing tools, and Ollama-compatible APIs for additional flexibility.
 
 ## MCP Server
 
@@ -70,11 +70,11 @@ The `osaurus mcp` command:
 
 MCP is also available over HTTP:
 
-| Endpoint | Method | Description |
-| -------- | ------ | ----------- |
-| `/mcp/health` | GET | Check MCP availability |
-| `/mcp/tools` | GET | List active tools |
-| `/mcp/call` | POST | Execute a tool |
+| Endpoint      | Method | Description            |
+| ------------- | ------ | ---------------------- |
+| `/mcp/health` | GET    | Check MCP availability |
+| `/mcp/tools`  | GET    | List active tools      |
+| `/mcp/call`   | POST   | Execute a tool         |
 
 **Example: List tools**
 
@@ -89,6 +89,62 @@ curl -X POST http://127.0.0.1:1337/mcp/call \
   -H "Content-Type: application/json" \
   -d '{"name": "current_time", "arguments": {}}'
 ```
+
+## Remote Providers
+
+Osaurus can connect to cloud AI providers, giving you access to remote models alongside your local ones through a unified API.
+
+### Adding a Provider
+
+1. Open the Management window (⌘⇧M)
+2. Navigate to **Providers**
+3. Click **Add Provider**
+4. Choose a preset or configure a custom endpoint
+
+### Supported Presets
+
+| Provider       | Description                                                         |
+| -------------- | ------------------------------------------------------------------- |
+| **OpenAI**     | GPT-4o, o1, and other OpenAI models                                 |
+| **OpenRouter** | Access multiple providers (Anthropic, Google, etc.) through one API |
+| **Ollama**     | Connect to a local or remote Ollama instance                        |
+| **LM Studio**  | Use LM Studio as a backend                                          |
+| **Custom**     | Any OpenAI-compatible endpoint                                      |
+
+### Features
+
+- **Secure API Key Storage** — Keys are stored in macOS Keychain, never in plain text
+- **Custom Headers** — Add authentication headers for custom endpoints
+- **Auto-Connect on Launch** — Automatically reconnect to providers when Osaurus starts
+- **Connection Health Monitoring** — Real-time status indicators show provider availability
+
+### Configuration Options
+
+When adding a custom provider:
+
+| Field              | Description                                      |
+| ------------------ | ------------------------------------------------ |
+| **Name**           | Display name for the provider                    |
+| **Base URL**       | API endpoint (e.g., `https://api.openai.com/v1`) |
+| **API Key**        | Authentication key (stored securely in Keychain) |
+| **Custom Headers** | Additional headers for authentication            |
+| **Auto-Connect**   | Connect automatically on launch                  |
+
+### Using Remote Models
+
+Once connected, remote models appear alongside local models in the Model Manager and Chat UI. Use them via the API:
+
+```bash
+# Use a remote OpenAI model
+curl http://127.0.0.1:1337/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "gpt-4o",
+    "messages": [{"role": "user", "content": "Hello!"}]
+  }'
+```
+
+Remote models are available to all connected MCP clients and integrate seamlessly with tool calling.
 
 ## OpenAI SDK Integration
 
@@ -127,16 +183,16 @@ for chunk in stream:
 ### JavaScript/TypeScript
 
 ```javascript
-import OpenAI from 'openai';
+import OpenAI from "openai";
 
 const client = new OpenAI({
-  baseURL: 'http://127.0.0.1:1337/v1',
-  apiKey: 'osaurus',
+  baseURL: "http://127.0.0.1:1337/v1",
+  apiKey: "osaurus",
 });
 
 const response = await client.chat.completions.create({
-  model: 'llama-3.2-3b-instruct-4bit',
-  messages: [{ role: 'user', content: 'Hello!' }],
+  model: "llama-3.2-3b-instruct-4bit",
+  messages: [{ role: "user", content: "Hello!" }],
 });
 
 console.log(response.choices[0].message.content);
@@ -249,20 +305,20 @@ See the [Shared Configuration](/shared-configuration) guide for the complete dis
 
 ```javascript
 // main/index.js
-const { discoverLatestRunningInstance } = require('./osaurus-discovery');
+const { discoverLatestRunningInstance } = require("./osaurus-discovery");
 
-ipcMain.handle('osaurus:chat', async (event, message) => {
+ipcMain.handle("osaurus:chat", async (event, message) => {
   const instance = await discoverLatestRunningInstance();
-  
+
   const response = await fetch(`${instance.url}/v1/chat/completions`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      model: 'llama-3.2-3b-instruct-4bit',
-      messages: [{ role: 'user', content: message }]
-    })
+      model: "llama-3.2-3b-instruct-4bit",
+      messages: [{ role: "user", content: message }],
+    }),
   });
-  
+
   return response.json();
 });
 ```
@@ -305,15 +361,15 @@ print(response.json()["message"]["content"])
 
 ```jsx
 async function chat(message) {
-  const response = await fetch('http://127.0.0.1:1337/v1/chat/completions', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+  const response = await fetch("http://127.0.0.1:1337/v1/chat/completions", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      model: 'llama-3.2-3b-instruct-4bit',
-      messages: [{ role: 'user', content: message }]
-    })
+      model: "llama-3.2-3b-instruct-4bit",
+      messages: [{ role: "user", content: message }],
+    }),
   });
-  
+
   const data = await response.json();
   return data.choices[0].message.content;
 }
@@ -325,16 +381,16 @@ async function chat(message) {
 // app/api/chat/route.js
 export async function POST(request) {
   const { message } = await request.json();
-  
-  const response = await fetch('http://127.0.0.1:1337/v1/chat/completions', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+
+  const response = await fetch("http://127.0.0.1:1337/v1/chat/completions", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      model: 'llama-3.2-3b-instruct-4bit',
-      messages: [{ role: 'user', content: message }]
-    })
+      model: "llama-3.2-3b-instruct-4bit",
+      messages: [{ role: "user", content: message }],
+    }),
   });
-  
+
   return Response.json(await response.json());
 }
 ```

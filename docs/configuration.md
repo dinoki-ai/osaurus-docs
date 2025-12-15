@@ -185,6 +185,46 @@ OSU_PORT=1337 osaurus serve
 OSU_PORT=1338 osaurus serve
 ```
 
+## Custom Themes
+
+Osaurus supports full theme customization, letting you personalize the appearance of the Chat UI and Management windows.
+
+### Accessing Theme Settings
+
+1. Click the Osaurus menu bar icon
+2. Select **Settings**
+3. Navigate to the **Appearance** tab
+
+### Theme Options
+
+| Setting | Description |
+| ------- | ----------- |
+| **Preset Themes** | Choose from built-in light and dark themes |
+| **Custom Colors** | Full control over individual color values |
+| **Accent Color** | Primary color for buttons and highlights |
+| **Background** | Window and panel background colors |
+| **Text Colors** | Primary, secondary, and muted text |
+
+### Creating a Custom Theme
+
+1. Start with a preset theme as a base
+2. Adjust individual color values
+3. Preview changes in real-time
+4. Save your custom theme
+
+### Import and Export
+
+Share themes with others or back them up:
+
+- **Export** — Save your theme as a JSON file
+- **Import** — Load a theme from a JSON file
+
+Theme files are portable and can be shared across installations.
+
+### System Appearance
+
+By default, Osaurus follows your macOS appearance setting (Light/Dark). Override this behavior in theme settings to lock a specific appearance regardless of system preference.
+
 ---
 
 <p align="center">

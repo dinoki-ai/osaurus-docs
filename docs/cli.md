@@ -54,10 +54,10 @@ osaurus serve [options]
 
 **Options:**
 
-| Option | Description | Default |
-| ------ | ----------- | ------- |
-| `--port`, `-p` | Server port number | 1337 |
-| `--expose` | Enable LAN access (bind to all interfaces) | false |
+| Option         | Description                                | Default |
+| -------------- | ------------------------------------------ | ------- |
+| `--port`, `-p` | Server port number                         | 1337    |
+| `--expose`     | Enable LAN access (bind to all interfaces) | false   |
 
 **Examples:**
 
@@ -248,9 +248,9 @@ Creates a zip file with the built `.dylib` and `manifest.json`.
 
 Configure Osaurus using environment variables:
 
-| Variable | Description | Default |
-| -------- | ----------- | ------- |
-| `OSU_PORT` | Server port number | 1337 |
+| Variable         | Description             | Default       |
+| ---------------- | ----------------------- | ------------- |
+| `OSU_PORT`       | Server port number      | 1337          |
 | `OSU_MODELS_DIR` | Custom models directory | `~/MLXModels` |
 
 **Example:**
@@ -322,11 +322,13 @@ curl http://192.168.1.100:1337/v1/models
 ### Command Not Found
 
 1. Verify Osaurus.app is installed:
+
    ```bash
    ls /Applications/Osaurus.app
    ```
 
 2. Check symlink exists:
+
    ```bash
    which osaurus
    ls -la $(which osaurus)
@@ -340,11 +342,13 @@ curl http://192.168.1.100:1337/v1/models
 ### Server Won't Start
 
 1. Check if already running:
+
    ```bash
    osaurus status
    ```
 
 2. Check port availability:
+
    ```bash
    lsof -i :1337
    ```
@@ -368,11 +372,13 @@ sudo osaurus serve  # Not recommended
 ### MCP Connection Issues
 
 1. Verify server is running:
+
    ```bash
    osaurus status
    ```
 
 2. Test MCP endpoint:
+
    ```bash
    curl http://127.0.0.1:1337/mcp/health
    ```

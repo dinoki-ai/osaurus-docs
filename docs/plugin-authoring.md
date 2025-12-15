@@ -96,22 +96,22 @@ The manifest describes your plugin's capabilities:
 
 ### Tool Definition Fields
 
-| Field | Required | Description |
-| ----- | -------- | ----------- |
-| `id` | Yes | Unique identifier for the tool |
-| `description` | Yes | Human-readable description shown to users and AI |
-| `parameters` | Yes | JSON Schema defining input parameters |
-| `requirements` | No | System permissions needed (see below) |
-| `permission_policy` | No | `"ask"`, `"auto"`, or `"deny"` (default: `"ask"`) |
+| Field               | Required | Description                                       |
+| ------------------- | -------- | ------------------------------------------------- |
+| `id`                | Yes      | Unique identifier for the tool                    |
+| `description`       | Yes      | Human-readable description shown to users and AI  |
+| `parameters`        | Yes      | JSON Schema defining input parameters             |
+| `requirements`      | No       | System permissions needed (see below)             |
+| `permission_policy` | No       | `"ask"`, `"auto"`, or `"deny"` (default: `"ask"`) |
 
 ### System Requirements
 
 Some tools need macOS system permissions:
 
-| Requirement | Description |
-| ----------- | ----------- |
-| `automation` | AppleScript/Apple Events—allows controlling other applications |
-| `accessibility` | Accessibility API—allows UI interaction and input simulation |
+| Requirement     | Description                                                    |
+| --------------- | -------------------------------------------------------------- |
+| `automation`    | AppleScript/Apple Events—allows controlling other applications |
+| `accessibility` | Accessibility API—allows UI interaction and input simulation   |
 
 Example tool requiring automation:
 
@@ -149,13 +149,13 @@ osr_plugin_api* osaurus_plugin_entry(void);
 
 This returns a pointer to a struct with function pointers:
 
-| Function | Description |
-| -------- | ----------- |
-| `init()` | Called once on load. Returns an opaque context pointer. |
-| `destroy(ctx)` | Called on unload. Clean up resources. |
-| `get_manifest(ctx)` | Returns JSON string describing capabilities. |
-| `invoke(ctx, type, id, payload)` | Execute a capability. Returns JSON result. |
-| `free_string(s)` | Called by host to free strings returned by plugin. |
+| Function                         | Description                                             |
+| -------------------------------- | ------------------------------------------------------- |
+| `init()`                         | Called once on load. Returns an opaque context pointer. |
+| `destroy(ctx)`                   | Called on unload. Clean up resources.                   |
+| `get_manifest(ctx)`              | Returns JSON string describing capabilities.            |
+| `invoke(ctx, type, id, payload)` | Execute a capability. Returns JSON result.              |
+| `free_string(s)`                 | Called by host to free strings returned by plugin.      |
 
 ### Invocation
 
@@ -222,10 +222,10 @@ func pluginInvoke(
     _ payload: UnsafePointer<CChar>?
 ) -> UnsafeMutablePointer<CChar>? {
     guard let id = id, let payload = payload else { return nil }
-    
+
     let toolId = String(cString: id)
     let args = String(cString: payload)
-    
+
     if toolId == "echo" {
         // Parse JSON arguments
         if let data = args.data(using: .utf8),
@@ -238,7 +238,7 @@ func pluginInvoke(
             }
         }
     }
-    
+
     return strdup("{\"error\": \"Unknown tool\"}")
 }
 
@@ -303,14 +303,14 @@ pub extern "C" fn plugin_invoke(
 ) -> *mut c_char {
     let id = unsafe { CStr::from_ptr(id).to_str().unwrap_or("") };
     let payload = unsafe { CStr::from_ptr(payload).to_str().unwrap_or("{}") };
-    
+
     let result = if id == "echo" {
         // Parse and echo
         format!(r#"{{"result": "Echo: {}"}}"#, payload)
     } else {
         r#"{"error": "Unknown tool"}"#.to_string()
     };
-    
+
     CString::new(result).unwrap().into_raw()
 }
 
@@ -390,27 +390,31 @@ minisign -S -s minisign.key -m mytool-macos-arm64.zip
   "license": "MIT",
   "authors": ["Your Name"],
   "capabilities": {
-    "tools": [{"name": "my_tool", "description": "Does something"}]
+    "tools": [{ "name": "my_tool", "description": "Does something" }]
   },
   "public_keys": {
     "minisign": "RWxxxxxxxxxxxxxxxx"
   },
-  "versions": [{
-    "version": "1.0.0",
-    "release_date": "2025-01-15",
-    "notes": "Initial release",
-    "requires": {"osaurus_min_version": "0.5.0"},
-    "artifacts": [{
-      "os": "macos",
-      "arch": "arm64",
-      "url": "https://github.com/yourcompany/mytool/releases/download/v1.0.0/mytool-macos-arm64.zip",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "minisign": {
-        "signature": "RWxxxxxxxxxxxxxxxx",
-        "key_id": "xxxxxxxx"
-      }
-    }]
-  }]
+  "versions": [
+    {
+      "version": "1.0.0",
+      "release_date": "2025-01-15",
+      "notes": "Initial release",
+      "requires": { "osaurus_min_version": "0.5.0" },
+      "artifacts": [
+        {
+          "os": "macos",
+          "arch": "arm64",
+          "url": "https://github.com/yourcompany/mytool/releases/download/v1.0.0/mytool-macos-arm64.zip",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "minisign": {
+            "signature": "RWxxxxxxxxxxxxxxxx",
+            "key_id": "xxxxxxxx"
+          }
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -428,26 +432,28 @@ The [osaurus-emacs](https://github.com/dinoki-ai/osaurus-emacs) plugin is a real
   "version": "0.1.0",
   "description": "Execute Emacs Lisp code in a running Emacs instance",
   "capabilities": {
-    "tools": [{
-      "id": "execute_emacs_lisp_code",
-      "description": "Execute Emacs Lisp code via emacsclient",
-      "parameters": {
-        "type": "object",
-        "properties": {
-          "code": {
-            "type": "string",
-            "description": "The Emacs Lisp code to execute"
+    "tools": [
+      {
+        "id": "execute_emacs_lisp_code",
+        "description": "Execute Emacs Lisp code via emacsclient",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "description": "The Emacs Lisp code to execute"
+            },
+            "emacsclient_path": {
+              "type": "string",
+              "description": "Optional path to emacsclient binary"
+            }
           },
-          "emacsclient_path": {
-            "type": "string",
-            "description": "Optional path to emacsclient binary"
-          }
+          "required": ["code"]
         },
-        "required": ["code"]
-      },
-      "requirements": [],
-      "permission_policy": "ask"
-    }]
+        "requirements": [],
+        "permission_policy": "ask"
+      }
+    ]
   }
 }
 ```
@@ -486,4 +492,3 @@ The [osaurus-emacs](https://github.com/dinoki-ai/osaurus-emacs) plugin is a real
 <p align="center">
   For plugin development help, join our <a href="https://discord.gg/dinoki">Discord community</a> or check the <a href="https://github.com/dinoki-ai/osaurus-tools">tools registry</a>.
 </p>
-

@@ -304,6 +304,65 @@ Logger.shared.level = .trace
 #endif
 ```
 
+## Developer Tools
+
+Osaurus includes built-in developer tools for debugging and monitoring your AI applications. Access them via the Management window (⌘⇧M).
+
+### Insights
+
+The Insights panel provides real-time monitoring of all API activity:
+
+**Request Monitoring:**
+- View all incoming API requests as they happen
+- See full request and response payloads
+- Filter by HTTP method (GET/POST)
+- Filter by source (Chat UI vs HTTP API)
+
+**Performance Stats:**
+- Success rate percentage
+- Average latency per request
+- Error count and types
+- Request volume over time
+
+**Inference Metrics:**
+- Token count (prompt + completion)
+- Generation speed (tokens/second)
+- Model used for each request
+- Time to first token
+
+### Server Explorer
+
+The Server Explorer provides an interactive API reference:
+
+**Live Status:**
+- Real-time server health indicators
+- Current port and configuration
+- Active model information
+- Memory and resource usage
+
+**Endpoint Browser:**
+- Browse all available API endpoints
+- View endpoint documentation inline
+- See parameter schemas and types
+
+**Interactive Testing:**
+- Edit request payloads directly
+- Send test requests with one click
+- View formatted JSON responses
+- Copy requests as cURL commands
+
+### Using Developer Tools
+
+1. Open the Management window with **⌘⇧M**
+2. Select **Insights** for request monitoring
+3. Select **Server** for endpoint exploration
+
+These tools are invaluable for:
+- Debugging integration issues
+- Optimizing prompt performance
+- Understanding API behavior
+- Testing new tool implementations
+
 ## Resources
 
 ### Documentation

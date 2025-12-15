@@ -1,7 +1,7 @@
 ---
 title: Overview
 sidebar_label: Overview
-description: Native Apple Silicon LLM server with MCP support. OpenAI & Ollama compatible APIs, tool calling, and a plugin ecosystem built on MLX.
+description: The missing macOS LLM server. Run local or cloud models with OpenAI & Anthropic compatible APIs, MCP support, tool calling, and a native plugin ecosystem. Pure Swift, 10MB.
 sidebar_position: 1
 slug: /
 hide_title: true
@@ -14,8 +14,8 @@ hide_title: true
 </p>
 
 <p align="center">
-  <strong>Native macOS LLM server with MCP support</strong><br/>
-  Run local language models on Apple Silicon with OpenAI-compatible APIs, tool calling, and a built-in plugin ecosystem.
+  <strong>The missing macOS LLM server</strong><br/>
+  Run local and remote models on Apple Silicon with OpenAI-compatible APIs, tool calling, and a built-in plugin ecosystem. 10MB. Pure Swift.
 </p>
 
 <p align="center" class="badges">
@@ -26,13 +26,14 @@ hide_title: true
 
 ## What is Osaurus?
 
-Osaurus is an all-in-one local LLM server for macOS. It combines:
+Osaurus is an all-in-one LLM server for macOS:
 
-- **MLX Runtime** — Optimized inference for Apple Silicon using MLX
-- **OpenAI & Ollama APIs** — Drop-in compatible endpoints for existing tools
-- **MCP Server** — Expose tools to AI agents via Model Context Protocol
-- **Plugin System** — Extend functionality with community and custom tools
-- **Apple Foundation Models** — Use the system model on macOS 26+ (Tahoe)
+- **Local Models** — Run MLX models on Apple Silicon with optimized inference
+- **Remote Providers** — Connect to OpenAI, Anthropic, Ollama, OpenRouter, and more
+- **OpenAI, Anthropic & Ollama APIs** — Drop-in compatible endpoints
+- **MCP Server** — Expose tools to Cursor, Claude Desktop, and other agents
+- **Native Plugins** — Swift and Rust tools, significantly faster than Python
+- **Apple Foundation Models** — System model on macOS 26+ (Tahoe)
 
 ## Key Features
 
@@ -63,14 +64,14 @@ Osaurus tools are pure native **Swift and Rust** implementations—significantly
 
 Official tools include browser automation, filesystem access, git operations, web search, and more. [Browse the registry →](/tools)
 
-### OpenAI & Ollama Compatible
+### OpenAI, Anthropic & Ollama Compatible
 
-Drop-in replacement for existing tools and workflows. Works with:
+Drop-in replacement for existing tools and workflows:
 
-- OpenAI Python & JavaScript SDKs
-- LangChain & LlamaIndex
-- Continue.dev, Cursor, and other IDE integrations
-- Any tool expecting OpenAI-style `/v1/chat/completions`
+- OpenAI and Anthropic SDKs (Python & JavaScript)
+- LangChain, LlamaIndex, and other frameworks
+- Continue.dev, Cursor, and IDE integrations
+- Any OpenAI-compatible client
 
 ### Apple Foundation Models
 
@@ -85,6 +86,13 @@ curl http://127.0.0.1:1337/v1/chat/completions \
 ### Menu Bar Chat UI
 
 Beautiful glass-styled chat overlay accessible via global hotkey (⌘;). No browser needed—just press and chat.
+
+### Developer Tools
+
+Built-in debugging via the Management window (⌘⇧M):
+
+- **Insights** — Real-time API monitoring, performance stats, inference metrics
+- **Server Explorer** — Interactive endpoint browsing and testing
 
 ## Performance
 
@@ -112,23 +120,29 @@ Apple Intelligence features require macOS 26 (Tahoe) or later.
 
 ## Why Osaurus?
 
-### The Challenge
+People chose macOS because they care about craft. They deserve AI tools built with the same philosophy—software that feels intentional, fast, and native. Osaurus is the infrastructure that gets out of the way and lets a thousand lovable products bloom.
 
-Cloud-based AI services and Python-based local tools present limitations:
+### Our Philosophy
 
-- **Cost** — Per-token pricing accumulates rapidly
-- **Privacy** — Data leaves your device
-- **Latency** — Network round-trips and interpreter overhead
-- **Complexity** — Managing Python environments and dependencies
+We believe AI shouldn't repeat the mistakes of the cloud era. Here's what guides us:
 
-### The Solution
+- **Local-first, not local-only** — Your machine is the source of truth. Run models locally when you want privacy and speed. Reach out to cloud providers when you need more power. The choice is yours.
 
-Osaurus addresses these challenges:
+- **The network is optional** — Local-first software works offline, by design. Your AI tools should function on an airplane, in a coffee shop with unreliable WiFi, or simply when you don't want to depend on a server.
 
-- **Free** — No API costs, only electricity
-- **Private** — All processing remains on your Mac
-- **Fast** — Native performance with instant startup
-- **Simple** — Single app, no dependencies to manage
+- **You retain ownership and control** — The files on your machine are yours. The models you download are yours. We're not building another walled garden—we're building a foundation that respects your ownership.
+
+- **Decentralized by design** — AI shouldn't be locked behind platform gatekeepers. We're building infrastructure that gives people choices, not dependencies.
+
+- **Free as in freedom** — Osaurus is open source, MIT licensed. Some things should exist as public goods. This is one of them.
+
+### The Practical Benefits
+
+- **No API costs** — Run inference locally, pay only for electricity
+- **Complete privacy** — All processing stays on your Mac
+- **Native performance** — 10MB Pure Swift, instant startup, no Electron
+- **Zero dependencies** — Single app, no Python environments to manage
+- **Unified interface** — One server for local models, cloud providers, and tools
 
 ## Use Cases
 
@@ -140,11 +154,11 @@ Osaurus addresses these challenges:
 
 ## Quick Links
 
-- [Installation Guide](/installation) — Get Osaurus running in minutes
-- [Quickstart Tutorial](/quickstart) — Your first API call and chat
-- [Tools & Plugins](/tools) — Browse and install native tools
-- [MCP Integration](/integrations#mcp-server) — Connect to Cursor, Claude Desktop
-- [API Reference](/api) — Complete endpoint documentation
+- [Installation](/installation) — Get running in minutes
+- [Quickstart](/quickstart) — First API call and chat
+- [Remote Providers](/integrations#remote-providers) — Connect to cloud APIs
+- [Tools & Plugins](/tools) — Native MCP tools
+- [API Reference](/api) — Endpoint documentation
 - [Plugin Authoring](/plugin-authoring) — Build your own tools
 
 ## Community

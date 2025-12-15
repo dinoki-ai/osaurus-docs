@@ -145,11 +145,11 @@ if response.choices[0].message.tool_calls:
         {"role": "user", "content": "What's 25 * 4? Also, how's the weather in Tokyo?"},
         response.choices[0].message
     ]
-    
+
     for tool_call in response.choices[0].message.tool_calls:
         function_name = tool_call.function.name
         arguments = json.loads(tool_call.function.arguments)
-        
+
         # Simulate tool execution
         if function_name == "calculate":
             result = {"result": eval(arguments["expression"])}
@@ -160,20 +160,20 @@ if response.choices[0].message.tool_calls:
                 "condition": "Sunny",
                 "unit": arguments.get("unit", "celsius")
             }
-        
+
         # Add tool result to conversation
         messages.append({
             "role": "tool",
             "tool_call_id": tool_call.id,
             "content": json.dumps(result)
         })
-    
+
     # Get final response
     final_response = client.chat.completions.create(
         model="llama-3.2-3b-instruct-4bit",
         messages=messages
     )
-    
+
     print(final_response.choices[0].message.content)
 ```
 
@@ -191,15 +191,15 @@ try:
         timeout=30  # 30 second timeout
     )
     print(response.choices[0].message.content)
-    
+
 except APIConnectionError as e:
     print(f"Connection error: {e}")
     print("Is Osaurus running? Check with: osaurus status")
-    
+
 except APIError as e:
     print(f"API error: {e}")
     print("Check if the model is downloaded")
-    
+
 except Exception as e:
     print(f"Unexpected error: {e}")
 ```
@@ -214,26 +214,26 @@ class ChatBot:
         self.messages = [
             {"role": "system", "content": "You are a helpful assistant."}
         ]
-    
+
     def chat(self, user_input):
         # Add user message
         self.messages.append({"role": "user", "content": user_input})
-        
+
         # Get response
         response = self.client.chat.completions.create(
             model=self.model,
             messages=self.messages
         )
-        
+
         # Extract assistant message
         assistant_message = response.choices[0].message
         self.messages.append({
             "role": "assistant",
             "content": assistant_message.content
         })
-        
+
         return assistant_message.content
-    
+
     def reset(self):
         self.messages = self.messages[:1]  # Keep system message
 
@@ -257,19 +257,17 @@ yarn add openai
 ### Basic Usage (Node.js)
 
 ```javascript
-import OpenAI from 'openai';
+import OpenAI from "openai";
 
 const openai = new OpenAI({
-  baseURL: 'http://127.0.0.1:1337/v1',
-  apiKey: 'not-needed',
+  baseURL: "http://127.0.0.1:1337/v1",
+  apiKey: "not-needed",
 });
 
 async function main() {
   const completion = await openai.chat.completions.create({
-    model: 'llama-3.2-3b-instruct-4bit',
-    messages: [
-      { role: 'user', content: 'Explain JavaScript closures' }
-    ],
+    model: "llama-3.2-3b-instruct-4bit",
+    messages: [{ role: "user", content: "Explain JavaScript closures" }],
   });
 
   console.log(completion.choices[0].message.content);
@@ -283,13 +281,13 @@ main();
 ```javascript
 async function streamChat() {
   const stream = await openai.chat.completions.create({
-    model: 'llama-3.2-3b-instruct-4bit',
-    messages: [{ role: 'user', content: 'Write a poem about coding' }],
+    model: "llama-3.2-3b-instruct-4bit",
+    messages: [{ role: "user", content: "Write a poem about coding" }],
     stream: true,
   });
 
   for await (const chunk of stream) {
-    const content = chunk.choices[0]?.delta?.content || '';
+    const content = chunk.choices[0]?.delta?.content || "";
     process.stdout.write(content);
   }
 }
@@ -302,117 +300,131 @@ streamChat();
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Osaurus Chat</title>
-</head>
-<body>
-  <div id="chat"></div>
-  <input id="input" type="text" placeholder="Type a message...">
-  <button onclick="sendMessage()">Send</button>
+  <head>
+    <title>Osaurus Chat</title>
+  </head>
+  <body>
+    <div id="chat"></div>
+    <input id="input" type="text" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
 
-  <script>
-    async function sendMessage() {
-      const input = document.getElementById('input');
-      const chat = document.getElementById('chat');
-      const message = input.value;
-      
-      // Add user message to chat
-      chat.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
-      input.value = '';
-      
-      try {
-        const response = await fetch('http://127.0.0.1:1337/v1/chat/completions', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            model: 'llama-3.2-3b-instruct-4bit',
-            messages: [{ role: 'user', content: message }],
-          }),
-        });
-        
-        const data = await response.json();
-        const aiMessage = data.choices[0].message.content;
-        
-        // Add AI response to chat
-        chat.innerHTML += `<p><strong>AI:</strong> ${aiMessage}</p>`;
-      } catch (error) {
-        chat.innerHTML += `<p><strong>Error:</strong> ${error.message}</p>`;
+    <script>
+      async function sendMessage() {
+        const input = document.getElementById("input");
+        const chat = document.getElementById("chat");
+        const message = input.value;
+
+        // Add user message to chat
+        chat.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+        input.value = "";
+
+        try {
+          const response = await fetch(
+            "http://127.0.0.1:1337/v1/chat/completions",
+            {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                model: "llama-3.2-3b-instruct-4bit",
+                messages: [{ role: "user", content: message }],
+              }),
+            }
+          );
+
+          const data = await response.json();
+          const aiMessage = data.choices[0].message.content;
+
+          // Add AI response to chat
+          chat.innerHTML += `<p><strong>AI:</strong> ${aiMessage}</p>`;
+        } catch (error) {
+          chat.innerHTML += `<p><strong>Error:</strong> ${error.message}</p>`;
+        }
       }
-    }
-    
-    // Send on Enter key
-    document.getElementById('input').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') sendMessage();
-    });
-  </script>
-</body>
+
+      // Send on Enter key
+      document.getElementById("input").addEventListener("keypress", (e) => {
+        if (e.key === "Enter") sendMessage();
+      });
+    </script>
+  </body>
 </html>
 ```
 
 ### React Component
 
 ```jsx
-import { useState, useCallback } from 'react';
-import OpenAI from 'openai';
+import { useState, useCallback } from "react";
+import OpenAI from "openai";
 
 const openai = new OpenAI({
-  baseURL: 'http://127.0.0.1:1337/v1',
-  apiKey: 'not-needed',
-  dangerouslyAllowBrowser: true // Only for demo, use backend in production
+  baseURL: "http://127.0.0.1:1337/v1",
+  apiKey: "not-needed",
+  dangerouslyAllowBrowser: true, // Only for demo, use backend in production
 });
 
 function ChatComponent() {
   const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
 
   const sendMessage = useCallback(async () => {
     if (!input.trim()) return;
 
-    const userMessage = { role: 'user', content: input };
+    const userMessage = { role: "user", content: input };
     const newMessages = [...messages, userMessage];
     setMessages(newMessages);
-    setInput('');
+    setInput("");
     setLoading(true);
 
     try {
       const response = await openai.chat.completions.create({
-        model: 'llama-3.2-3b-instruct-4bit',
+        model: "llama-3.2-3b-instruct-4bit",
         messages: newMessages,
       });
 
       const aiMessage = response.choices[0].message;
       setMessages([...newMessages, aiMessage]);
     } catch (error) {
-      console.error('Error:', error);
-      setMessages([...newMessages, { 
-        role: 'assistant', 
-        content: 'Sorry, I encountered an error.' 
-      }]);
+      console.error("Error:", error);
+      setMessages([
+        ...newMessages,
+        {
+          role: "assistant",
+          content: "Sorry, I encountered an error.",
+        },
+      ]);
     } finally {
       setLoading(false);
     }
   }, [input, messages]);
 
   return (
-    <div style={{ padding: '20px', maxWidth: '600px', margin: '0 auto' }}>
-      <div style={{ height: '400px', overflowY: 'scroll', border: '1px solid #ccc', padding: '10px', marginBottom: '10px' }}>
+    <div style={{ padding: "20px", maxWidth: "600px", margin: "0 auto" }}>
+      <div
+        style={{
+          height: "400px",
+          overflowY: "scroll",
+          border: "1px solid #ccc",
+          padding: "10px",
+          marginBottom: "10px",
+        }}
+      >
         {messages.map((msg, idx) => (
-          <div key={idx} style={{ marginBottom: '10px' }}>
-            <strong>{msg.role === 'user' ? 'You: ' : 'AI: '}</strong>
+          <div key={idx} style={{ marginBottom: "10px" }}>
+            <strong>{msg.role === "user" ? "You: " : "AI: "}</strong>
             {msg.content}
           </div>
         ))}
         {loading && <div>AI is typing...</div>}
       </div>
-      <div style={{ display: 'flex', gap: '10px' }}>
+      <div style={{ display: "flex", gap: "10px" }}>
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+          onKeyPress={(e) => e.key === "Enter" && sendMessage()}
           placeholder="Type your message..."
-          style={{ flex: 1, padding: '5px' }}
+          style={{ flex: 1, padding: "5px" }}
           disabled={loading}
         />
         <button onClick={sendMessage} disabled={loading}>
@@ -429,8 +441,8 @@ export default ChatComponent;
 ### TypeScript with Type Safety
 
 ```typescript
-import OpenAI from 'openai';
-import type { ChatCompletionMessageParam } from 'openai/resources/chat';
+import OpenAI from "openai";
+import type { ChatCompletionMessageParam } from "openai/resources/chat";
 
 interface ChatConfig {
   model: string;
@@ -442,10 +454,10 @@ class OsaurusClient {
   private client: OpenAI;
   private config: ChatConfig;
 
-  constructor(config: ChatConfig = { model: 'llama-3.2-3b-instruct-4bit' }) {
+  constructor(config: ChatConfig = { model: "llama-3.2-3b-instruct-4bit" }) {
     this.client = new OpenAI({
-      baseURL: 'http://127.0.0.1:1337/v1',
-      apiKey: 'not-needed',
+      baseURL: "http://127.0.0.1:1337/v1",
+      apiKey: "not-needed",
     });
     this.config = config;
   }
@@ -458,10 +470,12 @@ class OsaurusClient {
       max_tokens: this.config.maxTokens,
     });
 
-    return response.choices[0].message.content || '';
+    return response.choices[0].message.content || "";
   }
 
-  async *streamChat(messages: ChatCompletionMessageParam[]): AsyncGenerator<string> {
+  async *streamChat(
+    messages: ChatCompletionMessageParam[]
+  ): AsyncGenerator<string> {
     const stream = await this.client.chat.completions.create({
       model: this.config.model,
       messages,
@@ -478,22 +492,22 @@ class OsaurusClient {
 // Usage
 async function example() {
   const client = new OsaurusClient({
-    model: 'llama-3.2-3b-instruct-4bit',
+    model: "llama-3.2-3b-instruct-4bit",
     temperature: 0.7,
     maxTokens: 500,
   });
 
   // Regular chat
   const response = await client.chat([
-    { role: 'user', content: 'What is TypeScript?' }
+    { role: "user", content: "What is TypeScript?" },
   ]);
   console.log(response);
 
   // Streaming
   const messages: ChatCompletionMessageParam[] = [
-    { role: 'user', content: 'Write a haiku about programming' }
+    { role: "user", content: "Write a haiku about programming" },
   ];
-  
+
   for await (const chunk of client.streamChat(messages)) {
     process.stdout.write(chunk);
   }
@@ -530,23 +544,23 @@ struct ChatResponse: Codable {
 
 class OsaurusClient {
     let baseURL = "http://127.0.0.1:1337/v1"
-    
+
     func chat(message: String) async throws -> String {
         let url = URL(string: "\(baseURL)/chat/completions")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         let chatRequest = ChatRequest(
             model: "llama-3.2-3b-instruct-4bit",
             messages: [ChatMessage(role: "user", content: message)]
         )
-        
+
         request.httpBody = try JSONEncoder().encode(chatRequest)
-        
+
         let (data, _) = try await URLSession.shared.data(for: request)
         let response = try JSONDecoder().decode(ChatResponse.self, from: data)
-        
+
         return response.choices.first?.message.content ?? ""
     }
 }
@@ -566,9 +580,9 @@ struct ContentView: View {
     @State private var messages: [(role: String, content: String)] = []
     @State private var inputText = ""
     @State private var isLoading = false
-    
+
     let client = OsaurusClient()
-    
+
     var body: some View {
         VStack {
             ScrollView {
@@ -584,7 +598,7 @@ struct ContentView: View {
                     }
                 }
             }
-            
+
             HStack {
                 TextField("Type a message...", text: $inputText)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -592,7 +606,7 @@ struct ContentView: View {
                     .onSubmit {
                         Task { await sendMessage() }
                     }
-                
+
                 Button("Send") {
                     Task { await sendMessage() }
                 }
@@ -601,22 +615,22 @@ struct ContentView: View {
             .padding()
         }
     }
-    
+
     func sendMessage() async {
         let message = inputText
         guard !message.isEmpty else { return }
-        
+
         messages.append((role: "user", content: message))
         inputText = ""
         isLoading = true
-        
+
         do {
             let response = try await client.chat(message: message)
             messages.append((role: "assistant", content: response))
         } catch {
             messages.append((role: "assistant", content: "Error: \(error.localizedDescription)"))
         }
-        
+
         isLoading = false
     }
 }
@@ -658,7 +672,7 @@ struct Message {
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let client = reqwest::Client::new();
-    
+
     let request = ChatRequest {
         model: "llama-3.2-3b-instruct-4bit".to_string(),
         messages: vec![
@@ -668,7 +682,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             }
         ],
     };
-    
+
     let response = client
         .post("http://127.0.0.1:1337/v1/chat/completions")
         .json(&request)
@@ -676,11 +690,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .await?
         .json::<ChatResponse>()
         .await?;
-    
+
     if let Some(choice) = response.choices.first() {
         println!("AI: {}", choice.message.content);
     }
-    
+
     Ok(())
 }
 ```
@@ -763,7 +777,7 @@ class OsaurusClient
 
   def chat(message, model = 'llama-3.2-3b-instruct-4bit')
     uri = URI.parse("#{@base_url}/chat/completions")
-    
+
     request = Net::HTTP::Post.new(uri)
     request.content_type = 'application/json'
     request.body = JSON.dump({
@@ -829,26 +843,29 @@ class RateLimitedClient {
 
   async processQueue() {
     if (this.processing || this.queue.length === 0) return;
-    
+
     this.processing = true;
     const { messages, resolve, reject } = this.queue.shift();
-    
+
     try {
-      const response = await fetch('http://127.0.0.1:1337/v1/chat/completions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ 
-          model: 'llama-3.2-3b-instruct-4bit',
-          messages 
-        })
-      });
-      
+      const response = await fetch(
+        "http://127.0.0.1:1337/v1/chat/completions",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            model: "llama-3.2-3b-instruct-4bit",
+            messages,
+          }),
+        }
+      );
+
       const data = await response.json();
       resolve(data.choices[0].message.content);
     } catch (error) {
       reject(error);
     }
-    
+
     setTimeout(() => {
       this.processing = false;
       this.processQueue();
