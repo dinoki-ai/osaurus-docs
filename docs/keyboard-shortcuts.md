@@ -2,12 +2,12 @@
 title: Keyboard Shortcuts
 sidebar_label: Keyboard Shortcuts
 description: Complete reference for Osaurus keyboard shortcuts
-sidebar_position: 13
+sidebar_position: 14
 ---
 
 # Keyboard Shortcuts
 
-Osaurus provides keyboard shortcuts for quick access to common features. This guide covers all available shortcuts organized by context.
+Power users love keyboard shortcuts. Here's every shortcut available in Osaurus, organized by context.
 
 ## Global Shortcuts
 

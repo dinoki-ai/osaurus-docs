@@ -1,13 +1,13 @@
 ---
-title: Quickstart
-sidebar_label: Quickstart
+title: Quick Start
+sidebar_label: Quick Start
 description: Get up and running with Osaurus in minutes
 sidebar_position: 3
 ---
 
-# Quickstart
+# Quick Start
 
-This guide walks you through installing Osaurus, downloading a model, and making your first API call.
+You're five minutes away from running AI locally on your Mac. This guide walks you through installation, downloading your first model, and having your first conversation.
 
 ## Setup
 
@@ -215,18 +215,18 @@ console.log(data.choices[0].message.content);
 - Check port configuration (default: 1337)
 - Ensure firewall allows localhost connections
 
-## Next Steps
+## What's Next?
 
-Explore these resources to expand your usage:
+Now that you're up and running, explore what Osaurus can do:
 
-1. [API Reference](/api) — Complete endpoint documentation
-2. [Model Guide](/models) — Detailed model information
-3. [Configuration](/configuration) — Customize Osaurus settings
-4. [Integrations](/integrations) — Build with Osaurus
-5. [Community](https://discord.gg/dinoki) — Connect with other users
+**For Everyone:**
+- [Chat Interface](/chat-interface) — Master the chat overlay
+- [Personas](/personas) — Create custom AI assistants
+- [Voice Input](/voice) — Talk to your AI hands-free
 
----
+**For Developers:**
+- [API Reference](/api) — Complete endpoint documentation
+- [SDK Examples](/sdk-examples) — Python, JavaScript, and more
+- [Tools & Plugins](/tools) — Extend AI with native tools
 
-<p align="center">
-  For help, visit our <a href="https://discord.gg/dinoki">Discord community</a> or check the <a href="https://github.com/dinoki-ai/osaurus/issues">GitHub issues</a>.
-</p>
+**Need help?** Join our [Discord community](https://discord.gg/dinoki) or check [GitHub issues](https://github.com/dinoki-ai/osaurus/issues).

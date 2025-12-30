@@ -2,12 +2,12 @@
 title: Multi-Window Chat
 sidebar_label: Multi-Window
 description: Work with multiple independent chat windows, each with its own persona and session
-sidebar_position: 16
+sidebar_position: 13
 ---
 
 # Multi-Window Chat
 
-Osaurus supports multiple independent chat windows, each maintaining its own persona, theme, and conversation session. Run different AI assistants side-by-side and organize your work across dedicated windows.
+Real work isn't linear. You might be debugging code in one conversation while researching an API in another and drafting documentation in a third. Osaurus supports multiple independent chat windows—each with its own persona, theme, and history—so you can work the way you think.
 
 ## Features
 

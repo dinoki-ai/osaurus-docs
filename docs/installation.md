@@ -91,41 +91,6 @@ echo 'export PATH="/Applications/Osaurus.app/Contents/MacOS:$PATH"' >> ~/.zshrc
 source ~/.zshrc
 ```
 
-## Building from Source
-
-For development or customization, build from source.
-
-### Prerequisites
-
-- **Xcode 16.4** or later
-- **Command Line Tools**
-- **Git**
-
-### Build Process
-
-```bash
-# Clone the repository
-git clone https://github.com/dinoki-ai/osaurus.git
-cd osaurus
-
-# Open in Xcode
-open osaurus.xcworkspace
-
-# Build and run the "osaurus" scheme
-# Or use Xcode: Product → Build (⌘B)
-```
-
-The built app will be in your Xcode derived data folder.
-
-### Command Line Build
-
-```bash
-# Build release configuration
-xcodebuild -workspace osaurus.xcworkspace -scheme osaurus -configuration Release
-
-# The output path is shown at the end of the build
-```
-
 ## Installation Verification
 
 Verify your installation:
@@ -246,9 +211,13 @@ brew uninstall --cask osaurus
 
 Once installed:
 
-- [Quickstart Guide](/quickstart) — Get running in minutes
+- [Quick Start](/quickstart) — Get running in minutes
+- [Chat Interface](/chat-interface) — Learn to use the chat overlay
 - [Model Management](/models) — Download your first model
-- [Tools & Plugins](/tools) — Install native tools for AI agents
+
+:::tip For Developers
+Want to build Osaurus from source or contribute? See the [Building from Source](/developer) guide.
+:::
 
 ---
 

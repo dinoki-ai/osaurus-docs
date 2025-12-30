@@ -1,13 +1,13 @@
 ---
-title: Developer Guide
-sidebar_label: Developer Guide
-description: Build, contribute, and extend Osaurus
-sidebar_position: 13
+title: Building from Source
+sidebar_label: Building from Source
+description: Build Osaurus from source, contribute to the project, and understand the architecture
+sidebar_position: 20
 ---
 
-# Developer Guide
+# Building from Source
 
-This guide covers everything you need to know about contributing to Osaurus, building from source, and extending the platform with plugins.
+This guide covers everything you need to build Osaurus from source, contribute to the project, and understand its architecture.
 
 ## Why Contribute to Osaurus?
 
@@ -313,18 +313,21 @@ Osaurus includes built-in developer tools for debugging and monitoring your AI a
 The Insights panel provides real-time monitoring of all API activity:
 
 **Request Monitoring:**
+
 - View all incoming API requests as they happen
 - See full request and response payloads
 - Filter by HTTP method (GET/POST)
 - Filter by source (Chat UI vs HTTP API)
 
 **Performance Stats:**
+
 - Success rate percentage
 - Average latency per request
 - Error count and types
 - Request volume over time
 
 **Inference Metrics:**
+
 - Token count (prompt + completion)
 - Generation speed (tokens/second)
 - Model used for each request
@@ -335,17 +338,20 @@ The Insights panel provides real-time monitoring of all API activity:
 The Server Explorer provides an interactive API reference:
 
 **Live Status:**
+
 - Real-time server health indicators
 - Current port and configuration
 - Active model information
 - Memory and resource usage
 
 **Endpoint Browser:**
+
 - Browse all available API endpoints
 - View endpoint documentation inline
 - See parameter schemas and types
 
 **Interactive Testing:**
+
 - Edit request payloads directly
 - Send test requests with one click
 - View formatted JSON responses
@@ -358,6 +364,7 @@ The Server Explorer provides an interactive API reference:
 3. Select **Server** for endpoint exploration
 
 These tools are invaluable for:
+
 - Debugging integration issues
 - Optimizing prompt performance
 - Understanding API behavior

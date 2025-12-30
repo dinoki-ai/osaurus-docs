@@ -22,17 +22,71 @@ const sidebars: SidebarsConfig = {
           id: "quickstart",
           label: "Quick Start",
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Using Osaurus",
+      collapsed: false,
+      items: [
+        {
+          type: "doc",
+          id: "chat-interface",
+          label: "Chat Interface",
+        },
+        {
+          type: "doc",
+          id: "personas",
+          label: "Personas",
+        },
+        {
+          type: "doc",
+          id: "voice",
+          label: "Voice Input",
+        },
+        {
+          type: "doc",
+          id: "multi-window",
+          label: "Multi-Window",
+        },
+        {
+          type: "doc",
+          id: "keyboard-shortcuts",
+          label: "Keyboard Shortcuts",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Developer Guide",
+      collapsed: true,
+      items: [
         {
           type: "doc",
           id: "cli",
           label: "CLI Reference",
+        },
+        {
+          type: "doc",
+          id: "api",
+          label: "API Reference",
+        },
+        {
+          type: "doc",
+          id: "sdk-examples",
+          label: "SDK Examples",
+        },
+        {
+          type: "doc",
+          id: "integrations",
+          label: "Integrations",
         },
       ],
     },
     {
       type: "category",
       label: "MCP & Tools",
-      collapsed: false,
+      collapsed: true,
       items: [
         {
           type: "doc",
@@ -75,50 +129,6 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
-      label: "Development",
-      collapsed: true,
-      items: [
-        {
-          type: "doc",
-          id: "api",
-          label: "API Reference",
-        },
-        {
-          type: "doc",
-          id: "sdk-examples",
-          label: "SDK Examples",
-        },
-        {
-          type: "doc",
-          id: "integrations",
-          label: "Integrations",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Features",
-      collapsed: false,
-      items: [
-        {
-          type: "doc",
-          id: "personas",
-          label: "Personas",
-        },
-        {
-          type: "doc",
-          id: "voice",
-          label: "Voice Input",
-        },
-        {
-          type: "doc",
-          id: "multi-window",
-          label: "Multi-Window",
-        },
-      ],
-    },
-    {
-      type: "category",
       label: "Resources",
       collapsed: true,
       items: [
@@ -130,12 +140,7 @@ const sidebars: SidebarsConfig = {
         {
           type: "doc",
           id: "developer",
-          label: "Developer Guide",
-        },
-        {
-          type: "doc",
-          id: "keyboard-shortcuts",
-          label: "Keyboard Shortcuts",
+          label: "Building from Source",
         },
       ],
     },

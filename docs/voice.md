@@ -2,12 +2,12 @@
 title: Voice Input
 sidebar_label: Voice Input
 description: Speech-to-text powered by WhisperKit — fully local, private, on-device transcription
-sidebar_position: 15
+sidebar_position: 12
 ---
 
 # Voice Input
 
-Osaurus includes built-in speech-to-text powered by [WhisperKit](https://github.com/argmaxinc/WhisperKit) — fully local, private, on-device transcription. Speak naturally and have your words converted to text without any data leaving your Mac.
+Sometimes typing isn't convenient—you're cooking, exercising, or just want to think out loud. Osaurus includes fully local speech-to-text powered by [WhisperKit](https://github.com/argmaxinc/WhisperKit). Speak naturally, see your words appear in real-time, and know that nothing leaves your Mac.
 
 ## Features
 

@@ -2,14 +2,16 @@
 title: Personas
 sidebar_label: Personas
 description: Create custom AI assistant personalities with unique behaviors, capabilities, and styles
-sidebar_position: 14
+sidebar_position: 11
 ---
 
 # Personas
 
-Personas let you create custom AI assistant personalities, each with unique behaviors, capabilities, and visual styles. Switch between different assistants optimized for specific tasks.
+One AI doesn't fit all. When you're writing code, you want a focused technical assistant. When you're brainstorming, you want creativity. When you're researching, you want access to the web.
 
-## What are Personas?
+Personas let you create specialized AI assistants for different tasks—each with its own personality, tools, and visual style. Switch between them instantly.
+
+## What is a Persona?
 
 A persona is a saved configuration that defines how your AI assistant behaves. Each persona can have:
 
