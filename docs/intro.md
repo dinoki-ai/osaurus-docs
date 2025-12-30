@@ -87,6 +87,18 @@ curl http://127.0.0.1:1337/v1/chat/completions \
 
 Beautiful glass-styled chat overlay accessible via global hotkey (⌘;). No browser needed—just press and chat.
 
+### Personas
+
+Create custom AI assistant personalities with unique behaviors, capabilities, and styles. Each persona can have its own system prompt, tool configuration, visual theme, and model settings. Switch between Code Assistant, Research Helper, Creative Writer, and more. [Learn more →](/personas)
+
+### Voice Input
+
+Speech-to-text powered by [WhisperKit](https://github.com/argmaxinc/WhisperKit) — fully local, private, on-device transcription. Speak naturally and see real-time transcription. Includes VAD Mode for hands-free activation using wake phrases. [Learn more →](/voice)
+
+### Multi-Window Chat
+
+Work with multiple independent chat windows, each with its own persona and session. Run different AI assistants side-by-side, pin windows to stay on top, and organize conversations by project. [Learn more →](/multi-window)
+
 ### Developer Tools
 
 Built-in debugging via the Management window (⌘⇧M):
@@ -156,6 +168,9 @@ We believe AI shouldn't repeat the mistakes of the cloud era. Here's what guides
 
 - [Installation](/installation) — Get running in minutes
 - [Quickstart](/quickstart) — First API call and chat
+- [Personas](/personas) — Custom AI assistant personalities
+- [Voice Input](/voice) — Speech-to-text and VAD mode
+- [Multi-Window](/multi-window) — Multiple independent chat windows
 - [Remote Providers](/integrations#remote-providers) — Connect to cloud APIs
 - [Tools & Plugins](/tools) — Native MCP tools
 - [API Reference](/api) — Endpoint documentation

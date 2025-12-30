@@ -13,9 +13,9 @@ Osaurus is designed to work out of the box with sensible defaults. Most behavior
 
 Configure Osaurus using environment variables:
 
-| Variable | Description | Default |
-| -------- | ----------- | ------- |
-| `OSU_PORT` | Server port number | `1337` |
+| Variable         | Description             | Default       |
+| ---------------- | ----------------------- | ------------- |
+| `OSU_PORT`       | Server port number      | `1337`        |
 | `OSU_MODELS_DIR` | Custom models directory | `~/MLXModels` |
 
 ### Setting Environment Variables
@@ -112,12 +112,22 @@ Installed plugins are stored at:
 
 This location is not configurable.
 
+## Whisper Models Storage
+
+Voice input models (WhisperKit) are stored at:
+
+```
+~/.osaurus/whisper-models
+```
+
+This location is not configurable. Models range from 75 MB (Tiny) to 3 GB (Large V3). See the [Voice Input](/voice) guide for model options.
+
 ## API Path Prefixes
 
 Endpoints are available under multiple prefixes for compatibility:
 
 - `/v1/endpoint` — OpenAI style
-- `/api/endpoint` — Generic style  
+- `/api/endpoint` — Generic style
 - `/v1/api/endpoint` — Combined style
 
 All prefixes route to the same handlers.
@@ -141,7 +151,7 @@ Most model behavior is controlled per-request via API parameters:
 ```json
 {
   "model": "llama-3.2-3b-instruct-4bit",
-  "messages": [{"role": "user", "content": "Hello"}],
+  "messages": [{ "role": "user", "content": "Hello" }],
   "temperature": 0.7,
   "max_tokens": 1000,
   "top_p": 0.9,
@@ -197,13 +207,13 @@ Osaurus supports full theme customization, letting you personalize the appearanc
 
 ### Theme Options
 
-| Setting | Description |
-| ------- | ----------- |
+| Setting           | Description                                |
+| ----------------- | ------------------------------------------ |
 | **Preset Themes** | Choose from built-in light and dark themes |
-| **Custom Colors** | Full control over individual color values |
-| **Accent Color** | Primary color for buttons and highlights |
-| **Background** | Window and panel background colors |
-| **Text Colors** | Primary, secondary, and muted text |
+| **Custom Colors** | Full control over individual color values  |
+| **Accent Color**  | Primary color for buttons and highlights   |
+| **Background**    | Window and panel background colors         |
+| **Text Colors**   | Primary, secondary, and muted text         |
 
 ### Creating a Custom Theme
 

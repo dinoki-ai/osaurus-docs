@@ -97,6 +97,28 @@ const sidebars: SidebarsConfig = {
     },
     {
       type: "category",
+      label: "Features",
+      collapsed: false,
+      items: [
+        {
+          type: "doc",
+          id: "personas",
+          label: "Personas",
+        },
+        {
+          type: "doc",
+          id: "voice",
+          label: "Voice Input",
+        },
+        {
+          type: "doc",
+          id: "multi-window",
+          label: "Multi-Window",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Resources",
       collapsed: true,
       items: [
@@ -109,6 +131,11 @@ const sidebars: SidebarsConfig = {
           type: "doc",
           id: "developer",
           label: "Developer Guide",
+        },
+        {
+          type: "doc",
+          id: "keyboard-shortcuts",
+          label: "Keyboard Shortcuts",
         },
       ],
     },
