@@ -16,6 +16,7 @@ Sometimes typing isn't convenient—you're cooking, exercising, or just want to 
 - **Microphone or system audio** — Transcribe your voice or computer audio
 - **Configurable sensitivity** — Adjust for quiet or noisy environments
 - **Auto-send with confirmation** — Hands-free message sending
+- **Transcription Mode** — Dictate into any app with a global hotkey
 
 ## Setup
 
@@ -158,6 +159,80 @@ You can also configure custom wake phrases in Voice settings.
 - **Quick queries** — Fast questions without touching the keyboard
 - **Multi-tasking** — Keep working while asking questions
 
+## Transcription Mode
+
+Transcription Mode lets you dictate text directly into any application on your Mac. Press a global hotkey, speak, and watch your words appear in the currently focused text field—no copy-paste required.
+
+### What is Transcription Mode?
+
+Unlike regular voice input (which types into Osaurus chat), Transcription Mode types into whatever app you're using. Writing an email? Dictate it. Filling out a form? Speak instead of type. Coding? Dictate comments without switching windows.
+
+### Features
+
+- **Global Hotkey** — Trigger transcription from anywhere on your Mac
+- **Live Typing** — Text appears in the focused text field in real-time
+- **Accessibility Integration** — Uses macOS accessibility APIs to simulate keyboard input
+- **Minimal Overlay** — Sleek floating UI shows recording status
+- **Press Esc or Done** — Stop transcription when finished
+
+### Setup
+
+#### 1. Grant Accessibility Permission
+
+Transcription Mode requires accessibility access to type into other applications:
+
+1. Open **System Settings** → **Privacy & Security** → **Accessibility**
+2. Click the **+** button
+3. Find and add **Osaurus**
+4. Toggle the switch to enable
+
+:::note Why Accessibility Access?
+Transcription Mode simulates keyboard input to type into other apps. macOS requires explicit permission for any app that controls input in other applications.
+:::
+
+#### 2. Configure the Global Hotkey
+
+1. Open Management window (**⌘⇧M**) → **Voice**
+2. Navigate to the **Transcription** tab
+3. Click the hotkey recorder field
+4. Press your desired key combination (e.g., **⌥Space**)
+5. The hotkey is saved automatically
+
+### Using Transcription Mode
+
+1. **Focus a text field** — Click into any text input (email, document, search bar, code editor)
+2. **Press your hotkey** — The transcription overlay appears
+3. **Speak** — Your words are typed into the focused field in real-time
+4. **Stop** — Press **Esc** or click **Done** to finish
+
+### The Transcription Overlay
+
+When active, a minimal overlay shows:
+
+| Element          | Description                              |
+| ---------------- | ---------------------------------------- |
+| **Recording indicator** | Visual confirmation that you're being transcribed |
+| **Done button**  | Click to stop transcription              |
+| **Audio level**  | Real-time visualization of your voice    |
+
+The overlay stays out of your way while giving you clear feedback.
+
+### Tips for Best Results
+
+1. **Speak at a natural pace** — No need to slow down or over-enunciate
+2. **Pause for punctuation** — Brief pauses help the model place periods and commas
+3. **Use a quiet environment** — Background noise reduces accuracy
+4. **External mic recommended** — Better audio quality improves transcription
+
+### Transcription Mode Use Cases
+
+- **Email and messaging** — Dictate messages in any app
+- **Document writing** — Draft content in Word, Pages, Google Docs, etc.
+- **Code comments** — Speak documentation without switching to Osaurus
+- **Form filling** — Voice input for any text field on the web
+- **Note-taking** — Quick capture in any notes app
+- **Search** — Speak search queries in Spotlight, browsers, or any app
+
 ## Troubleshooting
 
 ### Microphone Not Working
@@ -196,6 +271,20 @@ Whisper transcription is computationally intensive:
 2. Verify disk space (Large V3 needs 3 GB)
 3. Try a smaller model first
 4. Check `~/.osaurus/whisper-models` for partial downloads and delete them
+
+### Transcription Mode Not Working
+
+1. **Check accessibility permission** — Open **System Settings** → **Privacy & Security** → **Accessibility** and verify Osaurus is enabled
+2. **Verify the hotkey** — Ensure your global hotkey doesn't conflict with other apps
+3. **Focus a text field** — Transcription Mode requires an active text input
+4. **Restart Osaurus** — Some permission changes require a restart
+
+### Text Not Appearing in Target App
+
+1. **Ensure the text field is focused** — Click into the field before starting
+2. **Check app compatibility** — Some apps with custom text fields may not work
+3. **Try a different app** — Test with a standard app like TextEdit to verify functionality
+4. **Grant accessibility again** — Remove and re-add Osaurus in accessibility settings
 
 ## Privacy
 

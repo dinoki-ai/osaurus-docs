@@ -41,6 +41,16 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "skills",
+          label: "Skills",
+        },
+        {
+          type: "doc",
+          id: "schedules",
+          label: "Schedules",
+        },
+        {
+          type: "doc",
           id: "voice",
           label: "Voice Input",
         },

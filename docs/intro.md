@@ -1,7 +1,7 @@
 ---
 title: Overview
 sidebar_label: Overview
-description: The missing macOS LLM server. Run local or cloud models with complete privacy, OpenAI-compatible APIs, and a native plugin ecosystem. Pure Swift, 10MB.
+description: Native AI infrastructure for macOS. Local-first, privacy-respecting, provider-agnostic. Run local or cloud models, extend with tools, and own your context. Pure Swift, 10MB.
 sidebar_position: 1
 slug: /
 hide_title: true
@@ -14,7 +14,7 @@ hide_title: true
 </p>
 
 <p align="center">
-  <strong>Your Mac. Your AI. No cloud required.</strong>
+  <strong>The best AI is the one that belongs to you.</strong>
 </p>
 
 <p align="center" class="badges">
@@ -30,15 +30,19 @@ hide_title: true
 
 You chose macOS because you care about craft. You deserve AI tools built with the same philosophy—software that feels intentional, fast, and native. Not another Electron wrapper. Not a window into someone else's server that you're renting access to.
 
-Osaurus puts you in control. Run AI models directly on your Mac with complete privacy, connect to cloud providers when you need more power, and never worry about API costs eating into your workflow. Everything stays on your machine unless you decide otherwise.
+Inference is commoditizing—it's becoming cheap and abundant. The valuable layer is **continuity**: context, memory, personalization that compounds over time. That layer should belong to you, not a platform.
+
+Osaurus puts you in control. Run AI models directly on your Mac with complete privacy, connect to cloud providers when you need more power, and switch between them freely. Your context stays with you.
 
 ### Our Beliefs
 
 - **Local-first, not local-only** — Your machine is the source of truth. Run models locally for privacy and speed. Reach out to cloud providers when you need more power. The choice is always yours.
 
-- **The network is optional** — Your AI tools should work on an airplane, in a coffee shop with unreliable WiFi, or simply when you don't want to depend on someone else's infrastructure.
+- **Context is yours** — The layer that makes AI personal—your preferences, patterns, history—should be portable and private. Switch providers without losing what the AI has learned about you.
 
-- **You own your data** — The files on your machine are yours. The models you download are yours. We're building a foundation that respects your ownership, not another walled garden.
+- **AI as amplification** — The goal is not to replace human agency, but to amplify it. AI absorbs cognitive overhead—tedium, complexity, context-switching—so your attention goes where it matters.
+
+- **The network is optional** — Your AI tools should work on an airplane, in a coffee shop with unreliable WiFi, or simply when you don't want to depend on someone else's infrastructure.
 
 - **Free as in freedom** — Osaurus is open source, MIT licensed. Some things should exist as public goods. This is one of them.
 
@@ -46,12 +50,13 @@ Osaurus puts you in control. Run AI models directly on your Mac with complete pr
 
 ## What Osaurus Does
 
-Osaurus is the missing macOS LLM server—a native app that brings AI to your fingertips without compromising on privacy, performance, or control.
+Osaurus is native AI infrastructure for macOS—**local-first, privacy-respecting, provider-agnostic**. Not a single app that tries to do everything, but a foundation where focused capabilities compound when composed.
 
 - **Run AI locally** — Download models and run them entirely on your Mac. No internet required, no data leaves your device.
-- **Connect to any provider** — Use OpenAI, Anthropic, Ollama, or OpenRouter when you need cloud capabilities.
+- **Connect to any provider** — Use OpenAI, Anthropic, Ollama, or OpenRouter when you need cloud capabilities. Switch freely.
 - **Chat from anywhere** — Press ⌘; to open a beautiful chat overlay. No browser needed.
 - **Extend with tools** — Give AI access to your filesystem, browser, git repos, and more through native plugins.
+- **Build an ecosystem** — Skills, personas, schedules, and tools that work together—discovered, installed, and composed based on what you need.
 
 Built for Apple Silicon. 10MB. Pure Swift. Instant startup.
 
@@ -72,6 +77,18 @@ Press **⌘;** anywhere on your Mac to open a glass-styled chat overlay. Ask que
 Create custom AI assistants tailored to different tasks. A Code Assistant with access to your files. A Research Helper that can search the web. A Creative Writer with higher creativity settings. Each persona remembers its own personality, tools, and visual theme.
 
 [Learn more about personas →](/personas)
+
+### Skills
+
+Extend your AI with reusable capabilities. Import skills from GitHub repositories or local files—research methodologies, debugging frameworks, creative techniques. Skills add domain expertise that works with any persona, and only load when you need them.
+
+[Learn more about skills →](/skills)
+
+### Schedules
+
+Automate recurring AI tasks. Set up daily journal prompts, weekly report generation, or monthly goal reviews. Schedules run on a timer with your chosen persona, so helpful routines happen without you remembering to trigger them.
+
+[Learn more about schedules →](/schedules)
 
 ### Voice Input
 
@@ -132,6 +149,21 @@ Tools built in Swift and Rust—not Python scripts. This means instant startup (
 
 [Browse the tool registry →](/tools)
 
+### Smart Context Management
+
+Most AI tools load everything upfront—all skills, all tool definitions—burning thousands of tokens before you even ask a question. Osaurus uses **two-phase capability selection** instead.
+
+The AI sees a lightweight catalog first (names and descriptions), then loads full definitions only for what it actually needs. This saves **~80% of context space**, leaving more room for your conversation and better reasoning.
+
+| Approach        | Context Cost | What Happens                          |
+| --------------- | ------------ | ------------------------------------- |
+| Traditional     | ~5,000 tokens | All capabilities loaded upfront      |
+| **Osaurus**     | ~1,000 tokens | Catalog first, load on demand        |
+
+This means you can have dozens of skills and tools available without paying the cost until they're used.
+
+[Learn more about skills →](/skills) · [Learn more about tools →](/tools)
+
 ### Apple Foundation Models
 
 On macOS 26 (Tahoe), access Apple's system models with zero configuration:
@@ -190,6 +222,7 @@ Osaurus is an indie project, built in public. Join us:
 - [Discord](https://discord.gg/dinoki) — Get help and share projects
 - [GitHub](https://github.com/dinoki-ai/osaurus) — Report issues and contribute
 - [Plugin Registry](https://github.com/dinoki-ai/osaurus-tools) — Browse and submit tools
+- [Blog](https://osaurus.ai/blog) — Read about our vision and roadmap
 
 ---
 

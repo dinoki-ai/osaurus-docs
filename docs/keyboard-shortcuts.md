@@ -13,13 +13,14 @@ Power users love keyboard shortcuts. Here's every shortcut available in Osaurus,
 
 These shortcuts work system-wide, even when Osaurus is in the background.
 
-| Shortcut | Action            | Description                                                  |
-| -------- | ----------------- | ------------------------------------------------------------ |
-| **⌘;**   | Toggle Chat       | Open or close the chat overlay from anywhere                 |
-| **⌘⇧M**  | Management Window | Open the Management window for settings, tools, and insights |
+| Shortcut       | Action             | Description                                                  |
+| -------------- | ------------------ | ------------------------------------------------------------ |
+| **⌘;**         | Toggle Chat        | Open or close the chat overlay from anywhere                 |
+| **⌘⇧M**        | Management Window  | Open the Management window for settings, tools, and insights |
+| **Custom**     | Transcription Mode | Dictate text into any focused text field (configurable)      |
 
-:::tip Customizable Hotkey
-The chat overlay hotkey (⌘;) can be customized. See [Customizing Shortcuts](#customizing-shortcuts) below.
+:::tip Customizable Hotkeys
+The chat overlay hotkey (⌘;) and Transcription Mode hotkey can be customized. See [Customizing Shortcuts](#customizing-shortcuts) below.
 :::
 
 ## Chat Window
@@ -63,7 +64,7 @@ Standard macOS text editing shortcuts work in all input fields.
 
 ## Customizing Shortcuts
 
-The global chat hotkey can be customized to avoid conflicts with other applications.
+Global hotkeys can be customized to avoid conflicts with other applications.
 
 ### Changing the Chat Hotkey
 
@@ -74,6 +75,14 @@ The global chat hotkey can be customized to avoid conflicts with other applicati
 5. Click the hotkey recorder field
 6. Press your desired key combination
 7. The new hotkey takes effect immediately
+
+### Changing the Transcription Mode Hotkey
+
+1. Open Management window (**⌘⇧M**) → **Voice**
+2. Navigate to the **Transcription** tab
+3. Click the hotkey recorder field
+4. Press your desired key combination
+5. The new hotkey takes effect immediately
 
 ### Supported Modifiers
 
@@ -107,7 +116,9 @@ Combined with any letter, number, or function key.
 
 - [Multi-Window Chat](/multi-window) — Working with multiple chat windows
 - [Personas](/personas) — Creating custom AI assistants
-- [Voice Input](/voice) — Speech-to-text and VAD mode
+- [Skills](/skills) — Extending AI with reusable capabilities
+- [Schedules](/schedules) — Automating recurring AI tasks
+- [Voice Input](/voice) — Speech-to-text, VAD mode, and Transcription Mode
 
 ---
 

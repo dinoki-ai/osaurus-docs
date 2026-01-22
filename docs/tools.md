@@ -63,6 +63,25 @@ Tools are installed to:
 ~/Library/Application Support/com.dinoki.osaurus/Tools/<plugin_id>/<version>/
 ```
 
+## Two-Phase Capability Selection
+
+:::tip Key Feature
+This optimization saves ~80% of context space, giving you longer conversations and better AI reasoning.
+:::
+
+Osaurus uses a smart loading system that dramatically reduces context usage for tools.
+
+### How It Works
+
+Instead of loading all tool definitions upfront (which can consume thousands of tokens), Osaurus shows the AI a lightweight catalog first. The AI sees tool names and brief descriptions, then requests full definitions only for tools it actually needs.
+
+| Approach           | Context Usage | What's Loaded                              |
+| ------------------ | ------------- | ------------------------------------------ |
+| **Traditional**    | ~5,000 tokens | All tool schemas upfront                   |
+| **Two-Phase**      | ~1,000 tokens | Catalog + only actively used tool schemas  |
+
+This saves approximately **80% of context space**, leaving more room for conversation history and AI reasoning. Combined with [Skills](/skills), you can have extensive capabilities available without overwhelming the context window.
+
 ## Using Tools
 
 ### Via MCP Clients
