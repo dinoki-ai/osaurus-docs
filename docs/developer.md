@@ -372,7 +372,12 @@ These tools are invaluable for:
 
 ## Resources
 
-### Documentation
+### Osaurus Documentation
+
+- [FEATURES.md](https://github.com/dinoki-ai/osaurus/blob/main/docs/FEATURES.md) — Complete feature inventory and architecture overview
+- [Contributing Guide](https://github.com/dinoki-ai/osaurus/blob/main/CONTRIBUTING.md) — How to contribute to Osaurus
+
+### External Documentation
 
 - [Swift Documentation](https://docs.swift.org)
 - [SwiftNIO Guide](https://apple.github.io/swift-nio/docs/current/NIO/index.html)

@@ -30,6 +30,27 @@ Once the chat is open:
 
 The AI remembers your conversation history within the session, so you can ask follow-up questions naturally.
 
+## Session History
+
+Osaurus automatically saves your chat sessions, so you never lose a conversation.
+
+### Viewing History
+
+Click the **history icon** in the chat header to view your past conversations. Sessions are organized by date and display a preview of the conversation topic.
+
+### Session Features
+
+- **Persistent storage** — Conversations are saved automatically and persist across app restarts
+- **Context tracking** — The AI maintains context within each session for natural follow-up questions
+- **Quick resume** — Click any session to continue where you left off
+- **Open in new window** — Right-click a session to open it in a separate window
+
+### Managing Sessions
+
+- **Search** — Filter sessions by keyword or date
+- **Delete** — Remove individual sessions you no longer need
+- **Clear all** — Start fresh by clearing your entire history
+
 ## Chat Features
 
 ### Markdown Rendering
@@ -72,24 +93,32 @@ Click the **gear icon** in the chat header to access settings:
 
 ## Quick Actions
 
-| Action              | Shortcut          |
-| ------------------- | ----------------- |
-| Open/close chat     | **⌘;**            |
-| Send message        | **Enter**         |
-| New line in message | **Shift + Enter** |
-| Clear conversation  | **⌘K**            |
-| Open settings       | Click gear icon   |
+| Action               | Shortcut          |
+| -------------------- | ----------------- |
+| Open/close chat      | **⌘;**            |
+| Send message         | **Enter**         |
+| New line in message  | **Shift + Enter** |
+| Clear conversation   | **⌘K**            |
+| New window           | **⌘N**            |
+| View session history | Click history icon |
+| Open settings        | Click gear icon   |
 
 ## Menu Bar
 
-When Osaurus is running, you'll see its icon in your menu bar. Click it to:
+When Osaurus is running, you'll see its icon in your menu bar. Click it to access the menu bar popover with quick controls:
 
 - **Start/stop the server**
-- **Open Model Manager**
+- **Open Model Manager** (⌘⇧M)
 - **Access Settings**
 - **View status and logs**
 
-The menu bar icon also shows when the server is running and if VAD (voice activity detection) is active.
+### Status Indicators
+
+The menu bar icon shows the current state:
+
+- **Normal icon** — Server is running and ready
+- **Blue pulsing dot** — VAD (voice activity detection) is actively listening
+- **Toggle button in popover** — Quickly enable/disable VAD mode
 
 ## Multiple Windows
 

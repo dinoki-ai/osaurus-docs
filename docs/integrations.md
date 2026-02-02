@@ -105,7 +105,9 @@ Osaurus can connect to cloud AI providers, giving you access to remote models al
 
 | Provider       | Description                                                         |
 | -------------- | ------------------------------------------------------------------- |
-| **OpenAI**     | GPT-4o, o1, and other OpenAI models                                 |
+| **Anthropic**  | Claude models with native API support                               |
+| **OpenAI**     | ChatGPT models                                                      |
+| **xAI**        | Grok models                                                         |
 | **OpenRouter** | Access multiple providers (Anthropic, Google, etc.) through one API |
 | **Ollama**     | Connect to a local or remote Ollama instance                        |
 | **LM Studio**  | Use LM Studio as a backend                                          |

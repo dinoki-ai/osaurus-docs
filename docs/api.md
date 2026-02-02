@@ -32,8 +32,9 @@ All endpoints support common API prefixes for compatibility:
 | `/` | GET | Server status (plain text) |
 | `/health` | GET | Health check (JSON) |
 | `/v1/models` | GET | List available models (OpenAI) |
-| `/api/tags` | GET | List available models (Ollama) |
+| `/v1/tags` | GET | List available models (Ollama) |
 | `/v1/chat/completions` | POST | Chat completion (OpenAI) |
+| `/v1/responses` | POST | Responses (Open Responses) |
 | `/messages` | POST | Chat completion (Anthropic) |
 | `/api/chat` | POST | Chat completion (Ollama) |
 
@@ -96,9 +97,9 @@ List all available models in OpenAI format.
 }
 ```
 
-### GET /api/tags
+### GET /v1/tags
 
-List all available models in Ollama format.
+List all available models in Ollama format. Also available at `/api/tags`.
 
 **Response:**
 
@@ -232,6 +233,116 @@ Create a chat completion using Ollama format.
   "done": true,
   "total_duration": 1234567890,
   "eval_count": 85
+}
+```
+
+### POST /v1/responses
+
+Create a response using the Open Responses format. This endpoint provides multi-provider interoperability, allowing you to use the same request format across different AI providers.
+
+**Request Body:**
+
+```json
+{
+  "model": "llama-3.2-3b-instruct-4bit",
+  "input": "What is the capital of France?",
+  "instructions": "You are a helpful assistant.",
+  "max_output_tokens": 1000,
+  "temperature": 0.7,
+  "stream": false
+}
+```
+
+**Parameters:**
+
+| Parameter | Type | Required | Description |
+| --------- | ---- | -------- | ----------- |
+| `model` | string | Yes | Model ID to use |
+| `input` | string/array | Yes | Input text or array of message objects |
+| `instructions` | string | No | System instructions for the model |
+| `max_output_tokens` | integer | No | Maximum tokens to generate |
+| `temperature` | float | No | Sampling temperature 0-2 (default: 0.7) |
+| `top_p` | float | No | Nucleus sampling threshold |
+| `stream` | boolean | No | Enable SSE streaming (default: false) |
+| `tools` | array | No | Tool definitions for function calling |
+
+**Response (Non-streaming):**
+
+```json
+{
+  "id": "resp_123",
+  "object": "response",
+  "created_at": 1234567890,
+  "model": "llama-3.2-3b-instruct-4bit",
+  "output": [
+    {
+      "type": "message",
+      "role": "assistant",
+      "content": [
+        {
+          "type": "output_text",
+          "text": "The capital of France is Paris."
+        }
+      ]
+    }
+  ],
+  "usage": {
+    "input_tokens": 15,
+    "output_tokens": 8,
+    "total_tokens": 23
+  }
+}
+```
+
+**Response (Streaming):**
+
+When `stream: true`, responses are sent as Server-Sent Events:
+
+```
+event: response.created
+data: {"type":"response.created","response":{"id":"resp_123","object":"response","model":"llama-3.2-3b-instruct-4bit"}}
+
+event: response.output_item.added
+data: {"type":"response.output_item.added","output_index":0,"item":{"type":"message","role":"assistant"}}
+
+event: response.content_part.added
+data: {"type":"response.content_part.added","output_index":0,"content_index":0,"part":{"type":"output_text","text":""}}
+
+event: response.output_text.delta
+data: {"type":"response.output_text.delta","output_index":0,"content_index":0,"delta":"The"}
+
+event: response.output_text.delta
+data: {"type":"response.output_text.delta","output_index":0,"content_index":0,"delta":" capital"}
+
+event: response.output_text.done
+data: {"type":"response.output_text.done","output_index":0,"content_index":0,"text":"The capital of France is Paris."}
+
+event: response.completed
+data: {"type":"response.completed","response":{"id":"resp_123","status":"completed"}}
+```
+
+**Example with cURL:**
+
+```bash
+curl http://127.0.0.1:1337/v1/responses \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "llama-3.2-3b-instruct-4bit",
+    "input": "What is the capital of France?"
+  }'
+```
+
+**Example with conversation history:**
+
+```json
+{
+  "model": "llama-3.2-3b-instruct-4bit",
+  "input": [
+    {"role": "user", "content": "What is the capital of France?"},
+    {"role": "assistant", "content": "The capital of France is Paris."},
+    {"role": "user", "content": "What is its population?"}
+  ],
+  "instructions": "You are a helpful geography assistant."
 }
 ```
 

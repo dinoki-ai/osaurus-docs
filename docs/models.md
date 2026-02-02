@@ -50,7 +50,18 @@ To remove models:
 
 ### MLX Models
 
-MLX models are optimized specifically for Apple Silicon:
+MLX models are optimized specifically for Apple Silicon. Osaurus supports a wide range of model architectures:
+
+**Supported Architectures:**
+
+- **Llama** — Meta's Llama 3.2, Llama 3.1, and earlier versions
+- **Qwen** — Alibaba's Qwen 2.5 series
+- **Gemma** — Google's Gemma and Gemma 2 models
+- **Mistral** — Mistral AI's instruction-tuned models
+- **DeepSeek** — DeepSeek Coder and general models
+- **Phi** — Microsoft's Phi series
+
+**Quantization Options:**
 
 - **4-bit Quantization** — Best speed/quality trade-off
 - **8-bit Quantization** — Higher quality, more memory

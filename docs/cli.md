@@ -133,6 +133,36 @@ deepseek-coder-7b-4bit         4.0 GB
 Total: 10.3 GB
 ```
 
+### osaurus show
+
+Show metadata for a specific model.
+
+```bash
+osaurus show <model>
+```
+
+**Example:**
+
+```bash
+osaurus show llama-3.2-3b-instruct-4bit
+```
+
+**Example output:**
+
+```
+Model: llama-3.2-3b-instruct-4bit
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Architecture:   LlamaForCausalLM
+Parameters:     3.2B
+Quantization:   4-bit
+Context Length: 131072
+Size:           2.1 GB
+Path:           ~/MLXModels/llama-3.2-3b-instruct-4bit
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+This is useful for inspecting model details like architecture, parameter count, quantization level, and context window size.
+
 ### osaurus run
 
 Interactive chat session with a model.
@@ -170,6 +200,20 @@ This command proxies MCP protocol over stdio to the running Osaurus server. If t
     }
   }
 }
+```
+
+### osaurus version
+
+Display the Osaurus version.
+
+```bash
+osaurus version
+```
+
+**Example output:**
+
+```
+Osaurus 0.9.7
 ```
 
 ### osaurus tools
