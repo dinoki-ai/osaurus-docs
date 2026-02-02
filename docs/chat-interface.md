@@ -101,6 +101,21 @@ Want more than one conversation at a time? Osaurus supports multiple independent
 
 [Learn more about multi-window →](/multi-window)
 
+## Agent Mode
+
+Switch to Agent Mode for autonomous multi-step task execution. Click the **Agent Mode** tab at the top of the chat window to enter this mode. In Agent Mode, the AI can:
+
+- Break down complex tasks into trackable issues
+- Generate step-by-step execution plans
+- Perform file operations (read, write, edit, search, organize)
+- Use tools to browse the web, search online, and automate your Mac
+- Leverage skills for specialized methodologies
+- Run tasks in the background while you work on other things
+
+Agent Mode is ideal for organizing files, conducting deep research, automating workflows, compiling documents, and for developers—building features, refactoring code, and debugging issues that span multiple files.
+
+[Learn more about agents →](/agents)
+
 ## Personas
 
 The chat interface works seamlessly with Personas. When you switch personas:

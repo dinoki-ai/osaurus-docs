@@ -51,6 +51,11 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "agents",
+          label: "Agents",
+        },
+        {
+          type: "doc",
           id: "voice",
           label: "Voice Input",
         },

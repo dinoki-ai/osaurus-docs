@@ -90,6 +90,12 @@ Automate recurring AI tasks. Set up daily journal prompts, weekly report generat
 
 [Learn more about schedules →](/schedules)
 
+### Agents
+
+Execute complex, multi-step tasks autonomously. Organize files, conduct deep research across the web, automate repetitive workflows, or build features across a codebase. Agents use your installed tools and skills, breaking down requests into trackable issues and working through them step by step—even in the background.
+
+[Learn more about agents →](/agents)
+
 ### Voice Input
 
 Speak naturally and watch your words appear in real-time. Powered by WhisperKit, all transcription happens on your device—completely private, works offline. Enable VAD Mode to activate your assistant hands-free with a wake phrase.
@@ -155,10 +161,10 @@ Most AI tools load everything upfront—all skills, all tool definitions—burni
 
 The AI sees a lightweight catalog first (names and descriptions), then loads full definitions only for what it actually needs. This saves **~80% of context space**, leaving more room for your conversation and better reasoning.
 
-| Approach        | Context Cost | What Happens                          |
-| --------------- | ------------ | ------------------------------------- |
-| Traditional     | ~5,000 tokens | All capabilities loaded upfront      |
-| **Osaurus**     | ~1,000 tokens | Catalog first, load on demand        |
+| Approach    | Context Cost  | What Happens                    |
+| ----------- | ------------- | ------------------------------- |
+| Traditional | ~5,000 tokens | All capabilities loaded upfront |
+| **Osaurus** | ~1,000 tokens | Catalog first, load on demand   |
 
 This means you can have dozens of skills and tools available without paying the cost until they're used.
 

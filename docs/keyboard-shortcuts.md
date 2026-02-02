@@ -13,11 +13,11 @@ Power users love keyboard shortcuts. Here's every shortcut available in Osaurus,
 
 These shortcuts work system-wide, even when Osaurus is in the background.
 
-| Shortcut       | Action             | Description                                                  |
-| -------------- | ------------------ | ------------------------------------------------------------ |
-| **⌘;**         | Toggle Chat        | Open or close the chat overlay from anywhere                 |
-| **⌘⇧M**        | Management Window  | Open the Management window for settings, tools, and insights |
-| **Custom**     | Transcription Mode | Dictate text into any focused text field (configurable)      |
+| Shortcut   | Action             | Description                                                  |
+| ---------- | ------------------ | ------------------------------------------------------------ |
+| **⌘;**     | Toggle Chat        | Open or close the chat overlay from anywhere                 |
+| **⌘⇧M**    | Management Window  | Open the Management window for settings, tools, and insights |
+| **Custom** | Transcription Mode | Dictate text into any focused text field (configurable)      |
 
 :::tip Customizable Hotkeys
 The chat overlay hotkey (⌘;) and Transcription Mode hotkey can be customized. See [Customizing Shortcuts](#customizing-shortcuts) below.
@@ -118,6 +118,7 @@ Combined with any letter, number, or function key.
 - [Personas](/personas) — Creating custom AI assistants
 - [Skills](/skills) — Extending AI with reusable capabilities
 - [Schedules](/schedules) — Automating recurring AI tasks
+- [Agents](/agents) — Autonomous multi-step task execution
 - [Voice Input](/voice) — Speech-to-text, VAD mode, and Transcription Mode
 
 ---
