@@ -36,8 +36,8 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "personas",
-          label: "Personas",
+          id: "agents",
+          label: "Agents",
         },
         {
           type: "doc",
@@ -51,8 +51,13 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "doc",
-          id: "agents",
-          label: "Agents",
+          id: "watchers",
+          label: "Watchers",
+        },
+        {
+          type: "doc",
+          id: "work-mode",
+          label: "Work Mode",
         },
         {
           type: "doc",

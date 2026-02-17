@@ -56,7 +56,7 @@ Osaurus is native AI infrastructure for macOS—**local-first, privacy-respectin
 - **Connect to any provider** — Use OpenAI, Anthropic, Ollama, or OpenRouter when you need cloud capabilities. Switch freely.
 - **Chat from anywhere** — Press ⌘; to open a beautiful chat overlay. No browser needed.
 - **Extend with tools** — Give AI access to your filesystem, browser, git repos, and more through native plugins.
-- **Build an ecosystem** — Skills, personas, schedules, and tools that work together—discovered, installed, and composed based on what you need.
+- **Build an ecosystem** — Skills, agents, schedules, watchers, and tools that work together—discovered, installed, and composed based on what you need.
 
 Built for Apple Silicon. 10MB. Pure Swift. Instant startup.
 
@@ -72,29 +72,35 @@ Press **⌘;** anywhere on your Mac to open a glass-styled chat overlay. Ask que
 
 [Learn more about the chat interface →](/chat-interface)
 
-### Personas
+### Agents
 
-Create custom AI assistants tailored to different tasks. A Code Assistant with access to your files. A Research Helper that can search the web. A Creative Writer with higher creativity settings. Each persona remembers its own personality, tools, and visual theme.
+Create custom AI assistants tailored to different tasks. A Code Assistant with access to your files. A Research Helper that can search the web. A Creative Writer with higher creativity settings. Each agent remembers its own personality, tools, and visual theme.
 
-[Learn more about personas →](/personas)
+[Learn more about agents →](/agents)
 
 ### Skills
 
-Extend your AI with reusable capabilities. Import skills from GitHub repositories or local files—research methodologies, debugging frameworks, creative techniques. Skills add domain expertise that works with any persona, and only load when you need them.
+Extend your AI with reusable capabilities. Import skills from GitHub repositories or local files—research methodologies, debugging frameworks, creative techniques. Skills add domain expertise that works with any agent, and only load when you need them.
 
 [Learn more about skills →](/skills)
 
 ### Schedules
 
-Automate recurring AI tasks. Set up daily journal prompts, weekly report generation, or monthly goal reviews. Schedules run on a timer with your chosen persona, so helpful routines happen without you remembering to trigger them.
+Automate recurring AI tasks. Set up daily journal prompts, weekly report generation, or monthly goal reviews. Schedules run on a timer with your chosen agent, so helpful routines happen without you remembering to trigger them.
 
 [Learn more about schedules →](/schedules)
 
-### Agents
+### Watchers
 
-Execute complex, multi-step tasks autonomously. Organize files, conduct deep research across the web, automate repetitive workflows, or build features across a codebase. Agents use your installed tools and skills, breaking down requests into trackable issues and working through them step by step—even in the background.
+Monitor folders for file system changes and automatically trigger AI tasks when files are added, modified, or removed. Set up a Downloads organizer, a screenshot manager, or automated processing for any folder—Watchers keep working in the background so you don't have to.
 
-[Learn more about agents →](/agents)
+[Learn more about watchers →](/watchers)
+
+### Work Mode
+
+Execute complex, multi-step tasks autonomously. Organize files, conduct deep research across the web, automate repetitive workflows, or build features across a codebase. Work Mode uses your installed tools and skills, breaking down requests into trackable issues and working through them step by step—even in the background.
+
+[Learn more about Work Mode →](/work-mode)
 
 ### Voice Input
 
@@ -104,7 +110,7 @@ Speak naturally and watch your words appear in real-time. Powered by WhisperKit,
 
 ### Multi-Window
 
-Work with multiple independent chat windows, each with its own persona and conversation. Run a Code Assistant in one window while researching in another. Pin important conversations to stay on top.
+Work with multiple independent chat windows, each with its own agent and conversation. Run a Code Assistant in one window while researching in another. Pin important conversations to stay on top.
 
 [Learn more about multi-window →](/multi-window)
 

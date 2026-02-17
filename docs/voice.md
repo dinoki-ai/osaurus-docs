@@ -111,7 +111,7 @@ Adjust voice detection for your environment:
 
 ## VAD Mode (Voice Activity Detection)
 
-VAD Mode enables hands-free activation of Osaurus using wake phrases. Say your persona's name or a custom phrase to open chat and start voice input automatically.
+VAD Mode enables hands-free activation of Osaurus using wake phrases. Say your agent's name or a custom phrase to open chat and start voice input automatically.
 
 ### Enabling VAD Mode
 
@@ -137,10 +137,10 @@ The blue pulsing dot appears on the menu bar icon when VAD is enabled and listen
 
 ### Wake Phrases
 
-By default, saying a persona's name activates that persona:
+By default, saying an agent's name activates that agent:
 
-- "Hey Code Assistant" → Opens chat with Code Assistant persona
-- "Hey Research Helper" → Opens chat with Research Helper persona
+- "Hey Code Assistant" → Opens chat with Code Assistant agent
+- "Hey Research Helper" → Opens chat with Research Helper agent
 
 You can also configure custom wake phrases in Voice settings.
 
@@ -298,5 +298,5 @@ Voice input in Osaurus is completely local:
 ---
 
 <p align="center">
-  For persona-specific voice workflows, see the <a href="/personas">Personas</a> guide.
+  For agent-specific voice workflows, see the <a href="/agents">Agents</a> guide.
 </p>

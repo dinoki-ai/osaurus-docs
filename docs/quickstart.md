@@ -221,7 +221,7 @@ Now that you're up and running, explore what Osaurus can do:
 
 **For Everyone:**
 - [Chat Interface](/chat-interface) — Master the chat overlay
-- [Personas](/personas) — Create custom AI assistants
+- [Agents](/agents) — Create custom AI assistants
 - [Voice Input](/voice) — Talk to your AI hands-free
 
 **For Developers:**

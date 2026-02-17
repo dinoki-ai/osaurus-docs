@@ -11,20 +11,20 @@ Some AI tasks work best on autopilot. Daily journaling prompts, weekly report ge
 
 ## What is a Schedule?
 
-A schedule is an automated task that runs at specified intervals. When a schedule triggers, Osaurus sends your configured prompt to a persona and saves the response. You can review results later or set up notifications.
+A schedule is an automated task that runs at specified intervals. When a schedule triggers, Osaurus sends your configured prompt to an agent and saves the response. You can review results later or set up notifications.
 
 Each schedule includes:
 
 - **Name** — Identifier for the scheduled task
 - **Frequency** — When and how often to run
-- **Persona** — Which AI assistant handles the task
+- **Agent** — Which AI assistant handles the task
 - **Instructions** — The prompt sent when the schedule runs
 - **Results** — Access to the last run's conversation
 
 ## Features
 
 - **Flexible Frequency** — Once, daily, weekly, monthly, or yearly execution
-- **Persona Integration** — Assign a persona to handle scheduled tasks
+- **Agent Integration** — Assign an agent to handle scheduled tasks
 - **Custom Instructions** — Define prompts sent to the AI when the schedule runs
 - **Manual Trigger** — Run any schedule immediately with "Run Now"
 - **Results Tracking** — View the chat session from the last run
@@ -41,7 +41,7 @@ Open the Management window with **⌘⇧M**, then navigate to the **Schedules** 
    - **Name** — Give your schedule a descriptive name
    - **Frequency** — Select how often to run
    - **Time** — Choose when to run (for recurring schedules)
-   - **Persona** — Select which persona handles the task
+   - **Agent** — Select which agent handles the task
    - **Instructions** — Write the prompt to send
 4. Click **Save**
 
@@ -80,19 +80,19 @@ For recurring schedules, configure when they run:
 Schedules run when Osaurus is active. If your Mac is asleep or Osaurus isn't running at the scheduled time, the task runs when you next launch the app.
 :::
 
-### Persona Selection
+### Agent Selection
 
-Assign a persona to handle the scheduled task:
+Assign an agent to handle the scheduled task:
 
-1. Select a persona from the dropdown
-2. The persona's system prompt and tool configuration apply to the scheduled run
-3. Different schedules can use different personas
+1. Select an agent from the dropdown
+2. The agent's system prompt and tool configuration apply to the scheduled run
+3. Different schedules can use different agents
 
 **Example configurations:**
 
-- **Daily Journal** — Use a reflective, conversational persona
-- **Code Summary** — Use a technical persona with git tool access
-- **Research Digest** — Use a research-focused persona with web search
+- **Daily Journal** — Use a reflective, conversational agent
+- **Code Summary** — Use a technical agent with git tool access
+- **Research Digest** — Use a research-focused agent with web search
 
 ### Instructions
 
@@ -133,7 +133,7 @@ The Schedules tab shows all your configured schedules with:
 
 - Schedule name
 - Frequency and next run time
-- Assigned persona
+- Assigned agent
 - Status (active/paused)
 
 ### Editing a Schedule
@@ -157,7 +157,7 @@ Trigger any schedule immediately:
 
 1. Click on the schedule
 2. Click **Run Now**
-3. The schedule executes immediately with your configured persona and instructions
+3. The schedule executes immediately with your configured agent and instructions
 
 This is useful for:
 
@@ -197,7 +197,7 @@ Start each day with guided reflection.
 | ------------ | ----------------------------------------- |
 | Name         | Morning Journal                           |
 | Frequency    | Daily at 8:00 AM                          |
-| Persona      | Personal Coach                            |
+| Agent        | Personal Coach                            |
 | Instructions | "Start my day with 3 reflection questions about priorities, energy, and gratitude." |
 
 ### Weekly Code Review
@@ -208,7 +208,7 @@ Summarize development activity.
 | ------------ | ----------------------------------------- |
 | Name         | Weekly Dev Summary                        |
 | Frequency    | Weekly on Friday at 5:00 PM               |
-| Persona      | Code Assistant                            |
+| Agent        | Code Assistant                            |
 | Instructions | "Review git activity this week and summarize commits, branches, and open items." |
 
 ### Monthly Goals Check
@@ -219,7 +219,7 @@ Review progress on longer-term goals.
 | ------------ | ----------------------------------------- |
 | Name         | Monthly Goals Review                      |
 | Frequency    | Monthly on the 1st at 9:00 AM             |
-| Persona      | Personal Coach                            |
+| Agent        | Personal Coach                            |
 | Instructions | "Let's review my goals for last month and set intentions for the new month." |
 
 ### Daily News Digest
@@ -230,24 +230,24 @@ Get a summary of topics you care about.
 | ------------ | ----------------------------------------- |
 | Name         | Tech News Digest                          |
 | Frequency    | Daily at 7:00 AM                          |
-| Persona      | Research Helper                           |
+| Agent        | Research Helper                           |
 | Instructions | "Search for the latest AI and developer tools news and give me a 5-item digest." |
 
-## Schedules with Personas
+## Schedules with Agents
 
-Schedules work seamlessly with [Personas](/personas):
+Schedules work seamlessly with [Agents](/agents):
 
-- Each schedule can use a different persona
-- The persona's system prompt shapes how instructions are interpreted
-- Tool access is controlled by the persona's configuration
+- Each schedule can use a different agent
+- The agent's system prompt shapes how instructions are interpreted
+- Tool access is controlled by the agent's configuration
 
-**Tip:** Create dedicated personas for scheduled tasks with appropriate tool access and personality.
+**Tip:** Create dedicated agents for scheduled tasks with appropriate tool access and personality.
 
 ## Tips and Best Practices
 
 1. **Start simple** — Begin with one or two schedules and add more as needed
 2. **Use descriptive names** — Make it easy to identify schedules at a glance
-3. **Match persona to task** — Choose a persona with appropriate tools and style
+3. **Match agent to task** — Choose an agent with appropriate tools and style
 4. **Be specific in instructions** — Clear prompts yield better results
 5. **Review results regularly** — Check that schedules are producing useful output
 6. **Adjust timing** — Find times that work with your routine
@@ -264,8 +264,8 @@ Schedules work seamlessly with [Personas](/personas):
 ### Unexpected Results
 
 - **Review the instructions** — Ambiguous prompts lead to inconsistent results
-- **Check the persona** — Ensure the right persona is assigned
-- **Look at tool access** — The persona may need specific tools enabled
+- **Check the agent** — Ensure the right agent is assigned
+- **Look at tool access** — The agent may need specific tools enabled
 
 ### Missed Schedules
 
@@ -278,5 +278,5 @@ If Osaurus wasn't running at the scheduled time:
 ---
 
 <p align="center">
-  For creating custom AI assistants to use with schedules, see the <a href="/personas">Personas</a> guide.
+  For creating custom AI assistants to use with schedules, see the <a href="/agents">Agents</a> guide.
 </p>

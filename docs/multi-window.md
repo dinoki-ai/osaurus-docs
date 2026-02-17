@@ -1,18 +1,18 @@
 ---
 title: Multi-Window Chat
 sidebar_label: Multi-Window
-description: Work with multiple independent chat windows, each with its own persona and session
+description: Work with multiple independent chat windows, each with its own agent and session
 sidebar_position: 13
 ---
 
 # Multi-Window Chat
 
-Real work isn't linear. You might be debugging code in one conversation while researching an API in another and drafting documentation in a third. Osaurus supports multiple independent chat windows—each with its own persona, theme, and history—so you can work the way you think.
+Real work isn't linear. You might be debugging code in one conversation while researching an API in another and drafting documentation in a third. Osaurus supports multiple independent chat windows—each with its own agent, theme, and history—so you can work the way you think.
 
 ## Features
 
-- **Independent Windows** — Each window maintains its own persona, theme, and session
-- **Persona per Window** — Different personas in different windows simultaneously
+- **Independent Windows** — Each window maintains its own agent, theme, and session
+- **Agent per Window** — Different agents in different windows simultaneously
 - **Session Management** — Open any session in a new window
 - **Pin to Top** — Keep specific windows floating above others
 - **Cascading Windows** — New windows are offset for visibility
@@ -23,7 +23,7 @@ Real work isn't linear. You might be debugging code in one conversation while re
 
 1. Click **File** in the menu bar
 2. Select **New Window** (or press **⌘N**)
-3. A new chat window opens with the default persona
+3. A new chat window opens with the default agent
 
 ### From Keyboard
 
@@ -34,7 +34,7 @@ Press **⌘N** to open a new chat window instantly.
 1. Open the session history sidebar
 2. Right-click on any saved session
 3. Select **Open in New Window**
-4. The session opens in a new window with its original persona
+4. The session opens in a new window with its original agent
 
 ## Working with Multiple Windows
 
@@ -43,19 +43,19 @@ Press **⌘N** to open a new chat window instantly.
 Each window is completely independent:
 
 - Separate conversation history
-- Separate active persona
-- Separate theme (if persona has a custom theme)
+- Separate active agent
+- Separate theme (if agent has a custom theme)
 - Separate model selection
 
 Changes in one window don't affect others.
 
-### Switching Personas per Window
+### Switching Agents per Window
 
-Each window can have a different active persona:
+Each window can have a different active agent:
 
-1. Click the persona selector in the window
-2. Choose a persona
-3. That window now uses the selected persona
+1. Click the agent selector in the window
+2. Choose an agent
+3. That window now uses the selected agent
 4. Other windows remain unchanged
 
 **Example workflow:**
@@ -94,10 +94,10 @@ Keep important chat windows floating above all other applications.
 
 ### Side-by-Side Comparison
 
-Compare responses from different personas:
+Compare responses from different agents:
 
 1. Open two windows (**⌘N**)
-2. Set different personas in each
+2. Set different agents in each
 3. Ask the same question in both
 4. Compare the responses side-by-side
 
@@ -105,7 +105,7 @@ Compare responses from different personas:
 
 Dedicate windows to specific projects:
 
-| Window        | Persona         | Purpose                       |
+| Window        | Agent           | Purpose                       |
 | ------------- | --------------- | ----------------------------- |
 | Backend Dev   | Code Assistant  | API and database work         |
 | Frontend Dev  | Code Assistant  | UI and styling                |
@@ -173,7 +173,7 @@ When you close a window:
 
 - The session is preserved in history
 - Reopen it anytime from any window
-- The persona and context are remembered
+- The agent and context are remembered
 
 ## Keyboard Shortcuts
 
@@ -186,12 +186,12 @@ When you close a window:
 
 ## Combining with Other Features
 
-### Multi-Window + Personas
+### Multi-Window + Agents
 
-The real power comes from combining multi-window with [Personas](/personas):
+The real power comes from combining multi-window with [Agents](/agents):
 
-- Create specialized personas for different tasks
-- Open each persona in its own window
+- Create specialized agents for different tasks
+- Open each agent in its own window
 - Visual themes help you identify which assistant you're talking to
 
 ### Multi-Window + Voice Input
@@ -205,5 +205,5 @@ With [Voice Input](/voice) enabled:
 ---
 
 <p align="center">
-  For creating custom personas, see the <a href="/personas">Personas</a> guide.
+  For creating custom agents, see the <a href="/agents">Agents</a> guide.
 </p>

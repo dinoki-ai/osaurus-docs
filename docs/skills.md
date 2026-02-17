@@ -11,7 +11,7 @@ Your AI assistant is only as capable as its context allows. Skills let you exten
 
 ## What is a Skill?
 
-A skill is a reusable AI capability that provides specialized instructions, context, or methodology to your assistant. Unlike personas (which define personality and tool access), skills add domain expertise that can be combined with any persona.
+A skill is a reusable AI capability that provides specialized instructions, context, or methodology to your assistant. Unlike agents (which define personality and tool access), skills add domain expertise that can be combined with any agent.
 
 Each skill can include:
 
@@ -218,11 +218,11 @@ Only enable skills you're actively using. Each skill adds to the context sent wi
 Built-in skills cannot be deleted, but you can disable them.
 :::
 
-## Skills vs Personas
+## Skills vs Agents
 
-Skills and personas serve different purposes and work together:
+Skills and agents serve different purposes and work together:
 
-| Aspect        | Personas                              | Skills                                |
+| Aspect        | Agents                                | Skills                                |
 | ------------- | ------------------------------------- | ------------------------------------- |
 | **Purpose**   | Define personality and behavior       | Add domain expertise                  |
 | **Scope**     | Controls tools, model, temperature    | Provides instructions and context     |
@@ -231,7 +231,7 @@ Skills and personas serve different purposes and work together:
 
 **Example combination:**
 
-- **Persona:** Code Assistant (low temperature, filesystem tools enabled)
+- **Agent:** Code Assistant (low temperature, filesystem tools enabled)
 - **Skills:** Debug Assistant + Code Reviewer (methodology for the task)
 
 ## Agent Skills Compatibility
@@ -291,5 +291,5 @@ Enable **Creative Brainstormer** for ideation:
 ---
 
 <p align="center">
-  For combining skills with custom assistants, see the <a href="/personas">Personas</a> guide.
+  For combining skills with custom assistants, see the <a href="/agents">Agents</a> guide.
 </p>

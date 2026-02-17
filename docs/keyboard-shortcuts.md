@@ -37,7 +37,7 @@ Shortcuts available when using the chat interface.
 | **⌘K**     | Clear Chat    | Clear the current conversation      |
 
 :::tip Multi-Window
-Use **⌘N** to open multiple independent chat windows, each with its own persona. See [Multi-Window Chat](/multi-window) for details.
+Use **⌘N** to open multiple independent chat windows, each with its own agent. See [Multi-Window Chat](/multi-window) for details.
 :::
 
 ## Management Window
@@ -115,10 +115,10 @@ Combined with any letter, number, or function key.
 ## Related Guides
 
 - [Multi-Window Chat](/multi-window) — Working with multiple chat windows
-- [Personas](/personas) — Creating custom AI assistants
+- [Agents](/agents) — Creating custom AI assistants
 - [Skills](/skills) — Extending AI with reusable capabilities
 - [Schedules](/schedules) — Automating recurring AI tasks
-- [Agents](/agents) — Autonomous multi-step task execution
+- [Work Mode](/work-mode) — Autonomous multi-step task execution
 - [Voice Input](/voice) — Speech-to-text, VAD mode, and Transcription Mode
 
 ---

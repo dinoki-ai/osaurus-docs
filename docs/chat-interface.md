@@ -125,14 +125,14 @@ The menu bar icon shows the current state:
 Want more than one conversation at a time? Osaurus supports multiple independent chat windows:
 
 - Press **⌘N** to open a new window
-- Each window can have its own persona
+- Each window can have its own agent
 - Windows are completely independent
 
 [Learn more about multi-window →](/multi-window)
 
-## Agent Mode
+## Work Mode
 
-Switch to Agent Mode for autonomous multi-step task execution. Click the **Agent Mode** tab at the top of the chat window to enter this mode. In Agent Mode, the AI can:
+Switch to Work Mode for autonomous multi-step task execution. Click the **Work Mode** tab at the top of the chat window to enter this mode. In Work Mode, the AI can:
 
 - Break down complex tasks into trackable issues
 - Generate step-by-step execution plans
@@ -141,19 +141,19 @@ Switch to Agent Mode for autonomous multi-step task execution. Click the **Agent
 - Leverage skills for specialized methodologies
 - Run tasks in the background while you work on other things
 
-Agent Mode is ideal for organizing files, conducting deep research, automating workflows, compiling documents, and for developers—building features, refactoring code, and debugging issues that span multiple files.
+Work Mode is ideal for organizing files, conducting deep research, automating workflows, compiling documents, and for developers—building features, refactoring code, and debugging issues that span multiple files.
+
+[Learn more about Work Mode →](/work-mode)
+
+## Agents
+
+The chat interface works seamlessly with Agents. When you switch agents:
+
+- The system prompt changes to match the agent
+- Available tools update based on agent configuration
+- The visual theme changes (if the agent has a custom theme)
 
 [Learn more about agents →](/agents)
-
-## Personas
-
-The chat interface works seamlessly with Personas. When you switch personas:
-
-- The system prompt changes to match the persona
-- Available tools update based on persona configuration
-- The visual theme changes (if the persona has a custom theme)
-
-[Learn more about personas →](/personas)
 
 ## Voice Input
 
@@ -164,12 +164,12 @@ Click the microphone icon in the input area to use voice input. Speak naturally 
 ## Tips
 
 - **Be specific** — Detailed questions get better answers
-- **Use personas** — Create specialized assistants for different tasks
+- **Use agents** — Create specialized assistants for different tasks
 - **Try different models** — Smaller models are faster; larger models are smarter
 - **Enable streaming** — See responses as they're generated for a more interactive feel
 
 ---
 
 <p align="center">
-  Ready to customize your experience? Learn about <a href="/personas">Personas</a>.
+  Ready to customize your experience? Learn about <a href="/agents">Agents</a>.
 </p>
