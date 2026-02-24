@@ -234,7 +234,7 @@ const config: Config = {
           ],
         },
       ],
-      copyright: `© ${new Date().getFullYear()} Dinoki Labs`,
+      copyright: `© ${new Date().getFullYear()} Osaurus`,
     },
     prism: {
       theme: prismThemes.github,

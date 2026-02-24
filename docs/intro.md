@@ -235,9 +235,3 @@ Osaurus is an indie project, built in public. Join us:
 - [GitHub](https://github.com/osaurus-ai/osaurus) — Report issues and contribute
 - [Plugin Registry](https://github.com/osaurus-ai/osaurus-tools) — Browse and submit tools
 - [Blog](https://osaurus.ai/blog) — Read about our vision and roadmap
-
----
-
-<p align="center">
-  Created by <a href="https://dinoki.ai">Dinoki Labs</a>
-</p>
