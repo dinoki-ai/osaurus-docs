@@ -435,5 +435,5 @@ sudo osaurus serve  # Not recommended
 ---
 
 <p align="center">
-  For CLI help, check our <a href="https://discord.gg/dinoki">Discord community</a> or file an issue on <a href="https://github.com/dinoki-ai/osaurus/issues">GitHub</a>.
+  For CLI help, check our <a href="https://discord.gg/dinoki">Discord community</a> or file an issue on <a href="https://github.com/osaurus-ai/osaurus/issues">GitHub</a>.
 </p>

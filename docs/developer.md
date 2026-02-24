@@ -35,7 +35,7 @@ Contributing to Osaurus means building **production-quality tools** that develop
 
 ```bash
 # Clone the repository
-git clone https://github.com/dinoki-ai/osaurus.git
+git clone https://github.com/osaurus-ai/osaurus.git
 cd osaurus
 
 # Open in Xcode
@@ -112,7 +112,7 @@ osaurus/
 
 Start with issues labeled **"good first issue"**:
 
-[Browse Good First Issues →](https://github.com/dinoki-ai/osaurus/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
+[Browse Good First Issues →](https://github.com/osaurus-ai/osaurus/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22)
 
 ### Pull Request Process
 
@@ -374,8 +374,8 @@ These tools are invaluable for:
 
 ### Osaurus Documentation
 
-- [FEATURES.md](https://github.com/dinoki-ai/osaurus/blob/main/docs/FEATURES.md) — Complete feature inventory and architecture overview
-- [Contributing Guide](https://github.com/dinoki-ai/osaurus/blob/main/CONTRIBUTING.md) — How to contribute to Osaurus
+- [FEATURES.md](https://github.com/osaurus-ai/osaurus/blob/main/docs/FEATURES.md) — Complete feature inventory and architecture overview
+- [Contributing Guide](https://github.com/osaurus-ai/osaurus/blob/main/CONTRIBUTING.md) — How to contribute to Osaurus
 
 ### External Documentation
 
@@ -386,19 +386,19 @@ These tools are invaluable for:
 ### Community
 
 - [Discord](https://discord.gg/dinoki) — Get help and discuss
-- [GitHub Issues](https://github.com/dinoki-ai/osaurus/issues) — Report bugs
-- [GitHub Discussions](https://github.com/dinoki-ai/osaurus/discussions) — Ideas and questions
+- [GitHub Issues](https://github.com/osaurus-ai/osaurus/issues) — Report bugs
+- [GitHub Discussions](https://github.com/osaurus-ai/osaurus/discussions) — Ideas and questions
 
 ### Related Projects
 
-- [osaurus-tools](https://github.com/dinoki-ai/osaurus-tools) — Official tool plugins
-- [osaurus-emacs](https://github.com/dinoki-ai/osaurus-emacs) — Example community plugin
+- [osaurus-tools](https://github.com/osaurus-ai/osaurus-tools) — Official tool plugins
+- [osaurus-emacs](https://github.com/osaurus-ai/osaurus-emacs) — Example community plugin
 
 ## Security
 
 ### Reporting Vulnerabilities
 
-See [SECURITY.md](https://github.com/dinoki-ai/osaurus/blob/main/SECURITY.md) for reporting security issues.
+See [SECURITY.md](https://github.com/osaurus-ai/osaurus/blob/main/SECURITY.md) for reporting security issues.
 
 ### Best Practices
 
@@ -410,5 +410,5 @@ See [SECURITY.md](https://github.com/dinoki-ai/osaurus/blob/main/SECURITY.md) fo
 ---
 
 <p align="center">
-  To contribute, start with <a href="https://github.com/dinoki-ai/osaurus/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">good first issues</a> on GitHub.
+  To contribute, start with <a href="https://github.com/osaurus-ai/osaurus/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">good first issues</a> on GitHub.
 </p>

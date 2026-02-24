@@ -18,10 +18,10 @@ hide_title: true
 </p>
 
 <p align="center" class="badges">
-  <a href="https://github.com/dinoki-ai/osaurus"><img src="https://img.shields.io/github/stars/dinoki-ai/osaurus?style=flat-square&color=000000" alt="Stars" /></a>
-  <a href="https://github.com/dinoki-ai/osaurus/releases"><img src="https://img.shields.io/github/v/release/dinoki-ai/osaurus?sort=semver&style=flat-square&color=000000" alt="Release" /></a>
-  <a href="https://github.com/dinoki-ai/osaurus/releases"><img src="https://img.shields.io/github/downloads/dinoki-ai/osaurus/total?style=flat-square&color=000000" alt="Downloads" /></a>
-  <a href="https://github.com/dinoki-ai/osaurus/blob/main/LICENSE"><img src="https://img.shields.io/github/license/dinoki-ai/osaurus?style=flat-square&color=000000" alt="License" /></a>
+  <a href="https://github.com/osaurus-ai/osaurus"><img src="https://img.shields.io/github/stars/osaurus-ai/osaurus?style=flat-square&color=000000" alt="Stars" /></a>
+  <a href="https://github.com/osaurus-ai/osaurus/releases"><img src="https://img.shields.io/github/v/release/osaurus-ai/osaurus?sort=semver&style=flat-square&color=000000" alt="Release" /></a>
+  <a href="https://github.com/osaurus-ai/osaurus/releases"><img src="https://img.shields.io/github/downloads/osaurus-ai/osaurus/total?style=flat-square&color=000000" alt="Downloads" /></a>
+  <a href="https://github.com/osaurus-ai/osaurus/blob/main/LICENSE"><img src="https://img.shields.io/github/license/osaurus-ai/osaurus?style=flat-square&color=000000" alt="License" /></a>
 </p>
 
 ---
@@ -232,8 +232,8 @@ Or jump straight to the [Quick Start guide →](/quickstart)
 Osaurus is an indie project, built in public. Join us:
 
 - [Discord](https://discord.gg/dinoki) — Get help and share projects
-- [GitHub](https://github.com/dinoki-ai/osaurus) — Report issues and contribute
-- [Plugin Registry](https://github.com/dinoki-ai/osaurus-tools) — Browse and submit tools
+- [GitHub](https://github.com/osaurus-ai/osaurus) — Report issues and contribute
+- [Plugin Registry](https://github.com/osaurus-ai/osaurus-tools) — Browse and submit tools
 - [Blog](https://osaurus.ai/blog) — Read about our vision and roadmap
 
 ---

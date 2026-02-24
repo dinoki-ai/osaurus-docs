@@ -55,7 +55,7 @@ brew upgrade --cask osaurus
 
 Download the latest signed build from GitHub:
 
-1. Visit [GitHub Releases](https://github.com/dinoki-ai/osaurus/releases/latest)
+1. Visit [GitHub Releases](https://github.com/osaurus-ai/osaurus/releases/latest)
 2. Download the DMG file
 3. Open the DMG and drag Osaurus to Applications
 4. Eject the DMG
@@ -222,5 +222,5 @@ Want to build Osaurus from source or contribute? See the [Building from Source](
 ---
 
 <p align="center">
-  For installation help, visit our <a href="https://discord.gg/dinoki">Discord community</a> or check the <a href="https://github.com/dinoki-ai/osaurus/issues">GitHub issues</a>.
+  For installation help, visit our <a href="https://discord.gg/dinoki">Discord community</a> or check the <a href="https://github.com/osaurus-ai/osaurus/issues">GitHub issues</a>.
 </p>

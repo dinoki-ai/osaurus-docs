@@ -22,7 +22,7 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: "dinoki-ai", // Usually your GitHub org/user name.
+  organizationName: "osaurus-ai", // Usually your GitHub org/user name.
   projectName: "osaurus-docs", // Usually your repo name.
 
   onBrokenLinks: "throw",
@@ -206,7 +206,7 @@ const config: Config = {
           label: "Docs",
         },
         {
-          href: "https://github.com/dinoki-ai/osaurus",
+          href: "https://github.com/osaurus-ai/osaurus",
           label: "GitHub",
           position: "right",
         },
@@ -229,7 +229,7 @@ const config: Config = {
           items: [
             {
               label: "GitHub",
-              href: "https://github.com/dinoki-ai/osaurus",
+              href: "https://github.com/osaurus-ai/osaurus",
             },
           ],
         },

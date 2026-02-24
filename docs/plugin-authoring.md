@@ -379,7 +379,7 @@ minisign -S -s minisign.key -m mytool-macos-arm64.zip
 ### 4. Publish Release
 
 1. Upload `mytool-macos-arm64.zip` to GitHub Releases
-2. Fork [osaurus-tools](https://github.com/dinoki-ai/osaurus-tools)
+2. Fork [osaurus-tools](https://github.com/osaurus-ai/osaurus-tools)
 3. Create `plugins/com.yourcompany.mytool.json`:
 
 ```json
@@ -422,7 +422,7 @@ minisign -S -s minisign.key -m mytool-macos-arm64.zip
 
 ## Example: osaurus-emacs
 
-The [osaurus-emacs](https://github.com/dinoki-ai/osaurus-emacs) plugin is a real-world example of a community tool:
+The [osaurus-emacs](https://github.com/osaurus-ai/osaurus-emacs) plugin is a real-world example of a community tool:
 
 **manifest.json:**
 
@@ -490,5 +490,5 @@ The [osaurus-emacs](https://github.com/dinoki-ai/osaurus-emacs) plugin is a real
 ---
 
 <p align="center">
-  For plugin development help, join our <a href="https://discord.gg/dinoki">Discord community</a> or check the <a href="https://github.com/dinoki-ai/osaurus-tools">tools registry</a>.
+  For plugin development help, join our <a href="https://discord.gg/dinoki">Discord community</a> or check the <a href="https://github.com/osaurus-ai/osaurus-tools">tools registry</a>.
 </p>

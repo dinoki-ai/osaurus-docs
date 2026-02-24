@@ -75,10 +75,10 @@ Osaurus uses a smart loading system that dramatically reduces context usage for 
 
 Instead of loading all tool definitions upfront (which can consume thousands of tokens), Osaurus shows the AI a lightweight catalog first. The AI sees tool names and brief descriptions, then requests full definitions only for tools it actually needs.
 
-| Approach           | Context Usage | What's Loaded                              |
-| ------------------ | ------------- | ------------------------------------------ |
-| **Traditional**    | ~5,000 tokens | All tool schemas upfront                   |
-| **Two-Phase**      | ~1,000 tokens | Catalog + only actively used tool schemas  |
+| Approach        | Context Usage | What's Loaded                             |
+| --------------- | ------------- | ----------------------------------------- |
+| **Traditional** | ~5,000 tokens | All tool schemas upfront                  |
+| **Two-Phase**   | ~1,000 tokens | Catalog + only actively used tool schemas |
 
 This saves approximately **80% of context space**, leaving more room for conversation history and AI reasoning. Combined with [Skills](/skills), you can have extensive capabilities available without overwhelming the context window.
 
@@ -178,7 +178,7 @@ The Tools UI shows which permissions are needed and provides one-click buttons t
 
 ## Community Tools
 
-The [Osaurus Tools Registry](https://github.com/dinoki-ai/osaurus-tools) hosts community-contributed plugins. Browse available tools:
+The [Osaurus Tools Registry](https://github.com/osaurus-ai/osaurus-tools) hosts community-contributed plugins. Browse available tools:
 
 ```bash
 osaurus tools search <keyword>
@@ -186,7 +186,7 @@ osaurus tools search <keyword>
 
 ### Example: osaurus-emacs
 
-The [osaurus-emacs](https://github.com/dinoki-ai/osaurus-emacs) plugin demonstrates a community tool that executes Emacs Lisp code:
+The [osaurus-emacs](https://github.com/osaurus-ai/osaurus-emacs) plugin demonstrates a community tool that executes Emacs Lisp code:
 
 ```bash
 osaurus tools install osaurus.emacs
@@ -275,7 +275,7 @@ osaurus tools install .
 
 ## Central Registry
 
-All official and community tools are indexed in the [osaurus-tools](https://github.com/dinoki-ai/osaurus-tools) repository:
+All official and community tools are indexed in the [osaurus-tools](https://github.com/osaurus-ai/osaurus-tools) repository:
 
 - **Browse plugins**: See what's available
 - **Submit your plugin**: Open a PR to add your tool
@@ -316,5 +316,5 @@ osaurus-tools/
 ---
 
 <p align="center">
-  To contribute a tool, see the <a href="/plugin-authoring">Plugin Authoring Guide</a> or browse the <a href="https://github.com/dinoki-ai/osaurus-tools">tools registry</a>.
+  To contribute a tool, see the <a href="/plugin-authoring">Plugin Authoring Guide</a> or browse the <a href="https://github.com/osaurus-ai/osaurus-tools">tools registry</a>.
 </p>

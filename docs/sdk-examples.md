@@ -328,7 +328,7 @@ streamChat();
                 model: "llama-3.2-3b-instruct-4bit",
                 messages: [{ role: "user", content: message }],
               }),
-            }
+            },
           );
 
           const data = await response.json();
@@ -474,7 +474,7 @@ class OsaurusClient {
   }
 
   async *streamChat(
-    messages: ChatCompletionMessageParam[]
+    messages: ChatCompletionMessageParam[],
   ): AsyncGenerator<string> {
     const stream = await this.client.chat.completions.create({
       model: this.config.model,
@@ -857,7 +857,7 @@ class RateLimitedClient {
             model: "llama-3.2-3b-instruct-4bit",
             messages,
           }),
-        }
+        },
       );
 
       const data = await response.json();
@@ -889,7 +889,7 @@ class RateLimitedClient {
 - [API Reference](/api) — Complete endpoint documentation
 - [Model Guide](/models) — Choosing the right model
 - [Integration Guide](/integrations) — Framework-specific guides
-- [GitHub Examples](https://github.com/dinoki-ai/osaurus/tree/main/examples) — More code samples
+- [GitHub Examples](https://github.com/osaurus-ai/osaurus/tree/main/examples) — More code samples
 
 ---
 

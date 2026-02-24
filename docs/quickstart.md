@@ -19,7 +19,7 @@ Install using Homebrew:
 brew install --cask osaurus
 ```
 
-Alternatively, [download directly](https://github.com/dinoki-ai/osaurus/releases/latest) from GitHub releases.
+Alternatively, [download directly](https://github.com/osaurus-ai/osaurus/releases/latest) from GitHub releases.
 
 ### Launch the Application
 
@@ -220,13 +220,15 @@ console.log(data.choices[0].message.content);
 Now that you're up and running, explore what Osaurus can do:
 
 **For Everyone:**
+
 - [Chat Interface](/chat-interface) — Master the chat overlay
 - [Agents](/agents) — Create custom AI assistants
 - [Voice Input](/voice) — Talk to your AI hands-free
 
 **For Developers:**
+
 - [API Reference](/api) — Complete endpoint documentation
 - [SDK Examples](/sdk-examples) — Python, JavaScript, and more
 - [Tools & Plugins](/tools) — Extend AI with native tools
 
-**Need help?** Join our [Discord community](https://discord.gg/dinoki) or check [GitHub issues](https://github.com/dinoki-ai/osaurus/issues).
+**Need help?** Join our [Discord community](https://discord.gg/dinoki) or check [GitHub issues](https://github.com/osaurus-ai/osaurus/issues).
