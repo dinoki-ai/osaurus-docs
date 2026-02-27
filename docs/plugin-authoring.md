@@ -57,7 +57,7 @@ osaurus tools install .
 The plugin is installed to:
 
 ```
-~/Library/Application Support/com.dinoki.osaurus/Tools/<plugin_id>/<version>/
+~/.osaurus/Tools/<plugin_id>/<version>/
 ```
 
 ## Plugin Structure

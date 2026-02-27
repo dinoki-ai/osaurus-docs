@@ -107,7 +107,7 @@ The directory structure:
 Installed plugins are stored at:
 
 ```
-~/Library/Application Support/com.dinoki.osaurus/Tools/<plugin_id>/<version>/
+~/.osaurus/Tools/<plugin_id>/<version>/
 ```
 
 This location is not configurable.

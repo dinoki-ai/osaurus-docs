@@ -204,7 +204,7 @@ brew uninstall --cask osaurus
    rm -rf ~/MLXModels
 
    # App data and tools
-   rm -rf ~/Library/Application\ Support/com.dinoki.osaurus
+   rm -rf ~/.osaurus
    ```
 
 ## Next Steps

@@ -41,6 +41,11 @@ const sidebars: SidebarsConfig = {
         },
         {
           type: "doc",
+          id: "memory",
+          label: "Memory",
+        },
+        {
+          type: "doc",
           id: "skills",
           label: "Skills",
         },

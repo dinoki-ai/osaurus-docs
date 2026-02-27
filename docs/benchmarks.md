@@ -1,7 +1,7 @@
 ---
 title: Benchmarks
 sidebar_label: Benchmarks
-description: Performance benchmarks comparing Osaurus with other local LLM servers
+description: Performance and memory quality benchmarks comparing Osaurus with other local LLM servers
 sidebar_position: 10
 ---
 
@@ -91,6 +91,63 @@ The benchmarks show Osaurus is particularly well-suited for:
 - Memory-constrained environments
 - High-throughput applications
 - Native macOS integrations
+
+---
+
+## Memory Quality — LoCoMo Benchmark
+
+We evaluate [memory](/memory) quality using the [LoCoMo benchmark](https://arxiv.org/abs/2401.15665) (ACL 2024) via [EasyLocomo](https://github.com/playeriv65/EasyLocomo). LoCoMo tests how well systems recall facts, events, and relationships from multi-session conversations spanning weeks to months.
+
+Osaurus uses a **no-context evaluation mode** where the LLM receives no conversation transcript — only the memory context assembled by the retrieval system. The `X-Osaurus-Agent-Id` header routes each question to the correct agent's memory store. This tests pure memory retrieval quality rather than full-context recall.
+
+### LoCoMo Leaderboard
+
+| System | F1 Score |
+|--------|----------|
+| MemU | 92.09% |
+| CORE | 88.24% |
+| Human baseline | ~88% |
+| Memobase | 85% (temporal) |
+| Mem0 | 66.9% |
+| **Osaurus (Gemini 2.5 Flash)** | **57.08%** |
+| OpenAI Memory | 52.9% |
+| GPT-3.5-turbo-16K (no memory) | 37.8% |
+| GPT-4-turbo (no memory) | ~32% |
+
+### Osaurus Breakdown by Category
+
+| Category | Count | F1 Score |
+|----------|-------|----------|
+| Open-domain | 841 | 61.44% |
+| Adversarial | 446 | 90.36% |
+| Multi-hop | 282 | 41.94% |
+| Temporal | 321 | 23.16% |
+| Single-hop | 96 | 22.10% |
+| **Overall** | **1,986** | **57.08%** |
+
+### Running the Benchmark
+
+```bash
+# 1. Set up EasyLocomo (clones repo, applies patch, creates venv)
+make bench-setup
+
+# 2. Configure .env in benchmarks/EasyLocomo/
+echo 'OPENAI_API_KEY=osaurus' > benchmarks/EasyLocomo/.env
+echo 'OPENAI_API_BASE=http://localhost:1337/v1' >> benchmarks/EasyLocomo/.env
+
+# 3. Ingest LoCoMo data (full extraction — takes several hours, only needed once)
+make bench-ingest
+
+# 4. Fast chunk re-ingestion (no LLM calls — use after code changes)
+make bench-ingest-chunks
+
+# 5. Run evaluation
+make bench-run
+```
+
+:::tip
+You may want to temporarily increase token budgets in the memory configuration file (`~/.osaurus/config/memory.json`) before running benchmarks. The default production budgets are tuned for everyday use, not maximal recall.
+:::
 
 ---
 

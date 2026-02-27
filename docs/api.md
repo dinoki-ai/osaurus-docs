@@ -38,6 +38,13 @@ All endpoints support common API prefixes for compatibility:
 | `/messages` | POST | Chat completion (Anthropic) |
 | `/api/chat` | POST | Chat completion (Ollama) |
 
+### Memory Endpoints
+
+| Endpoint | Method | Description |
+| -------- | ------ | ----------- |
+| `/memory/ingest` | POST | Bulk-ingest conversation turns for memory extraction |
+| `/agents` | GET | List agents with memory entry counts |
+
 ### MCP Endpoints
 
 | Endpoint | Method | Description |
@@ -557,6 +564,83 @@ Execute an MCP tool.
     "message": "Tool 'unknown_tool' not found"
   }
 }
+```
+
+## Memory API
+
+Osaurus exposes its [memory system](/memory) through the HTTP API, enabling any OpenAI-compatible client to benefit from persistent, personalized context.
+
+### Memory Context Injection — `X-Osaurus-Agent-Id`
+
+Add the `X-Osaurus-Agent-Id` header to any `POST /v1/chat/completions` request. Osaurus will automatically assemble relevant memory (user profile, working memory, conversation summaries, knowledge graph) and prepend it to the system prompt before the request reaches the model.
+
+The header value is an arbitrary string that identifies the agent or user session whose memory should be retrieved. When the header is absent or empty, the request is processed normally without memory injection.
+
+```python
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="http://127.0.0.1:1337/v1",
+    api_key="osaurus",
+    default_headers={"X-Osaurus-Agent-Id": "my-agent"},
+)
+
+response = client.chat.completions.create(
+    model="your-model-name",
+    messages=[{"role": "user", "content": "What did we talk about last time?"}],
+)
+```
+
+### POST /memory/ingest
+
+Bulk-ingest conversation turns so the memory system can learn from them. Useful for seeding memory from existing chat logs, migrating from another system, or running benchmarks.
+
+**Request Body:**
+
+```json
+{
+  "agent_id": "my-agent",
+  "conversation_id": "session-1",
+  "turns": [
+    {"user": "Hi, my name is Alice", "assistant": "Hello Alice! Nice to meet you."},
+    {"user": "I work at Acme Corp", "assistant": "Got it, you work at Acme Corp."}
+  ]
+}
+```
+
+**Parameters:**
+
+| Parameter | Type | Required | Description |
+| --------- | ---- | -------- | ----------- |
+| `agent_id` | string | Yes | Identifier for the agent whose memory is being populated |
+| `conversation_id` | string | Yes | Identifier for the conversation session |
+| `turns` | array | Yes | Array of turn objects, each with `user` and `assistant` fields |
+
+Memory extraction runs asynchronously in the background — ingested turns are processed without blocking the API response.
+
+**Example with cURL:**
+
+```bash
+curl http://127.0.0.1:1337/memory/ingest \
+  -H "Content-Type: application/json" \
+  -d '{
+    "agent_id": "my-agent",
+    "conversation_id": "session-1",
+    "turns": [
+      {"user": "Hi, my name is Alice", "assistant": "Hello Alice! Nice to meet you."},
+      {"user": "I work at Acme Corp", "assistant": "Got it, you work at Acme Corp."}
+    ]
+  }'
+```
+
+### GET /agents
+
+Returns all configured agents with their memory entry counts. Use this to discover valid agent IDs for the `X-Osaurus-Agent-Id` header.
+
+**Example with cURL:**
+
+```bash
+curl http://127.0.0.1:1337/agents
 ```
 
 ## Function Calling

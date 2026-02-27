@@ -78,6 +78,12 @@ Create custom AI assistants tailored to different tasks. A Code Assistant with a
 
 [Learn more about agents →](/agents)
 
+### Memory
+
+Your AI remembers what matters. Osaurus automatically extracts knowledge from conversations — preferences, decisions, facts, relationships — and brings relevant context into every new interaction. Everything stays local in a SQLite database on your Mac.
+
+[Learn more about memory →](/memory)
+
 ### Skills
 
 Extend your AI with reusable capabilities. Import skills from GitHub repositories or local files—research methodologies, debugging frameworks, creative techniques. Skills add domain expertise that works with any agent, and only load when you need them.

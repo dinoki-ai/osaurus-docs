@@ -60,7 +60,7 @@ osaurus tools uninstall osaurus.time
 Tools are installed to:
 
 ```
-~/Library/Application Support/com.dinoki.osaurus/Tools/<plugin_id>/<version>/
+~/.osaurus/Tools/<plugin_id>/<version>/
 ```
 
 ## Two-Phase Capability Selection
